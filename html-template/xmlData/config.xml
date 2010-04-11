@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config>
+	
+	<landingPage>
+	
+		<rotatingImages tranistionDelay="8" transitionTime="0.5">
+			<img src="images/business.jpg" textColor="0x4d672a" />
+			<img src="images/exercise.jpg" textColor="0x0e4d8b" />
+			<img src="images/dentist.jpg" textColor="0x70d0f6" />
+			<img src="images/cook.jpg" textColor="0xffd203" />
+		</rotatingImages>
+	
+	</landingPage>
+	
+	<sections>
+		
+		<section id="Intro">
+			<title><![CDATA[Intro Title]]></title>
+			<text><![CDATA[Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.]]></text>
+			<video src="http://www.ghostmonk.com/gbc_demo/video/01.flv" />
+		</section>
+		
+		<section id="President's Message">
+			<title><![CDATA[President's Message Title]]></title>
+			<text><![CDATA[Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus hendrerit libero sed risus consequat at pulvinar enim imperdiet. Pellentesque venenatis dolor non odio dapibus iaculis. Suspendisse accumsan malesuada leo sed bibendum.]]></text>
+			<video src="http://www.ghostmonk.com/gbc_demo/video/02.mp4" />
+		</section>
+		
+		<section id="Why">
+			<title><![CDATA[Why Title]]></title>
+			<text><![CDATA[Maecenas turpis felis, porttitor non scelerisque sit amet, venenatis in nisi. Sed mauris sem, aliquam sed pretium et, dignissim eu est. Nunc adipiscing lectus vitae leo commodo sit amet fringilla dui sagittis. Proin adipiscing arcu non enim consequat vel fermentum dui semper. Nunc pellentesque, est non ornare rutrum, elit dolor pellentesque turpis, eget malesuada tellus lectus quis mi.]]></text>
+			<video src="http://www.ghostmonk.com/gbc_demo/video/03.flv" />
+		</section>
+		
+		<section id="Remarkable Service">
+			<title><![CDATA[Remarkable Title]]></title>
+			<text><![CDATA[Suspendisse vitae orci vel elit hendrerit pharetra. Aliquam magna augue, mollis varius placerat ut, lacinia et ipsum. Curabitur non tellus vitae dolor sagittis imperdiet.]]></text>
+			<video src="http://www.ghostmonk.com/gbc_demo/video/04.flv" />
+		</section>
+		
+		<section id="Excellence">
+			<title><![CDATA[Excellence Title]]></title>
+			<text><![CDATA[Nam rhoncus rhoncus leo sed blandit. Phasellus aliquet justo a nunc auctor vel sodales ipsum fringilla. In et rhoncus neque. Mauris diam risus, gravida vel faucibus gravida, laoreet sit amet erat. Nunc scelerisque enim ut urna convallis quis rhoncus libero malesuada.]]></text>
+			<video src="http://www.ghostmonk.com/gbc_demo/video/05.flv" />
+		</section>
+		
+		<section id="About">
+			<title><![CDATA[About Title]]></title>
+			<text><![CDATA[Quisque posuere facilisis elit, et euismod magna gravida vitae. Donec lacus orci, ultricies at rutrum et, consectetur eget dolor. Sed faucibus sapien ut nunc dictum eget ullamcorper eros rutrum. Aenean id risus id turpis sagittis pretium vitae at est. Sed imperdiet diam tellus, ut fringilla ligula.]]></text>
+			<video src="http://www.ghostmonk.com/gbc_demo/video/06.flv" />
+		</section>
+		
+		<section id="Tool Kit">
+			<title><![CDATA[Tool Kit Title]]></title>
+			<text><![CDATA[Cras ante tortor, semper a consectetur non, auctor sit amet velit. Praesent sed massa dapibus massa ornare accumsan sed a ante. Phasellus ante lacus, tincidunt tristique molestie at, porttitor sit amet dui. In sodales vehicula massa vel congue.]]></text>
+			<video src="http://www.ghostmonk.com/gbc_demo/video/07.flv" />
+		</section>
+		
+		<section id="Action">
+			<title><![CDATA[Action Section Title]]></title>
+			<text><![CDATA[Cras ante tortor, semper a consectetur non, auctor sit amet velit. Praesent sed massa dapibus massa ornare accumsan sed a ante. Phasellus ante lacus, tincidunt tristique molestie at, porttitor sit amet dui. In sodales vehicula massa vel congue.]]></text>
+			<video src="http://www.ghostmonk.com/gbc_demo/video/07.flv" />
+		</section>
+		
+	</sections>
+	
+</config>
