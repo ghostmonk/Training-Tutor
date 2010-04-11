@@ -1,4 +1,4 @@
-package ca.georgebrown.trainingtutor.components 
+package ca.georgebrown.trainingtutor.components.stage 
 {	
 	import caurina.transitions.Equations;
 	import caurina.transitions.Tweener;
@@ -19,11 +19,6 @@ package ca.georgebrown.trainingtutor.components
 		{	
 			alpha = 0;
 			addEventListener( Event.ADDED_TO_STAGE, onAddedToStage );					
-		}
-		
-		public function set title( value:String ) : void 
-		{	
-			titleField.text = value;	
 		}
 		
 		public function buildIn() : void 

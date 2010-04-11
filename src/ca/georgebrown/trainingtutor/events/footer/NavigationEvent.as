@@ -10,6 +10,7 @@ package ca.georgebrown.trainingtutor.events.footer
 	public class NavigationEvent extends Event 
 	{
 		public static const SECTION_NAVIGATION:String = "sectionNavigation";
+		public static const INIT_SECTION:String = "initSection";
 		
 		private var _index:int;
 		

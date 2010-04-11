@@ -1,10 +1,13 @@
 package ca.georgebrown.trainingtutor.framework.view 
 {	
 	import ca.georgebrown.trainingtutor.components.SectionText;
+	import ca.georgebrown.trainingtutor.components.video.VideoPlayer;
 	import ca.georgebrown.trainingtutor.events.footer.NavigationEvent;
 	import ca.georgebrown.trainingtutor.events.landingPage.LandingPageStateEvent;
 	import ca.georgebrown.trainingtutor.framework.model.ConfigProxy;
 	import ca.georgebrown.trainingtutor.valueObjects.SectionData;
+	
+	import flash.display.Sprite;
 	
 	import org.puremvc.as3.multicore.interfaces.INotification;
 	import org.puremvc.as3.multicore.patterns.mediator.Mediator;
@@ -14,22 +17,30 @@ package ca.georgebrown.trainingtutor.framework.view
 	 * @author ghostmonk 21/08/2009
 	 * 
 	 */
-	public class SectionTextMediator extends Mediator {
-		
+	public class SectionMediator extends Mediator 
+	{	
 		public const NAME:String = "SectionTextMediator";
 		
 		private var _stageMediator:StageMediator;
+		private var _parentView:Sprite;
+		
+		private var _videoPlayer:VideoPlayer;
+		private var _sectionText:SectionText;
+		private var _initIndex:int;
+		
 		private var _configProxy:ConfigProxy;
 		
-		public function SectionTextMediator( viewComponent:SectionText, configProxy:ConfigProxy ) 
+		public function SectionMediator( videoPlayer:VideoPlayer, sectionText:SectionText, configProxy:ConfigProxy ) 
 		{	
-			super( NAME, viewComponent );
-			_configProxy = configProxy;	
-		}
-		
-		public function get sectionText() : SectionText 
-		{		
-			return viewComponent as SectionText;	
+			_parentView = new Sprite();
+			_videoPlayer = videoPlayer;
+			_sectionText = sectionText;
+			
+			super( NAME, _parentView );
+			
+			_configProxy = configProxy;
+			_parentView.addChild( _videoPlayer );
+			_parentView.addChild( _sectionText );
 		}
 		
 		override public function onRegister() : void 
@@ -41,7 +52,8 @@ package ca.georgebrown.trainingtutor.framework.view
 		{		
 			return [
 				NavigationEvent.SECTION_NAVIGATION,
-				LandingPageStateEvent.BUILD_OUT_COMPLETE
+				LandingPageStateEvent.BUILD_OUT_COMPLETE,
+				NavigationEvent.INIT_SECTION,
 			];
 		}
 		
@@ -56,20 +68,37 @@ package ca.georgebrown.trainingtutor.framework.view
 				case LandingPageStateEvent.BUILD_OUT_COMPLETE:
 					onLandingComplete();
 					break;
+					
+				case NavigationEvent.INIT_SECTION:
+					_initIndex = note.getBody() as int;
+					break;
 			}
 		}
 
 		private function setView( index:int ) : void 
 		{		
 			var sectionData:SectionData = _configProxy.getSectionData( index );
-			sectionText.title = sectionData.title;
-			sectionText.bodyText = sectionData.bodyText;	
+			_sectionText.title = sectionData.title;
+			_sectionText.bodyText = sectionData.bodyText;
+			
+			if( sectionData.hasVideo )
+			{
+				_stageMediator.stage.addChild( _videoPlayer );
+				_videoPlayer.buildIn();
+				_videoPlayer.loadVideo( sectionData.videoURL );
+			}
+			else
+			{
+				_videoPlayer.buildOut();
+			}	
 		}
 
 		private function onLandingComplete() : void 
-		{		
-			_stageMediator.stage.addChild( sectionText );
-			sectionText.buildIn();	
+		{
+			setView( _initIndex );
+			_stageMediator.stage.addChild( _parentView );
+			_sectionText.buildIn();
+			_videoPlayer.buildIn();
 		}	
 	}
 }

@@ -25,7 +25,7 @@ package ca.georgebrown.trainingtutor.framework.model
 		
 		public function get currentSection() : int
 		{
-			return _soData.data.currentSection || 0;
+			return 7;//_soData.data.currentSection || 0;
 		}
 		
 		public function updateSection( value:int ) : void

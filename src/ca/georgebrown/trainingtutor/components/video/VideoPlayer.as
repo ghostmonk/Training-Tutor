@@ -9,126 +9,99 @@ package ca.georgebrown.trainingtutor.components.video {
 	import com.ghostmonk.media.video.CoreVideo;
 	
 	import flash.events.Event;
+	import flash.media.Video;
 
 	/**
 	 * 
 	 * @author ghostmonk 21/08/2009
 	 * 
 	 */
-	public class VideoPlayer extends VideoPlayerAsset {
-		
-		
+	public class VideoPlayer extends VideoPlayerAsset 
+	{	
 		private var _controls:VideoControlBar;
 		private var _core:CoreVideo;
+		private var _video:Video;
 		
-		
-		public function VideoPlayer( core:CoreVideo ) {
-			
+		public function VideoPlayer( core:CoreVideo ) 
+		{	
 			alpha = 0;
 			_core = core;
-			holder.addChild( _core.video );
-			_core.video.smoothing = true;
-			_core.scaleAndCenter( holder );
 			_core.addEventListener( PercentageEvent.LOAD_CHANGE, onLoadProgress );
-			
+			createVideo();
 			addEventListener( Event.ADDED_TO_STAGE, onAddedToStage );
-			_controls = new VideoControlBar( _core, controlBar );		
-			
+			_controls = new VideoControlBar( _core, controlBar );			
 		}
 		
-		
-		
-		public function buildIn() : void {
-			
-			_core.video.alpha = 0;
+		public function buildIn() : void 
+		{	
+			_video.alpha = 0;
 			Tweener.addTween( this, { alpha:1, time:0.3, delay:0.5, transition:Equations.easeNone } );
-			Tweener.addTween( _core.video, { alpha:1, time:0.3, delay:0.7, transition:Equations.easeNone } );
-			
+			Tweener.addTween( _video, { alpha:1, time:0.3, delay:0.7, transition:Equations.easeNone } );	
 		}
 		
-		
-		
-		public function buildOut() : void {
-			
+		public function buildOut() : void 
+		{	
 			_controls.disable();
 			_core.destroyCurrentStream();
 			Tweener.addTween( this, { alpha:0, time:0.3, transition:Equations.easeNone, onComplete:onBuildOutComplete } );
-			Tweener.addTween( _core.video, { alpha:0, time:0.1, transition:Equations.easeNone } );
-			
+			Tweener.addTween( _video, { alpha:0, time:0.1, transition:Equations.easeNone } );	
 		}
 		
-		
-		
-		public function loadVideo( url:String ) : void {
-			
+		public function loadVideo( url:String ) : void 
+		{	
 			_controls.setPlayHead( 0 );
-			_core.load( url, false, true );
+			_core.load( url, createVideo(), false, true );
+			_controls.enable();			
+		}
+		
+		public function play() : void 
+		{	
+			_core.play();	
+		}
+		
+		public function pause() : void 
+		{	
+			_core.pause();	
+		}
+		
+		public function disableContols() : void 
+		{	
+			_controls.disable();	
+		}
+		
+		public function enableControls() : void  
+		{		
 			_controls.enable();		
-			
 		}
 		
-		
-		
-		public function play() : void {
-			
-			_core.play();
-			
+		private function createVideo() : Video 
+		{
+			if( _video && _video.parent ) _video.parent.removeChild( _video );
+			_video = null;
+			_video = new Video;
+			_video.smoothing = true;
+			holder.addChild( _video );
+			_video.width = holder.width;
+			_video.height = holder.height;
+			return _video;
 		}
 		
-		
-		
-		public function pause() : void {
-			
-			_core.pause();
-			
+		private function onLoadProgress( e:PercentageEvent ) : void 
+		{	
+			_controls.updateLoad( e.percent );	
 		}
 		
-		
-		
-		public function disableContols() : void {
-			
-			_controls.disable();
-			
+		private function onBuildOutComplete() : void 
+		{	
+			if( parent ) parent.removeChild( this );
 		}
 		
-		
-		
-		public function enableControls() : void  {
-			
-			_controls.enable();	
-			
-		}
-		
-		
-		
-		private function onLoadProgress( e:PercentageEvent ) : void {
-			
-			_controls.updateLoad( e.percent );
-			
-		}
-		
-		
-		
-		private function onBuildOutComplete() : void {
-			
-			if( parent ) {
-				parent.removeChild( this );
-			}
-			
-		}
-		
-		
-		
-		private function onAddedToStage( e:Event ) : void {
-			
+		private function onAddedToStage( e:Event ) : void 
+		{	
 			removeEventListener( Event.ADDED_TO_STAGE, onAddedToStage );
 			
 			x = 34;
-			y = ( stage.stageHeight - height ) * 0.5;
-			
+			y = ( stage.stageHeight - height ) * 0.5;			
 		}
-		
-		
-		
 	}
 }

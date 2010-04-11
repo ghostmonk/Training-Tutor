@@ -1,11 +1,11 @@
 package ca.georgebrown.trainingtutor.framework.view 
 {	
 	import ca.georgebrown.trainingtutor.components.landingPage.LandingPage;
+	import ca.georgebrown.trainingtutor.components.stage.Footer;
+	import ca.georgebrown.trainingtutor.components.stage.Header;
 	import ca.georgebrown.trainingtutor.events.landingPage.LandingPageStateEvent;
 	
 	import flash.display.Stage;
-	import flash.media.SoundMixer;
-	import flash.media.SoundTransform;
 	
 	import org.puremvc.as3.multicore.interfaces.INotification;
 	import org.puremvc.as3.multicore.patterns.mediator.Mediator;
@@ -19,10 +19,23 @@ package ca.georgebrown.trainingtutor.framework.view
 		
 		public static const NAME:String = "stageMediator";
 		
+		private var _header:Header;
+		private var _footer:Footer;
+		
 		public function StageMediator( viewComponent:Stage ) 
 		{		
 			super( NAME, viewComponent );
 			stage.stageFocusRect = false;	
+		}
+		
+		public function set header( value:Header ) : void
+		{
+			_header = value;
+		}
+		
+		public function set footer( value:Footer ) : void
+		{
+			_footer = value;
 		}
 		
 		public function get stage() : Stage 
@@ -47,7 +60,13 @@ package ca.georgebrown.trainingtutor.framework.view
 		
 		private function onLandingComplete( landing:LandingPage ) : void 
 		{		
-			stage.removeChild( landing );	
+			stage.removeChild( landing );
+			
+			stage.addChild( _footer );
+			_footer.buildIn();
+			
+			stage.addChild( _header );
+			_header.buildIn();	
 		}	
 	}
 }

@@ -1,15 +1,11 @@
-package ca.georgebrown.trainingtutor.components.footer 
+package ca.georgebrown.trainingtutor.components.stage 
 {	
 	import bottomBar.FooterAsset;
-	
-	import ca.georgebrown.trainingtutor.events.footer.NavigationEvent;
 	
 	import caurina.transitions.Equations;
 	import caurina.transitions.Tweener;
 	
 	import flash.events.Event;
-
-	[Event (name="navigationClick", type="ca.georgebrown.trainingtutor.events.footer.NavigationEvent")]
 	
 	/**
 	 * 
@@ -18,12 +14,8 @@ package ca.georgebrown.trainingtutor.components.footer
 	 */
 	public class Footer extends FooterAsset 
 	{
-		private var _navigation:Navigation;
-		
 		public function Footer() 
 		{	
-			_navigation = new Navigation( sectionNavigation );
-			_navigation.addEventListener( NavigationEvent.SECTION_NAVIGATION, onNavigation );
 			alpha = 0;
 			addEventListener( Event.ADDED_TO_STAGE, onAddedToStage );	
 		}
@@ -40,17 +32,6 @@ package ca.georgebrown.trainingtutor.components.footer
 			Tweener.addTween( this, { y:stage.stageHeight, time:0.3, onComplete:onBuildOutComplete } );	
 		}
 		
-		public function set sectionLabels( value:Array ) : void 
-		{		
-			_navigation.sectionLabels = value;	
-		}
-		
-		public function set sectionIndex( index:int ) : void 
-		{	
-			_navigation.sectionIndex = index;
-			_navigation.sectionAccess( index );	
-		}
-		
 		private function onBuildOutComplete() : void 
 		{	
 			if( parent ) 
@@ -64,11 +45,5 @@ package ca.georgebrown.trainingtutor.components.footer
 			removeEventListener( Event.ADDED_TO_STAGE, onAddedToStage );
 			y = stage.stageHeight;	
 		}
-		
-		private function onNavigation( e:NavigationEvent ) : void 
-		{	
-			dispatchEvent( e );	
-		}
-		
 	}
 }

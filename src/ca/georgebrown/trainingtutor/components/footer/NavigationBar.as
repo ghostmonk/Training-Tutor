@@ -17,9 +17,9 @@ package ca.georgebrown.trainingtutor.components.footer
 	import flash.text.TextFieldAutoSize;
 	import flash.utils.getQualifiedClassName;
 	
-	[Event (name="navigationClick", type="ca.georgebrown.trainingtutor.events.footer.NavigationEvent")]
+	[Event (name="sectionNavigation", type="ca.georgebrown.trainingtutor.events.footer.NavigationEvent")]
 	
-	public class Navigation extends EventDispatcher 
+	public class NavigationBar extends EventDispatcher 
 	{	
 		private const INACTIVE_LABEL_ALPHA:Number = 0.5;
 		
@@ -30,7 +30,7 @@ package ca.georgebrown.trainingtutor.components.footer
 		private var _openSections:int;
 		private var _sectionLabelEffect:Array;
 		
-		public function Navigation( view:NavigationAsset ) 
+		public function NavigationBar( view:NavigationAsset ) 
 		{	
 			_view = view;
 			

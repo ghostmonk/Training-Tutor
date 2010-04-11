@@ -1,19 +1,19 @@
 package ca.georgebrown.trainingtutor.framework.controller 
 {	
-	import ca.georgebrown.trainingtutor.components.Header;
 	import ca.georgebrown.trainingtutor.components.SectionText;
-	import ca.georgebrown.trainingtutor.components.footer.Footer;
+	import ca.georgebrown.trainingtutor.components.footer.NavigationBar;
 	import ca.georgebrown.trainingtutor.components.landingPage.ImageCarousel;
 	import ca.georgebrown.trainingtutor.components.landingPage.LandingPage;
+	import ca.georgebrown.trainingtutor.components.stage.Footer;
+	import ca.georgebrown.trainingtutor.components.stage.Header;
 	import ca.georgebrown.trainingtutor.components.video.VideoPlayer;
 	import ca.georgebrown.trainingtutor.events.footer.NavigationEvent;
 	import ca.georgebrown.trainingtutor.framework.model.ConfigProxy;
 	import ca.georgebrown.trainingtutor.framework.model.LocalDataProxy;
-	import ca.georgebrown.trainingtutor.framework.view.FooterMediator;
-	import ca.georgebrown.trainingtutor.framework.view.HeaderMediator;
 	import ca.georgebrown.trainingtutor.framework.view.LandingPageMediator;
-	import ca.georgebrown.trainingtutor.framework.view.SectionTextMediator;
-	import ca.georgebrown.trainingtutor.framework.view.VideoPlayerMediator;
+	import ca.georgebrown.trainingtutor.framework.view.NavigationMediator;
+	import ca.georgebrown.trainingtutor.framework.view.SectionMediator;
+	import ca.georgebrown.trainingtutor.framework.view.StageMediator;
 	
 	import com.ghostmonk.media.video.CoreVideo;
 	
@@ -31,23 +31,25 @@ package ca.georgebrown.trainingtutor.framework.controller
 		{	
 			var config:ConfigProxy = note.getBody() as ConfigProxy;
 			var localData:LocalDataProxy = facade.retrieveProxy( LocalDataProxy.NAME ) as LocalDataProxy;
+						
+			var stageMediator:StageMediator = facade.retrieveMediator( StageMediator.NAME ) as StageMediator;
+			var footer:Footer = new Footer();
+			stageMediator.footer = footer;
+			stageMediator.header = new Header();
 			
-			var headerMediator:HeaderMediator = new HeaderMediator( new Header(), config );
-			var footerMediator:FooterMediator = new FooterMediator( new Footer(), config );
-			var videoMediator:VideoPlayerMediator = new VideoPlayerMediator( new VideoPlayer( new CoreVideo() ), config );
-			var sectionTextMediator:SectionTextMediator = new SectionTextMediator( new SectionText(), config ); 
+			var navigationMediator:NavigationMediator = new NavigationMediator( new NavigationBar( footer.navigationBar ) );
+			navigationMediator.navBar.sectionIndex = localData.currentSection;
+			navigationMediator.navBar.sectionAccess( localData.currentSection );
+			navigationMediator.navBar.sectionLabels = config.sectionNames;
 			
-			facade.registerMediator( headerMediator );
-			facade.registerMediator( footerMediator );
-			facade.registerMediator( videoMediator );
-			facade.registerMediator( sectionTextMediator );
-			
+			var sectionMediator:SectionMediator = new SectionMediator( new VideoPlayer( new CoreVideo() ), new SectionText(), config );
 			var carousel:ImageCarousel = new ImageCarousel( config.configData.imagesURLs, config.configData.imgRotationDelay, config.configData.transitionTime );
+			
+			facade.registerMediator( navigationMediator );
+			facade.registerMediator( sectionMediator );
 			facade.registerMediator( new LandingPageMediator( new LandingPage( carousel ) ) );
 			
-			footerMediator.footer.sectionIndex = localData.currentSection;
-			footerMediator.footer.sectionLabels = config.sectionNames;
-			sendNotification( NavigationEvent.SECTION_NAVIGATION, localData.currentSection );
+			sendNotification( NavigationEvent.INIT_SECTION, localData.currentSection );
 		}
 	}
 }
