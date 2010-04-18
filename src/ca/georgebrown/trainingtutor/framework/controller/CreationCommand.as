@@ -1,13 +1,14 @@
 package ca.georgebrown.trainingtutor.framework.controller 
 {	
+	import ca.georgebrown.trainingtutor.components.Footer;
+	import ca.georgebrown.trainingtutor.components.Header;
+	import ca.georgebrown.trainingtutor.components.NavigationBar;
+	import ca.georgebrown.trainingtutor.components.SectionNavigation;
 	import ca.georgebrown.trainingtutor.components.SectionText;
-	import ca.georgebrown.trainingtutor.components.footer.NavigationBar;
 	import ca.georgebrown.trainingtutor.components.landingPage.ImageCarousel;
 	import ca.georgebrown.trainingtutor.components.landingPage.LandingPage;
-	import ca.georgebrown.trainingtutor.components.stage.Footer;
-	import ca.georgebrown.trainingtutor.components.stage.Header;
 	import ca.georgebrown.trainingtutor.components.video.VideoPlayer;
-	import ca.georgebrown.trainingtutor.events.footer.NavigationEvent;
+	import ca.georgebrown.trainingtutor.events.NavigationEvent;
 	import ca.georgebrown.trainingtutor.framework.model.ConfigProxy;
 	import ca.georgebrown.trainingtutor.framework.model.LocalDataProxy;
 	import ca.georgebrown.trainingtutor.framework.view.LandingPageMediator;
@@ -42,7 +43,7 @@ package ca.georgebrown.trainingtutor.framework.controller
 			navigationMediator.navBar.sectionAccess( localData.currentSection );
 			navigationMediator.navBar.sectionLabels = config.sectionNames;
 			
-			var sectionMediator:SectionMediator = new SectionMediator( new VideoPlayer( new CoreVideo() ), new SectionText(), config );
+			var sectionMediator:SectionMediator = new SectionMediator( new VideoPlayer( new CoreVideo() ), new SectionText(), new SectionNavigation(), config );
 			var carousel:ImageCarousel = new ImageCarousel( config.configData.imagesURLs, config.configData.imgRotationDelay, config.configData.transitionTime );
 			
 			facade.registerMediator( navigationMediator );

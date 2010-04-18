@@ -34,7 +34,7 @@ package
 			removeEventListener( Event.ADDED_TO_STAGE, onAddedToStage );
 			
 			var data:StartupData = new StartupData( stage, _confURL );
-			AppFacade.getInstance( _appName ).startup( data );	
+			AppFacade.getInstance( _appName ).startup( data );
 		}
 	}
 }

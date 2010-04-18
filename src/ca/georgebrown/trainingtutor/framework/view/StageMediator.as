@@ -1,9 +1,9 @@
 package ca.georgebrown.trainingtutor.framework.view 
 {	
+	import ca.georgebrown.trainingtutor.components.Footer;
+	import ca.georgebrown.trainingtutor.components.Header;
 	import ca.georgebrown.trainingtutor.components.landingPage.LandingPage;
-	import ca.georgebrown.trainingtutor.components.stage.Footer;
-	import ca.georgebrown.trainingtutor.components.stage.Header;
-	import ca.georgebrown.trainingtutor.events.landingPage.LandingPageStateEvent;
+	import ca.georgebrown.trainingtutor.events.LandingPageStateEvent;
 	
 	import flash.display.Stage;
 	

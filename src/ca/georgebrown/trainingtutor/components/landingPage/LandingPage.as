@@ -1,7 +1,7 @@
 package ca.georgebrown.trainingtutor.components.landingPage 
 {	
-	import ca.georgebrown.trainingtutor.events.landingPage.ImageTransitionEvent;
-	import ca.georgebrown.trainingtutor.events.landingPage.LandingPageStateEvent;
+	import ca.georgebrown.trainingtutor.events.ImageTransitionEvent;
+	import ca.georgebrown.trainingtutor.events.LandingPageStateEvent;
 	
 	import caurina.transitions.Equations;
 	import caurina.transitions.Tweener;

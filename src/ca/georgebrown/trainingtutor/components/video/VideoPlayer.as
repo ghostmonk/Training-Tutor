@@ -1,5 +1,5 @@
-package ca.georgebrown.trainingtutor.components.video {
-	
+package ca.georgebrown.trainingtutor.components.video 
+{	
 	import assets.videoPlayer.VideoPlayerAsset;
 	
 	import caurina.transitions.Equations;
@@ -8,7 +8,6 @@ package ca.georgebrown.trainingtutor.components.video {
 	import com.ghostmonk.events.PercentageEvent;
 	import com.ghostmonk.media.video.CoreVideo;
 	
-	import flash.events.Event;
 	import flash.media.Video;
 
 	/**
@@ -28,15 +27,14 @@ package ca.georgebrown.trainingtutor.components.video {
 			_core = core;
 			_core.addEventListener( PercentageEvent.LOAD_CHANGE, onLoadProgress );
 			createVideo();
-			addEventListener( Event.ADDED_TO_STAGE, onAddedToStage );
-			_controls = new VideoControlBar( _core, controlBar );			
+			_controls = new VideoControlBar( _core, controlBar );
 		}
 		
 		public function buildIn() : void 
 		{	
 			_video.alpha = 0;
-			Tweener.addTween( this, { alpha:1, time:0.3, delay:0.5, transition:Equations.easeNone } );
-			Tweener.addTween( _video, { alpha:1, time:0.3, delay:0.7, transition:Equations.easeNone } );	
+			Tweener.addTween( this, { alpha:1, time:0.3, delay:0.3, transition:Equations.easeNone } );
+			Tweener.addTween( _video, { alpha:1, time:0.3, delay:0.5, transition:Equations.easeNone } );	
 		}
 		
 		public function buildOut() : void 
@@ -52,6 +50,15 @@ package ca.georgebrown.trainingtutor.components.video {
 			_controls.setPlayHead( 0 );
 			_core.load( url, createVideo(), false, true );
 			_controls.enable();			
+		}
+		
+		public function replay() : void
+		{
+			_controls.setPlayHead( 0 );
+			_controls.enable();	
+			_core.pause();
+			_core.seek( 0 );
+			_core.play();
 		}
 		
 		public function play() : void 
@@ -94,14 +101,6 @@ package ca.georgebrown.trainingtutor.components.video {
 		private function onBuildOutComplete() : void 
 		{	
 			if( parent ) parent.removeChild( this );
-		}
-		
-		private function onAddedToStage( e:Event ) : void 
-		{	
-			removeEventListener( Event.ADDED_TO_STAGE, onAddedToStage );
-			
-			x = 34;
-			y = ( stage.stageHeight - height ) * 0.5;			
 		}
 	}
 }

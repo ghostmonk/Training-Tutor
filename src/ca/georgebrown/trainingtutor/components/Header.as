@@ -1,4 +1,4 @@
-package ca.georgebrown.trainingtutor.components.stage 
+package ca.georgebrown.trainingtutor.components 
 {	
 	import caurina.transitions.Equations;
 	import caurina.transitions.Tweener;
@@ -41,7 +41,8 @@ package ca.georgebrown.trainingtutor.components.stage
 		
 		private function onBuildOutComplete() : void 
 		{	
-			if( parent ) {
+			if( parent ) 
+			{
 				parent.removeChild( this );
 			}	
 		}	

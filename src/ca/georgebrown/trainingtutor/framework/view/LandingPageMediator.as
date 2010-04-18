@@ -1,7 +1,7 @@
 package ca.georgebrown.trainingtutor.framework.view 
 {	
 	import ca.georgebrown.trainingtutor.components.landingPage.LandingPage;
-	import ca.georgebrown.trainingtutor.events.landingPage.LandingPageStateEvent;
+	import ca.georgebrown.trainingtutor.events.LandingPageStateEvent;
 	
 	import org.puremvc.as3.multicore.interfaces.INotification;
 	import org.puremvc.as3.multicore.patterns.mediator.Mediator;

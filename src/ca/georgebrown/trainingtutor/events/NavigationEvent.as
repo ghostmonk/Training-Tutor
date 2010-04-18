@@ -1,4 +1,4 @@
-package ca.georgebrown.trainingtutor.events.footer 
+package ca.georgebrown.trainingtutor.events 
 {	
 	import flash.events.Event;
 
@@ -11,6 +11,8 @@ package ca.georgebrown.trainingtutor.events.footer
 	{
 		public static const SECTION_NAVIGATION:String = "sectionNavigation";
 		public static const INIT_SECTION:String = "initSection";
+		public static const REPLAY_VIDEO:String = "replayVideo";
+		public static const NEXT_SECTION:String = "nextSection";
 		
 		private var _index:int;
 		

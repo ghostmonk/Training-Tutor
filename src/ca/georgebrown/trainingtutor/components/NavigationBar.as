@@ -1,10 +1,10 @@
-package ca.georgebrown.trainingtutor.components.footer 
+package ca.georgebrown.trainingtutor.components 
 {	
 	import assets.footer.timeline.SectionLabel;
 	
 	import bottomBar.timeline.NavigationAsset;
 	
-	import ca.georgebrown.trainingtutor.events.footer.NavigationEvent;
+	import ca.georgebrown.trainingtutor.events.NavigationEvent;
 	
 	import caurina.transitions.Equations;
 	import caurina.transitions.Tweener;

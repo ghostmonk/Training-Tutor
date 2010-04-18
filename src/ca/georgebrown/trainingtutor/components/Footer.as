@@ -1,4 +1,4 @@
-package ca.georgebrown.trainingtutor.components.stage 
+package ca.georgebrown.trainingtutor.components 
 {	
 	import bottomBar.FooterAsset;
 	
