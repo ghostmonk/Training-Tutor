@@ -53,7 +53,7 @@ package ca.georgebrown.trainingtutor.components.landingPage
 			tweenAsset( subTitle, _subTitleY, 1 );
 			tweenAsset( startedTextFld, _getStartedY, 1.4 );
 			tweenAsset( getTextField, _getStartedY, 1.4 );
-			tweenAsset( startBtn,  _startBtnY, 1.6, 1, _startButton.enable );
+			tweenAsset( startBtn, _startBtnY, 1.6, 1, _startButton.enable );
 			buildInLogo( 1.5 );
 			_carousel.buildIn( 1.5 );	
 		}
@@ -64,6 +64,7 @@ package ca.georgebrown.trainingtutor.components.landingPage
 			tweenAsset( subTitle, _subTitleY + Y_OFFSET, 0, 0 );
 			tweenAsset( startedTextFld, _getStartedY + Y_OFFSET, 0, 0 );
 			tweenAsset( getTextField, _getStartedY + Y_OFFSET, 0, 0 );
+			tweenAsset( startBtn, _startBtnY + Y_OFFSET, 0, 0 );
 			_carousel.buildOut( 0.3 );
 			buildOutLogo();	
 		}
