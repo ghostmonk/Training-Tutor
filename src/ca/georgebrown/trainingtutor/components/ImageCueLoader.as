@@ -86,11 +86,9 @@ package ca.georgebrown.trainingtutor.components
 		{
 			for each( var info:Object in _list )
 			{
-				if( info.id == id )
-				{
-					return info;
-				}
+				if( info.id == id ) return info;
 			}
+			return null;
 		}
 	}
 }

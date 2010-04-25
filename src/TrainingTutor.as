@@ -1,8 +1,10 @@
 package 
 {	
 	import ca.georgebrown.trainingtutor.AppFacade;
+	import ca.georgebrown.trainingtutor.components.TextScroller;
 	import ca.georgebrown.trainingtutor.valueObjects.StartupData;
 	
+	import caurina.transitions.properties.ColorShortcuts;
 	import caurina.transitions.properties.DisplayShortcuts;
 	import caurina.transitions.properties.TextShortcuts;
 	
@@ -26,13 +28,13 @@ package
 		{	
 			DisplayShortcuts.init();
 			TextShortcuts.init();
+			ColorShortcuts.init();
 			addEventListener( Event.ADDED_TO_STAGE, onAddedToStage );	
 		}
 		
 		private function onAddedToStage(e:Event):void 
 		{	
 			removeEventListener( Event.ADDED_TO_STAGE, onAddedToStage );
-			
 			var data:StartupData = new StartupData( stage, _confURL );
 			AppFacade.getInstance( _appName ).startup( data );
 		}

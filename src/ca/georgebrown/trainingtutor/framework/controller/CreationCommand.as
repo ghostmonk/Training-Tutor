@@ -5,6 +5,7 @@ package ca.georgebrown.trainingtutor.framework.controller
 	import ca.georgebrown.trainingtutor.components.NavigationBar;
 	import ca.georgebrown.trainingtutor.components.SectionNavigation;
 	import ca.georgebrown.trainingtutor.components.SectionText;
+	import ca.georgebrown.trainingtutor.components.TextScroller;
 	import ca.georgebrown.trainingtutor.components.landingPage.ImageCarousel;
 	import ca.georgebrown.trainingtutor.components.landingPage.LandingPage;
 	import ca.georgebrown.trainingtutor.components.video.VideoPlayer;
@@ -43,7 +44,13 @@ package ca.georgebrown.trainingtutor.framework.controller
 			navigationMediator.navBar.sectionAccess( localData.currentSection );
 			navigationMediator.navBar.sectionLabels = config.sectionNames;
 			
-			var sectionMediator:SectionMediator = new SectionMediator( new VideoPlayer( new CoreVideo() ), new SectionText(), new SectionNavigation(), config );
+			var sectionText:SectionText = new SectionText();
+			var scroller:TextScroller = new TextScroller();
+			scroller.asset = sectionText.scrollerView;
+			sectionText.scroller = scroller;
+			sectionText.init();
+			
+			var sectionMediator:SectionMediator = new SectionMediator( new VideoPlayer( new CoreVideo() ), sectionText, new SectionNavigation(), config );
 			var carousel:ImageCarousel = new ImageCarousel( config.configData.imagesURLs, config.configData.imgRotationDelay, config.configData.transitionTime );
 			
 			facade.registerMediator( navigationMediator );

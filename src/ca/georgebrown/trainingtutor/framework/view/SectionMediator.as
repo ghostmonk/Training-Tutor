@@ -134,7 +134,7 @@ package ca.georgebrown.trainingtutor.framework.view
 			_sectionText.y = ( _videoPlayer.height - sectionHeight ) * 0.5 + _videoPlayer.y;
 			
 			_sectionNav.x = _sectionText.x;
-			_sectionNav.yPos = _sectionText.y + _sectionText.height + 10;
+			_sectionNav.yPos = _sectionText.y + _sectionText.sectionHeight + 10;
 		}
 		
 		private function onNextSection( e:NavigationEvent ) : void

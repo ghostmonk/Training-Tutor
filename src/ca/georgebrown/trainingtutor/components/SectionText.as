@@ -8,6 +8,9 @@ package ca.georgebrown.trainingtutor.components
 	import caurina.transitions.Tweener;
 	import caurina.transitions.properties.TextShortcuts;
 	
+	import com.ghostmonk.events.PercentageEvent;
+	
+	import flash.events.Event;
 	import flash.filters.DropShadowFilter;
 	import flash.text.AntiAliasType;
 	import flash.text.GridFitType;
@@ -28,13 +31,22 @@ package ca.georgebrown.trainingtutor.components
 		private var _bodyTextY:int;
 		private var _isInView:Boolean;
 		private var _combinedHeight:Number; 
+		private var _scroller:TextScroller;
 		
-		public function SectionText() 
-		{	
+		public function init() : void
+		{
 			_isInView = false;
 			_combinedHeight = 0;
 			TextShortcuts.init();
 			initializeAssets();
+		}
+		
+		public function set scroller( asset:TextScroller ) : void
+		{
+			_scroller = asset;
+			_scroller.addEventListener( PercentageEvent.CHANGE, onScroll );
+			_scroller.view.visible = false;
+			_scroller.enable();
 		}
 		
 		public function get combinedHeight() : Number
@@ -48,14 +60,13 @@ package ca.georgebrown.trainingtutor.components
 			titleFld.htmlText = "<b>" + value + "</b>";
 			_bodyTextY = titleFld.height - 2;
 			
-			if( _isInView )
-				Tweener.addTween( titleFld, { alpha:1, time:0.3, transition:Equations.easeNone } );		
+			if( _isInView ) Tweener.addTween( titleFld, { alpha:1, time:0.3, transition:Equations.easeNone } );		
 		}
 		
 		public function set bodyText( value:String ) : void 
 		{	
 			var viewText:String = TextFormatting.removeWhiteSpace( value );	
-			bodyTextFld.y = _bodyTextY;
+			bodyTextFld.y = _scroller.view.y = _bodyTextY;
 			bodyTextFld.autoSize = TextFieldAutoSize.LEFT;
 			bodyTextFld.text = viewText;
 			
@@ -63,16 +74,23 @@ package ca.georgebrown.trainingtutor.components
 			{
 				bodyTextFld.autoSize = TextFieldAutoSize.NONE;
 				bodyTextFld.height = MAX_BODY_HEIGHT;
+				_scroller.view.visible = true;
 			}
 			
 			if( bodyTextFld.numLines <= MAX_LINES ) 
 			{
 				bodyTextFld.autoSize = TextFieldAutoSize.NONE;
 				bodyTextFld.height += 10;
+				_scroller.view.visible = false;
 			}
 			_combinedHeight = titleFld.height + bodyTextFld.height;
 			bodyTextFld.text = "";
 			Tweener.addTween( bodyTextFld, { _text:viewText, time:0.3, transition:Equations.easeNone } ); 	
+		}
+		
+		public function get sectionHeight() : Number
+		{
+			return _bodyTextY + bodyTextFld.height;
 		}
 		
 		public function buildIn() : void 
@@ -102,6 +120,7 @@ package ca.georgebrown.trainingtutor.components
 			bodyTextFld.gridFitType = GridFitType.PIXEL;
 			bodyTextFld.alpha = titleFld.alpha = 0;
 			bodyTextFld.y = _bodyTextY + Y_OFFSET;
+			bodyTextFld.addEventListener( Event.SCROLL, onTextScroll );
 		}
 		
 		private function animateAssets( alpha:Number, delay:Number, offSet:Number, complete:Function ) : void 
@@ -115,6 +134,19 @@ package ca.georgebrown.trainingtutor.components
 		private function onBuildOutComplete() : void 
 		{	
 			if( parent ) parent.removeChild( this );
+		}
+		
+		private function onScroll( e:PercentageEvent ) : void
+		{
+			bodyTextFld.scrollV = Math.floor( bodyTextFld.maxScrollV * e.percent );
+		}
+		
+		private function onTextScroll( e:Event ) : void
+		{
+			var minValue:Number = 1 / bodyTextFld.maxScrollV;
+			var scrollPercent:Number = bodyTextFld.scrollV / bodyTextFld.maxScrollV;
+			if( scrollPercent == minValue ) scrollPercent = 0;
+			_scroller.scrollByPercent( scrollPercent );
 		}
 	}
 }

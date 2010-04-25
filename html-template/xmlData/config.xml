@@ -48,8 +48,8 @@
 					Wayne Poirier, Director – Student Service sand Campus Life.
 				]]></text>
 			<images>
-				<img src="images/sections/studentBody.jpg" />
-				<img src="images/sections/firstGen.jpg" />
+				<img id="studentBody" src="images/sections/studentBody.jpg" />
+				<img id="firstGen" src="images/sections/firstGen.jpg" />
 			</images>
 		</section>
 		
