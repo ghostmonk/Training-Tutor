@@ -19,6 +19,16 @@ package ca.georgebrown.trainingtutor.valueObjects
 			return _data.video[ 0 ];	
 		}
 		
+		public function get imageIDs() : Array
+		{
+			var output:Array = [];
+			for each( var item:String in _data.images.img.@id )
+			{
+				output.push( item );
+			}
+			return output;
+		}
+		
 		public function get id() : String 
 		{		
 			return _data.@id.toString();		

@@ -1,11 +1,13 @@
 package ca.georgebrown.trainingtutor.framework.view 
 {	
+	import ca.georgebrown.trainingtutor.components.ImageCueLoader;
 	import ca.georgebrown.trainingtutor.components.SectionNavigation;
 	import ca.georgebrown.trainingtutor.components.SectionText;
 	import ca.georgebrown.trainingtutor.components.video.VideoPlayer;
 	import ca.georgebrown.trainingtutor.events.LandingPageStateEvent;
 	import ca.georgebrown.trainingtutor.events.NavigationEvent;
 	import ca.georgebrown.trainingtutor.framework.model.ConfigProxy;
+	import ca.georgebrown.trainingtutor.framework.model.ImageProxy;
 	import ca.georgebrown.trainingtutor.valueObjects.SectionData;
 	
 	import flash.display.Sprite;
@@ -27,29 +29,53 @@ package ca.georgebrown.trainingtutor.framework.view
 		private var _parentView:Sprite;
 		
 		private var _videoPlayer:VideoPlayer;
+		private var _imageCue:ImageCueLoader;
 		private var _sectionText:SectionText;
 		private var _sectionNav:SectionNavigation;
+		
 		private var _currentSection:int;
 		
 		private var _configProxy:ConfigProxy;
+		private var _imageProxy:ImageProxy;
 		private var _sectionsLength:int;
 		
-		public function SectionMediator( videoPlayer:VideoPlayer, sectionText:SectionText, sectionNav:SectionNavigation, configProxy:ConfigProxy ) 
+		public function SectionMediator( configProxy:ConfigProxy, imageProxy:ImageProxy ) 
 		{	
 			_parentView = new Sprite();
-			_videoPlayer = videoPlayer;
-			_sectionText = sectionText;
-			_sectionNav = sectionNav;
+			super( NAME, _parentView );
+			_configProxy = configProxy;
+			_imageProxy = imageProxy;
+			_sectionsLength = _configProxy.configData.sectionIDs.length();
+		}
+		
+		public function set videoPlayer( value:VideoPlayer ) : void
+		{
+			_videoPlayer = value;
+			_parentView.addChild( _videoPlayer );
+		}
+		
+		public function set imageViewer( value:ImageCueLoader ) : void
+		{
+			_imageCue = value;
+		}
+		
+		public function set sectionText( value:SectionText ) : void
+		{
+			_sectionText = value;
+			_parentView.addChild( _sectionText );
+		}
+		
+		public function set sectionNav( value:SectionNavigation ) : void
+		{
+			_sectionNav = value;
 			_sectionNav.addEventListener( NavigationEvent.NEXT_SECTION, onNextSection );
 			_sectionNav.addEventListener( NavigationEvent.REPLAY_VIDEO, onVideoReplay );
-			
-			super( NAME, _parentView );
-			
-			_configProxy = configProxy;
-			_sectionsLength = _configProxy.configData.sectionIDs.length();
-			_parentView.addChild( _videoPlayer );
-			_parentView.addChild( _sectionText );
 			_parentView.addChild( _sectionNav );
+		}
+		
+		public function get view() : Sprite
+		{
+			return viewComponent as Sprite;
 		}
 		
 		override public function onRegister() : void 
@@ -105,6 +131,7 @@ package ca.georgebrown.trainingtutor.framework.view
 			}
 			else
 			{
+				view.addChild( _imageProxy.getImage( sectionData.imageIDs[ 0 ] ) );
 				_videoPlayer.buildOut();
 			}
 			

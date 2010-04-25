@@ -9,6 +9,10 @@ package ca.georgebrown.trainingtutor.components
 	import flash.display.Sprite;
 	import flash.events.IOErrorEvent;
 	
+	[Event(name="imageCueComplete", type="ca.georgebrown.trainingtutor.events.ImageCueLoadEvent")]
+	[Event(name="imageLoaded", type="ca.georgebrown.trainingtutor.events.ImageCueLoadEvent")]
+	[Event(name="imageLoadFailed", type="ca.georgebrown.trainingtutor.events.ImageCueLoadEvent")]
+	
 	public class ImageCueLoader extends Sprite
 	{
 		private var _isLoading:Boolean;
@@ -67,13 +71,13 @@ package ca.georgebrown.trainingtutor.components
 		{
 			insertImage( id, content );
 			dispatchEvent( new ImageCueLoadEvent( ImageCueLoadEvent.IMAGE_LOADED, id ) );
-			loadImage( _currentIndex++ );
+			loadImage( ++_currentIndex );
 		}
 		
 		private function onError( e:IOErrorEvent, id:String ) : void
 		{
 			dispatchEvent( new ImageCueLoadEvent( ImageCueLoadEvent.IMAGE_LOAD_FAILED, id ) );
-			loadImage( _currentIndex++ );
+			loadImage( ++_currentIndex );
 		}
 		
 		private function insertImage( id:String, content:Bitmap ) : void

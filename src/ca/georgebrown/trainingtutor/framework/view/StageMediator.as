@@ -50,12 +50,7 @@ package ca.georgebrown.trainingtutor.framework.view
 		
 		override public function handleNotification( note:INotification ) : void 
 		{	
-			switch( note.getName() ) 
-			{			
-				case LandingPageStateEvent.BUILD_OUT_COMPLETE:
-					onLandingComplete( note.getBody() as LandingPage );
-					break;	
-			}
+			onLandingComplete( note.getBody() as LandingPage );
 		}
 		
 		private function onLandingComplete( landing:LandingPage ) : void 

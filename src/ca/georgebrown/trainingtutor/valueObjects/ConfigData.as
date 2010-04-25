@@ -21,7 +21,7 @@ package ca.georgebrown.trainingtutor.valueObjects
 			return _config;	
 		} 
 		
-		public function get imagesURLs() : Dictionary 
+		public function get landingPageImages() : Dictionary 
 		{	
 			var output:Dictionary = new Dictionary();
 			
@@ -31,6 +31,16 @@ package ca.georgebrown.trainingtutor.valueObjects
 			}
 			
 			return output;	
+		}
+		
+		public function get sectionImages() : Array 
+		{
+			var output:Array = [];
+			for each( var item:XML in _config.sections.section.images.img )
+			{
+				output.push( { id:item.@id, url:item.@src } );
+			}
+			return output;
 		}
 		
 		public function get imgRotationDelay() : Number 

@@ -2,6 +2,7 @@ package ca.georgebrown.trainingtutor.framework.controller
 {	
 	import ca.georgebrown.trainingtutor.components.Footer;
 	import ca.georgebrown.trainingtutor.components.Header;
+	import ca.georgebrown.trainingtutor.components.ImageCueLoader;
 	import ca.georgebrown.trainingtutor.components.NavigationBar;
 	import ca.georgebrown.trainingtutor.components.SectionNavigation;
 	import ca.georgebrown.trainingtutor.components.SectionText;
@@ -11,6 +12,7 @@ package ca.georgebrown.trainingtutor.framework.controller
 	import ca.georgebrown.trainingtutor.components.video.VideoPlayer;
 	import ca.georgebrown.trainingtutor.events.NavigationEvent;
 	import ca.georgebrown.trainingtutor.framework.model.ConfigProxy;
+	import ca.georgebrown.trainingtutor.framework.model.ImageProxy;
 	import ca.georgebrown.trainingtutor.framework.model.LocalDataProxy;
 	import ca.georgebrown.trainingtutor.framework.view.LandingPageMediator;
 	import ca.georgebrown.trainingtutor.framework.view.NavigationMediator;
@@ -18,6 +20,8 @@ package ca.georgebrown.trainingtutor.framework.controller
 	import ca.georgebrown.trainingtutor.framework.view.StageMediator;
 	
 	import com.ghostmonk.media.video.CoreVideo;
+	
+	import flash.utils.Dictionary;
 	
 	import org.puremvc.as3.multicore.interfaces.INotification;
 	import org.puremvc.as3.multicore.patterns.command.SimpleCommand;
@@ -34,15 +38,31 @@ package ca.georgebrown.trainingtutor.framework.controller
 			var config:ConfigProxy = note.getBody() as ConfigProxy;
 			var localData:LocalDataProxy = facade.retrieveProxy( LocalDataProxy.NAME ) as LocalDataProxy;
 						
+			createNavigationMediator( localData.currentSection, config.sectionNames );
+			createSectionMediator( config );
+			createLandingPageMediator( config.configData.landingPageImages, config.configData.imgRotationDelay, config.configData.transitionTime );
+			
+			sendNotification( NavigationEvent.INIT_SECTION, localData.currentSection );
+		}
+		
+		private function createNavigationMediator( currentSection:int, sections:Array ) : void
+		{
 			var stageMediator:StageMediator = facade.retrieveMediator( StageMediator.NAME ) as StageMediator;
 			var footer:Footer = new Footer();
 			stageMediator.footer = footer;
 			stageMediator.header = new Header();
 			
 			var navigationMediator:NavigationMediator = new NavigationMediator( new NavigationBar( footer.navigationBar ) );
-			navigationMediator.navBar.sectionIndex = localData.currentSection;
-			navigationMediator.navBar.sectionAccess( localData.currentSection );
-			navigationMediator.navBar.sectionLabels = config.sectionNames;
+			navigationMediator.navBar.sectionIndex = currentSection;
+			navigationMediator.navBar.sectionAccess( currentSection );
+			navigationMediator.navBar.sectionLabels = sections;
+			
+			facade.registerMediator( navigationMediator );
+		}
+		
+		private function createSectionMediator( config:ConfigProxy ) : void
+		{
+			var imageCue:ImageCueLoader = new ImageCueLoader();
 			
 			var sectionText:SectionText = new SectionText();
 			var scroller:TextScroller = new TextScroller();
@@ -50,14 +70,19 @@ package ca.georgebrown.trainingtutor.framework.controller
 			sectionText.scroller = scroller;
 			sectionText.init();
 			
-			var sectionMediator:SectionMediator = new SectionMediator( new VideoPlayer( new CoreVideo() ), sectionText, new SectionNavigation(), config );
-			var carousel:ImageCarousel = new ImageCarousel( config.configData.imagesURLs, config.configData.imgRotationDelay, config.configData.transitionTime );
+			var sectionMediator:SectionMediator = new SectionMediator( config, facade.retrieveProxy( ImageProxy.NAME ) as ImageProxy );
+			sectionMediator.videoPlayer = new VideoPlayer( new CoreVideo() );
+			sectionMediator.imageViewer = new ImageCueLoader();
+			sectionMediator.sectionText = sectionText;
+			sectionMediator.sectionNav = new SectionNavigation();
 			
-			facade.registerMediator( navigationMediator );
 			facade.registerMediator( sectionMediator );
+		}
+		
+		private function createLandingPageMediator( images:Dictionary, rotationDelay:Number, transitionTime:Number ) : void
+		{
+			var carousel:ImageCarousel = new ImageCarousel( images, rotationDelay, transitionTime );
 			facade.registerMediator( new LandingPageMediator( new LandingPage( carousel ) ) );
-			
-			sendNotification( NavigationEvent.INIT_SECTION, localData.currentSection );
 		}
 	}
 }

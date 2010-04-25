@@ -23,7 +23,7 @@ package ca.georgebrown.trainingtutor.events
 		
 		override public function clone() : Event
 		{
-			return new ImageCueLoadEvent( type, bubbles, cancelable );
+			return new ImageCueLoadEvent( type, _id, bubbles, cancelable );
 		}
 	}
 }
