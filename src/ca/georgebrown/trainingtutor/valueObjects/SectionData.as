@@ -29,6 +29,11 @@ package ca.georgebrown.trainingtutor.valueObjects
 			return output;
 		}
 		
+		public function get useChangeOnTextScroll() : Boolean
+		{
+			return _data.images ? _data.images.@changeOnTextScroll == "true" : false;
+		}
+		
 		public function get id() : String 
 		{		
 			return _data.@id.toString();		

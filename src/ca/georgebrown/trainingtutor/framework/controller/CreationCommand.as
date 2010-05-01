@@ -1,12 +1,14 @@
 package ca.georgebrown.trainingtutor.framework.controller 
 {	
+	import assets.videoPlayer.VideoPlayerAsset;
+	
 	import ca.georgebrown.trainingtutor.components.Footer;
 	import ca.georgebrown.trainingtutor.components.Header;
-	import ca.georgebrown.trainingtutor.components.ImageCueLoader;
 	import ca.georgebrown.trainingtutor.components.NavigationBar;
 	import ca.georgebrown.trainingtutor.components.SectionNavigation;
 	import ca.georgebrown.trainingtutor.components.SectionText;
 	import ca.georgebrown.trainingtutor.components.TextScroller;
+	import ca.georgebrown.trainingtutor.components.image.ImageViewer;
 	import ca.georgebrown.trainingtutor.components.landingPage.ImageCarousel;
 	import ca.georgebrown.trainingtutor.components.landingPage.LandingPage;
 	import ca.georgebrown.trainingtutor.components.video.VideoPlayer;
@@ -62,17 +64,15 @@ package ca.georgebrown.trainingtutor.framework.controller
 		
 		private function createSectionMediator( config:ConfigProxy ) : void
 		{
-			var imageCue:ImageCueLoader = new ImageCueLoader();
-			
 			var sectionText:SectionText = new SectionText();
 			var scroller:TextScroller = new TextScroller();
 			scroller.asset = sectionText.scrollerView;
 			sectionText.scroller = scroller;
 			sectionText.init();
 			
-			var sectionMediator:SectionMediator = new SectionMediator( config, facade.retrieveProxy( ImageProxy.NAME ) as ImageProxy );
-			sectionMediator.videoPlayer = new VideoPlayer( new CoreVideo() );
-			sectionMediator.imageViewer = new ImageCueLoader();
+			var sectionMediator:SectionMediator = new SectionMediator( config );
+			sectionMediator.videoPlayer = new VideoPlayer( new CoreVideo(), new VideoPlayerAsset() );
+			sectionMediator.imageViewer = new ImageViewer( ImageProxy( facade.retrieveProxy( ImageProxy.NAME ) ).cueLoader );
 			sectionMediator.sectionText = sectionText;
 			sectionMediator.sectionNav = new SectionNavigation();
 			

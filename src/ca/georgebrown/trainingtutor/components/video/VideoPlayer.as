@@ -2,6 +2,8 @@ package ca.georgebrown.trainingtutor.components.video
 {	
 	import assets.videoPlayer.VideoPlayerAsset;
 	
+	import ca.georgebrown.trainingtutor.components.SimpleView;
+	
 	import caurina.transitions.Equations;
 	import caurina.transitions.Tweener;
 	
@@ -15,29 +17,32 @@ package ca.georgebrown.trainingtutor.components.video
 	 * @author ghostmonk 21/08/2009
 	 * 
 	 */
-	public class VideoPlayer extends VideoPlayerAsset 
+	public class VideoPlayer extends SimpleView 
 	{	
 		private var _controls:VideoControlBar;
 		private var _core:CoreVideo;
 		private var _video:Video;
+		private var _mainView:VideoPlayerAsset;
 		
-		public function VideoPlayer( core:CoreVideo ) 
+		public function VideoPlayer( core:CoreVideo, mainView:VideoPlayerAsset ) 
 		{	
+			_mainView = mainView;
+			addChild( _mainView );
 			alpha = 0;
 			_core = core;
 			_core.addEventListener( PercentageEvent.LOAD_CHANGE, onLoadProgress );
 			createVideo();
-			_controls = new VideoControlBar( _core, controlBar );
+			_controls = new VideoControlBar( _core, _mainView.controlBar );
 		}
 		
-		public function buildIn() : void 
+		override public function buildIn() : void 
 		{	
 			_video.alpha = 0;
 			Tweener.addTween( this, { alpha:1, time:0.3, delay:0.3, transition:Equations.easeNone } );
 			Tweener.addTween( _video, { alpha:1, time:0.3, delay:0.5, transition:Equations.easeNone } );	
 		}
 		
-		public function buildOut() : void 
+		override public function buildOut() : void 
 		{	
 			_controls.disable();
 			_core.destroyCurrentStream();
@@ -45,11 +50,11 @@ package ca.georgebrown.trainingtutor.components.video
 			Tweener.addTween( _video, { alpha:0, time:0.1, transition:Equations.easeNone } );	
 		}
 		
-		public function loadVideo( url:String ) : void 
-		{	
+		override public function loadAsset( id:String ) : void
+		{
 			_controls.setPlayHead( 0 );
-			_core.load( url, createVideo(), false, true );
-			_controls.enable();			
+			_core.load( id, createVideo(), false, true );
+			_controls.enable();	
 		}
 		
 		public function replay() : void
@@ -87,9 +92,9 @@ package ca.georgebrown.trainingtutor.components.video
 			_video = null;
 			_video = new Video;
 			_video.smoothing = true;
-			holder.addChild( _video );
-			_video.width = holder.width;
-			_video.height = holder.height;
+			_mainView.holder.addChild( _video );
+			_video.width = _mainView.holder.width;
+			_video.height = _mainView.holder.height;
 			return _video;
 		}
 		

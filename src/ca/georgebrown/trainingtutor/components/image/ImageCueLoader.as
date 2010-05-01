@@ -1,4 +1,4 @@
-package ca.georgebrown.trainingtutor.components
+package ca.georgebrown.trainingtutor.components.image
 {
 	import ca.georgebrown.trainingtutor.events.ImageCueLoadEvent;
 	

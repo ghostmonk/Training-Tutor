@@ -47,7 +47,7 @@
 					Please take the time to go through all of the modules in this tool.  I hope you will find it to be invaluable in serving our applicants and students.
 					Wayne Poirier, Director – Student Service sand Campus Life.
 				]]></text>
-			<images>
+			<images changeOnTextScroll="true">
 				<img id="studentBody" src="images/sections/studentBody.jpg" />
 				<img id="firstGen" src="images/sections/firstGen.jpg" />
 			</images>

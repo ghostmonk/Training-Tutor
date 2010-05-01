@@ -1,14 +1,16 @@
 package ca.georgebrown.trainingtutor.framework.view 
 {	
-	import ca.georgebrown.trainingtutor.components.ImageCueLoader;
 	import ca.georgebrown.trainingtutor.components.SectionNavigation;
 	import ca.georgebrown.trainingtutor.components.SectionText;
+	import ca.georgebrown.trainingtutor.components.SimpleView;
+	import ca.georgebrown.trainingtutor.components.image.ImageViewer;
 	import ca.georgebrown.trainingtutor.components.video.VideoPlayer;
 	import ca.georgebrown.trainingtutor.events.LandingPageStateEvent;
 	import ca.georgebrown.trainingtutor.events.NavigationEvent;
 	import ca.georgebrown.trainingtutor.framework.model.ConfigProxy;
-	import ca.georgebrown.trainingtutor.framework.model.ImageProxy;
 	import ca.georgebrown.trainingtutor.valueObjects.SectionData;
+	
+	import com.ghostmonk.events.PercentageEvent;
 	
 	import flash.display.Sprite;
 	import flash.display.Stage;
@@ -29,22 +31,22 @@ package ca.georgebrown.trainingtutor.framework.view
 		private var _parentView:Sprite;
 		
 		private var _videoPlayer:VideoPlayer;
-		private var _imageCue:ImageCueLoader;
+		private var _imageView:ImageViewer;
 		private var _sectionText:SectionText;
 		private var _sectionNav:SectionNavigation;
 		
 		private var _currentSection:int;
 		
 		private var _configProxy:ConfigProxy;
-		private var _imageProxy:ImageProxy;
 		private var _sectionsLength:int;
+		private var _useImageSwap:Boolean;
 		
-		public function SectionMediator( configProxy:ConfigProxy, imageProxy:ImageProxy ) 
-		{	
+		public function SectionMediator( configProxy:ConfigProxy ) 
+		{
+			_useImageSwap = false;	
 			_parentView = new Sprite();
 			super( NAME, _parentView );
 			_configProxy = configProxy;
-			_imageProxy = imageProxy;
 			_sectionsLength = _configProxy.configData.sectionIDs.length();
 		}
 		
@@ -54,14 +56,15 @@ package ca.georgebrown.trainingtutor.framework.view
 			_parentView.addChild( _videoPlayer );
 		}
 		
-		public function set imageViewer( value:ImageCueLoader ) : void
+		public function set imageViewer( value:ImageViewer ) : void
 		{
-			_imageCue = value;
+			_imageView = value;
 		}
 		
 		public function set sectionText( value:SectionText ) : void
 		{
 			_sectionText = value;
+			_sectionText.addEventListener( PercentageEvent.CHANGE, onTextChange );
 			_parentView.addChild( _sectionText );
 		}
 		
@@ -117,28 +120,35 @@ package ca.georgebrown.trainingtutor.framework.view
 		}
 		
 		private function setView( index:int ) : void 
-		{		
+		{	
 			_currentSection = index;
 			var sectionData:SectionData = _configProxy.getSectionData( _currentSection );
+				
+			if( sectionData.hasVideo ) 
+				showView( _videoPlayer, sectionData.videoURL );
+			else 
+				showView( _imageView, sectionData.imageIDs[ 0 ] );
+			
 			_sectionText.title = sectionData.title;
 			_sectionText.bodyText = sectionData.bodyText;	
 			
-			if( sectionData.hasVideo )
-			{
-				_stageMediator.stage.addChild( _videoPlayer );
-				_videoPlayer.buildIn();
-				_videoPlayer.loadVideo( sectionData.videoURL );
-			}
-			else
-			{
-				view.addChild( _imageProxy.getImage( sectionData.imageIDs[ 0 ] ) );
-				_videoPlayer.buildOut();
-			}
+			_imageView.currentImages = sectionData.imageIDs;
+			_useImageSwap = sectionData.useChangeOnTextScroll;
 			
 			_sectionNav.showReplay = sectionData.hasVideo;
 			_sectionNav.showContinue = _currentSection < _sectionsLength - 1;
 			
 			positionAssets();
+		}
+		
+		private function showView( activeView:SimpleView, assetID:String, images:Array = null ) : void
+		{
+			var inactiveView:SimpleView = activeView == _videoPlayer ? _imageView : _videoPlayer;
+			_stageMediator.stage.addChild( activeView );
+			activeView.buildIn();
+			activeView.loadAsset( assetID );
+			inactiveView.buildOut();
+			if( activeView == _imageView && images ) _imageView
 		}
 
 		private function onLandingComplete() : void 
@@ -152,8 +162,8 @@ package ca.georgebrown.trainingtutor.framework.view
 		
 		private function positionAssets() : void
 		{
-			_videoPlayer.x = 34;
-			_videoPlayer.y = ( stage.stageHeight - _videoPlayer.height ) * 0.5;
+			_videoPlayer.x = _imageView.x = 34;
+			_videoPlayer.y = _imageView.y =( stage.stageHeight - _videoPlayer.height ) * 0.5;
 			
 			var sectionHeight:Number = _sectionNav.height + _sectionText.combinedHeight;
 			
@@ -177,6 +187,11 @@ package ca.georgebrown.trainingtutor.framework.view
 				sendNotification( e.type, _currentSection );
 				setView( _currentSection );
 			}
+		}
+		
+		private function onTextChange( e:PercentageEvent ) : void
+		{
+			if( _useImageSwap ) _imageView.updateView( e.percent );
 		}
 		
 		private function onVideoReplay( e:NavigationEvent ) : void 

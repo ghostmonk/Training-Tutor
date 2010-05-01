@@ -15,7 +15,9 @@ package ca.georgebrown.trainingtutor.components
 	import flash.text.AntiAliasType;
 	import flash.text.GridFitType;
 	import flash.text.TextFieldAutoSize;
-
+	
+	[Event (name="change", type="com.ghostmonk.events.PercentageEvent")]
+	
 	/**
 	 * 
 	 * @author ghostmonk 21/08/2009
@@ -138,6 +140,7 @@ package ca.georgebrown.trainingtutor.components
 		
 		private function onScroll( e:PercentageEvent ) : void
 		{
+			dispatchEvent( e );
 			bodyTextFld.scrollV = Math.floor( bodyTextFld.maxScrollV * e.percent );
 		}
 		
@@ -146,6 +149,7 @@ package ca.georgebrown.trainingtutor.components
 			var minValue:Number = 1 / bodyTextFld.maxScrollV;
 			var scrollPercent:Number = bodyTextFld.scrollV / bodyTextFld.maxScrollV;
 			if( scrollPercent == minValue ) scrollPercent = 0;
+			dispatchEvent( new PercentageEvent( PercentageEvent.CHANGE, scrollPercent ) );
 			_scroller.scrollByPercent( scrollPercent );
 		}
 	}

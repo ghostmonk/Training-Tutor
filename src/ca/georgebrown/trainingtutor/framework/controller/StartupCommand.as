@@ -1,7 +1,6 @@
 package ca.georgebrown.trainingtutor.framework.controller 
 {	
 	import ca.georgebrown.trainingtutor.AppFacade;
-	import ca.georgebrown.trainingtutor.components.ImageCueLoader;
 	import ca.georgebrown.trainingtutor.framework.model.ConfigProxy;
 	import ca.georgebrown.trainingtutor.framework.model.ImageProxy;
 	import ca.georgebrown.trainingtutor.framework.model.LocalDataProxy;
