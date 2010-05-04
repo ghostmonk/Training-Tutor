@@ -70,7 +70,7 @@ package ca.georgebrown.trainingtutor.components
 			var viewText:String = TextFormatting.removeWhiteSpace( value );	
 			bodyTextFld.y = _scroller.view.y = _bodyTextY;
 			bodyTextFld.autoSize = TextFieldAutoSize.LEFT;
-			bodyTextFld.text = viewText;
+			bodyTextFld.htmlText = viewText;
 			
 			if( bodyTextFld.height > MAX_BODY_HEIGHT ) 
 			{
@@ -86,8 +86,8 @@ package ca.georgebrown.trainingtutor.components
 				_scroller.view.visible = false;
 			}
 			_combinedHeight = titleFld.height + bodyTextFld.height;
-			bodyTextFld.text = "";
-			Tweener.addTween( bodyTextFld, { _text:viewText, time:0.3, transition:Equations.easeNone } ); 	
+			//bodyTextFld.htmlText = "";
+			//Tweener.addTween( bodyTextFld, { _text:viewText, time:0.3, transition:Equations.easeNone } ); 	
 		}
 		
 		public function get sectionHeight() : Number

@@ -162,8 +162,9 @@ package ca.georgebrown.trainingtutor.framework.view
 		
 		private function positionAssets() : void
 		{
-			_videoPlayer.x = _imageView.x = 34;
-			_videoPlayer.y = _imageView.y =( stage.stageHeight - _videoPlayer.height ) * 0.5;
+			_videoPlayer.x = _imageView.x = 34; 
+			_videoPlayer.y = ( stage.stageHeight - _videoPlayer.height ) * 0.5;
+			_imageView.y = ( stage.stageHeight - _imageView.height ) * 0.5;
 			
 			var sectionHeight:Number = _sectionNav.height + _sectionText.combinedHeight;
 			
