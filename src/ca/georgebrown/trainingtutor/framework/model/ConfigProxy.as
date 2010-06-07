@@ -1,7 +1,7 @@
 package ca.georgebrown.trainingtutor.framework.model 
 {	
 	import ca.georgebrown.trainingtutor.valueObjects.ConfigData;
-	import ca.georgebrown.trainingtutor.valueObjects.SectionData;
+	import ca.georgebrown.trainingtutor.valueObjects.SectionContentData;
 	
 	import com.ghostmonk.net.XMLLoader;
 	
@@ -50,7 +50,7 @@ package ca.georgebrown.trainingtutor.framework.model
 			return configData.sectionImages;
 		}
 		
-		public function getSectionData( index:int ) : SectionData 
+		public function getSectionData( index:int ) : SectionContentData 
 		{		
 			return configData.getSection( index );	
 		}

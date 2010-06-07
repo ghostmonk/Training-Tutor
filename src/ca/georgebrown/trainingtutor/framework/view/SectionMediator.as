@@ -8,7 +8,7 @@ package ca.georgebrown.trainingtutor.framework.view
 	import ca.georgebrown.trainingtutor.events.LandingPageStateEvent;
 	import ca.georgebrown.trainingtutor.events.NavigationEvent;
 	import ca.georgebrown.trainingtutor.framework.model.ConfigProxy;
-	import ca.georgebrown.trainingtutor.valueObjects.SectionData;
+	import ca.georgebrown.trainingtutor.valueObjects.SectionContentData;
 	
 	import com.ghostmonk.events.PercentageEvent;
 	
@@ -122,7 +122,7 @@ package ca.georgebrown.trainingtutor.framework.view
 		private function setView( index:int ) : void 
 		{	
 			_currentSection = index;
-			var sectionData:SectionData = _configProxy.getSectionData( _currentSection );
+			var sectionData:SectionContentData = _configProxy.getSectionData( _currentSection );
 				
 			if( sectionData.hasVideo ) 
 				showView( _videoPlayer, sectionData.videoURL );

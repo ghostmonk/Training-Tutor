@@ -3,9 +3,7 @@ package ca.georgebrown.trainingtutor.valueObjects
 	import flash.utils.Dictionary;
 	
 	/**
-	 * 
 	 * @author ghostmonk 16/08/2009
-	 * 
 	 */
 	public class ConfigData 
 	{	
@@ -36,9 +34,10 @@ package ca.georgebrown.trainingtutor.valueObjects
 		public function get sectionImages() : Array 
 		{
 			var output:Array = [];
-			for each( var item:XML in _config.sections.section.images.img )
+			for each( var item:XML in _config.sections.section.content.images.img )
 			{
-				output.push( { id:item.@id, url:item.@src } );
+				var url:String = item.parent().@base + item.@src;
+				output.push( { id:item.@id, url:url } );
 			}
 			return output;
 		}
@@ -53,9 +52,9 @@ package ca.georgebrown.trainingtutor.valueObjects
 			return xml.landingPage.rotatingImages.@transitionTime;	
 		}
 		
-		public function getSection( index:int ) : SectionData 
+		public function getSection( index:int ) : SectionContentData 
 		{		
-			return new SectionData( xml.sections[ 0 ].section[ index ] );	
+			return new SectionContentData( xml.sections[ 0 ].section[ index ].content[ 0 ] );	
 		}
 		
 		public function get sectionIDs() : XMLList 

@@ -53,8 +53,9 @@ package ca.georgebrown.trainingtutor.components.video
 		override public function loadAsset( id:String ) : void
 		{
 			_controls.setPlayHead( 0 );
-			_core.load( id, createVideo(), false, true );
+			_core.load( id, createVideo(), true, true );
 			_controls.enable();	
+			_controls.play();
 		}
 		
 		public function replay() : void

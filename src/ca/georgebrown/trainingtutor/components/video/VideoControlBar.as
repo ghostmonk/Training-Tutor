@@ -26,7 +26,6 @@ package ca.georgebrown.trainingtutor.components.video
 		private var _playBtn:SimpleMovieClipButton;
 		private var _pauseBtn:SimpleMovieClipButton;
 		
-		private var _ffwd:SimpleMovieClipButton;
 		private var _rrwd:SimpleMovieClipButton;
 		
 		private var _video:CoreVideo;
@@ -44,7 +43,6 @@ package ca.georgebrown.trainingtutor.components.video
 			_playBtn = new SimpleMovieClipButton( _view.playBtn, play );
 			_pauseBtn = new SimpleMovieClipButton( _view.pauseBtn, pause );
 			_rrwd = new SimpleMovieClipButton( _view.rrwdBtn, onRRWD );
-			_ffwd = new SimpleMovieClipButton( _view.ffwdBtn, onFFWD );
 			disable();
 		}
 		
@@ -56,7 +54,6 @@ package ca.georgebrown.trainingtutor.components.video
 			
 			togglePlayPause( _playBtn, _pauseBtn );
 			_rrwd.enable();
-			_ffwd.enable();
 			_scrubBar.enable();
 		}
 		
@@ -69,7 +66,6 @@ package ca.georgebrown.trainingtutor.components.video
 			
 			_playBtn.disable();
 			_rrwd.disable();
-			_ffwd.disable();
 			_scrubBar.disable();
 		}
 		
@@ -123,12 +119,7 @@ package ca.georgebrown.trainingtutor.components.video
 		
 		private function onRRWD( e:MouseEvent ) : void 
 		{
-			
-		}
-		
-		private function onFFWD( e:MouseEvent ) : void 
-		{
-			
+			_video.seek( 0 );
 		}
 		
 		private function onScrub( e:VideoControlEvent ) : void 

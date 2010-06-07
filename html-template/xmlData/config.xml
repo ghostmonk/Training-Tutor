@@ -15,74 +15,241 @@
 	
 	<sections>
 		
+		<!-- Uses base view -->
 		<section id="Intro">
-			<title><![CDATA[We Care About Students]]></title>
-			<text><![CDATA[In a series of interviews students and staff offered their responses and comments to 2 questions. Here are their thoughts. As you watch the videos please consider the following. 	In 2007 only 59% of George Brown students felt we cared about their success. How do you think we can demonstrate we care about students in everything that we do?]]></text>
-			<video src="http://www.ghostmonk.com/gbc_demo/video/01.flv" />
+			<content type="basic">
+				<title><![CDATA[We Care About Students]]></title>
+				<text><![CDATA[In a series of interviews students and staff offered their responses and comments to 2 questions. Here are their thoughts. As you watch the videos please consider the following. 	In 2007 only 59% of George Brown students felt we cared about their success. How do you think we can demonstrate we care about students in everything that we do?]]></text>
+				<video src="http://www.ghostmonk.com/gbc_demo/video/intro.flv" />
+			</content>
 		</section>
 		
+		<!-- Uses base view -->
 		<section id="President's Message">
-			<title><![CDATA[Message from the President]]></title>
-			<text>
-				<![CDATA[
-					George Brown College is committed to creating the "benchmark" in service excellence to which others will aspire.  We need to work at understanding the needs and unique challenges our students face.  We need to dig deep in our quest to create the right student experience outside the classroom or lab.  As a service provider you have ongoing opportunities to contribute to and nurture that excellent student experience at George Brown College.  
-					In this video, Anne Sado, President, shares her thoughts on how she believes you can play an important role in realizing our goal to be the leader in service excellence.
-					]]>
-				</text>
-			<video src="http://www.ghostmonk.com/gbc_demo/video/02.flv" />
+			<content type="basic">
+				<title><![CDATA[Message from the President]]></title>
+				<text>
+					<![CDATA[
+						George Brown College is committed to creating the "benchmark" in service excellence to which others will aspire.  We need to work at understanding the needs and unique challenges our students face.  We need to dig deep in our quest to create the right student experience outside the classroom or lab.  As a service provider you have ongoing opportunities to contribute to and nurture that excellent student experience at George Brown College.  
+						In this video, Anne Sado, President, shares her thoughts on how she believes you can play an important role in realizing our goal to be the leader in service excellence.
+						]]>
+					</text>
+				<video src="http://www.ghostmonk.com/gbc_demo/video/president.flv" />
+			</content>
 		</section>
 		
+		<!-- Uses base view -->
 		<section id="About">
-			<title><![CDATA[About this training tool]]></title>
-			<text>
-				<![CDATA[
-					In its 40 years of being in the heart of Toronto, George Brown College has become woven into the economic, cultural and social fabric of Toronto. George Brown College is one of Canada's largest, most diversified and highly respected colleges, serving a broad and vibrant student body with an incredibly rich program mix of diplomas, degrees, certificates and apprenticeship training.
-					Every staff member contributes to making two key things happen for students at George Brown College – ensuring excellence in teaching and learning is a hallmark of a George Brown education and that our graduates are employer ready.
-					The ultimate measure of our success is how many of our students graduate or go onto opportunities and careers that meet their goals.  Whether we contribute by cleaning, teaching students, designing programs, accepting fee payments, answering student inquiries or sitting on a committee we are all engaged in delivering services in support of our Academic Strategy.
-					Picture for a second what happens if we fail to do our job…..
-					If we fail to create a welcoming environment, a first generation student may become discouraged and start to question the decision to attend school. 
-					If we fail to provide accurate and comprehensive answers and end up sending a prospective student from one person to another, the student may change their mind about going to George Brown.
-					If we fail to probe to determine a student’s concern, the student feels staff are incompetent and can’t be relied on.
-					George Brown is committed to delivering a ‘GBC standard’ of quality and superior performance. This tool is part of our commitment to help you enhance your customer service skills and to provide you with a library of resources crucial to your work.
-					Please take the time to go through all of the modules in this tool.  I hope you will find it to be invaluable in serving our applicants and students.
-					Wayne Poirier, Director – Student Service sand Campus Life.
-				]]></text>
-			<images changeOnTextScroll="true">
-				<img id="studentBody" src="images/sections/studentBody.jpg" />
-				<img id="firstGen" src="images/sections/firstGen.jpg" />
-			</images>
+			<content type="basic">
+				<title><![CDATA[About this training tool]]></title>
+				<text>
+					<![CDATA[
+						In its 40 years of being in the heart of Toronto, George Brown College has become woven into the economic, cultural and social fabric of Toronto. George Brown College is one of Canada's largest, most diversified and highly respected colleges, serving a broad and vibrant student body with an incredibly rich program mix of diplomas, degrees, certificates and apprenticeship training.
+						Every staff member contributes to making two key things happen for students at George Brown College – ensuring excellence in teaching and learning is a hallmark of a George Brown education and that our graduates are employer ready.
+						The ultimate measure of our success is how many of our students graduate or go onto opportunities and careers that meet their goals.  Whether we contribute by cleaning, teaching students, designing programs, accepting fee payments, answering student inquiries or sitting on a committee we are all engaged in delivering services in support of our Academic Strategy.
+						Picture for a second what happens if we fail to do our job…..
+						If we fail to create a welcoming environment, a first generation student may become discouraged and start to question the decision to attend school. 
+						If we fail to provide accurate and comprehensive answers and end up sending a prospective student from one person to another, the student may change their mind about going to George Brown.
+						If we fail to probe to determine a student’s concern, the student feels staff are incompetent and can’t be relied on.
+						George Brown is committed to delivering a ‘GBC standard’ of quality and superior performance. This tool is part of our commitment to help you enhance your customer service skills and to provide you with a library of resources crucial to your work.
+						Please take the time to go through all of the modules in this tool.  I hope you will find it to be invaluable in serving our applicants and students.
+						Wayne Poirier, Director – Student Service sand Campus Life.
+					]]></text>
+				<images changeOnTextScroll="true" base="images/sections/our-students/">
+					<img id="studentBody" src="student-body.jpg" />
+					<img id="firstGen" src="first-gen.jpg" />
+				</images>
+			</content>
 		</section>
 		
+		<!-- Uses Cue Point Listener View -->
 		<section id="Our Students">
-			<title><![CDATA[Why are students here?]]></title>
-			<text><![CDATA[
-				&#8226; Our students are largely millenials<br />&#8226; (21-31) who are optimistic and realistic, self-inventive and individualistic looking to re-write the rules.<br />&#8226; Best programs in field for career preparation<br />&#8226; Breadth of opportunities<br />&#8226; Varsity sports and activities<br />&#8226; Excellent teaching staff<br />&#8226; Different cultures/ diversity / different backgrounds
-				]]></text>
-			<video src="http://www.ghostmonk.com/gbc_demo/video/04.flv" />
+			<content type="OS">
+				<video src="http://www.ghostmonk.com/gbc_demo/video/testimonials.flv">
+					<point time="2000" />
+					<point time="4000" />
+					<point time="6000" />
+					<point time="8000" />
+					<point time="10000" />
+					<point time="12000" />
+					<point time="14000" />
+				</video>
+			</content>
 		</section>
 		
+		<!-- Uses Many different views -->
 		<section id="Remarkable Service">
-			<title><![CDATA[Delivering Remarkable Service]]></title>
-			<text><![CDATA[Nam rhoncus rhoncus leo sed blandit. Phasellus aliquet justo a nunc auctor vel sodales ipsum fringilla. In et rhoncus neque. Mauris diam risus, gravida vel faucibus gravida, laoreet sit amet erat. Nunc scelerisque enim ut urna convallis quis rhoncus libero malesuada.]]></text>
-			<video src="http://www.ghostmonk.com/gbc_demo/video/05.flv" />
+		
+			<content type="sequential">
+			
+				<sequence>
+				
+					<sub type="RS01"></sub>
+					
+					<sub type="RS02">
+						<images changeOnTextScroll="false" base="images/sections/remarkable-services/applicant/provide/">
+							<img id="01" src="01.jpg" />
+							<img id="02" src="02.jpg" />
+							<img id="03" src="03.jpg" />
+							<img id="04" src="04.jpg" />
+							<img id="05" src="05.jpg" />
+							<img id="06" src="06.jpg" />
+							<img id="07" src="07.jpg" />
+							<img id="08" src="08.jpg" />
+							<img id="09" src="09.jpg" />
+							<img id="10" src="10.jpg" />						
+						</images>
+					</sub>
+					
+					<sub type="RS03">
+						<images changeOnTextScroll="false" base="images/sections/remarkable-services/applicant/touchpoints">
+							<img id="01" src="01.jpg" />
+							<img id="02" src="02.jpg" />
+							<img id="03" src="03.jpg" />
+							<img id="04" src="04.jpg" />
+							<img id="05" src="05.jpg" />
+							<img id="06" src="06.jpg" />
+							<img id="07" src="07.jpg" />
+							<img id="08" src="08.jpg" />
+							<img id="09" src="09.jpg" />
+							<img id="10" src="10.jpg" />
+							<img id="11" src="11.jpg" />
+							<img id="12" src="12.jpg" />
+							<img id="13" src="13.jpg" />
+							<img id="14" src="14.jpg" />
+							<img id="15" src="15.jpg" />
+							<img id="16" src="16.jpg" />
+							<img id="17" src="17.jpg" />
+							<img id="18" src="18.jpg" />
+							<img id="19" src="19.jpg" />
+							<img id="20" src="20.jpg" />
+							<img id="21" src="21.jpg" />
+						</images>
+					</sub>
+					
+					<sub type="RS04">
+						<images changeOnTextScroll="false" base="images/sections/remarkable-services/applicant/touchpoints2">
+							<img id="01" src="01.jpg" />
+							<img id="02" src="02.jpg" />
+							<img id="03" src="03.jpg" />
+							<img id="04" src="04.jpg" />
+							<img id="05" src="05.jpg" />
+							<img id="06" src="06.jpg" />
+							<img id="07" src="07.jpg" />
+							<img id="08" src="08.jpg" />
+							<img id="09" src="09.jpg" />
+							<img id="10" src="10.jpg" />
+							<img id="11" src="11.jpg" />
+							<img id="12" src="12.jpg" />
+							<img id="13" src="13.jpg" />
+							<img id="14" src="14.jpg" />
+							<img id="15" src="15.jpg" />
+							<img id="16" src="16.jpg" />
+							<img id="17" src="17.jpg" />
+						</images>
+					</sub>
+				
+					<sub type="basic">
+						<title><![CDATA[Customer Service]]></title>
+						<text>
+							<![CDATA[
+								George Brown College is committed to creating the “benchmark” in service excellence to which others will aspire.  
+								We need to work at understanding the needs and unique challenges our students face.  
+								We need to dig deep in our quest to create the right student experience outside the classroom or lab.  
+								As a service provider you have ongoing opportunities to contribute to and nurture that excellent student experience at George Brown College.  
+								In this video, Anne Sado, President, shares her thoughts on how she believes you can play an important role in realizing our goal to be the leader in service excellence.
+								]]>
+							</text>
+						<video src="http://www.ghostmonk.com/gbc_demo/video/president.flv" />
+					</sub>
+					
+					<sub type="RS06">
+						<video src="http://www.ghostmonk.com/gbc_demo/video/testimonials.flv">
+							<point time="2000" />
+							<point time="4000" />
+							<point time="6000" />
+							<point time="8000" />
+							<point time="10000" />
+							<point time="12000" />
+						</video>
+					</sub>
+					
+					<sub type="RS07">
+						<video src="http://www.ghostmonk.com/gbc_demo/video/testimonials.flv">
+							<point time="" />
+						</video>
+					</sub>
+					
+					<sub type="RS08">
+						<video src="http://www.ghostmonk.com/gbc_demo/video/testimonials.flv">
+							<point time="2000" />
+							<point time="4000" />
+							<point time="6000" />
+							<point time="8000" />
+						</video>
+					</sub>
+					
+					<sub type="RS09">
+						<video src="http://www.ghostmonk.com/gbc_demo/video/testimonials.flv">
+							<point time="2000" />
+							<point time="4000" />
+							<point time="6000" />
+							<point time="8000" />
+							<point time="10000" />
+							<point time="12000" />
+							<point time="14000" />
+						</video>
+					</sub>
+				</sequence>
+				
+				<sequence>
+				
+				</sequence>
+				
+			</content>
 		</section>
 		
+		<!-- Uses Many Different Views -->
 		<section id="Excellence">
-			<title><![CDATA[Excellence Title]]></title>
-			<text><![CDATA[Quisque posuere facilisis elit, et euismod magna gravida vitae. Donec lacus orci, ultricies at rutrum et, consectetur eget dolor. Sed faucibus sapien ut nunc dictum eget ullamcorper eros rutrum. Aenean id risus id turpis sagittis pretium vitae at est. Sed imperdiet diam tellus, ut fringilla ligula.]]></text>
-			<video src="http://www.ghostmonk.com/gbc_demo/video/06.flv" />
+			<content type="sequential">
+				<title><![CDATA[Message from the President]]></title>
+				<text>
+					<![CDATA[
+						George Brown College is committed to creating the "benchmark" in service excellence to which others will aspire.  We need to work at understanding the needs and unique challenges our students face.  We need to dig deep in our quest to create the right student experience outside the classroom or lab.  As a service provider you have ongoing opportunities to contribute to and nurture that excellent student experience at George Brown College.  
+						In this video, Anne Sado, President, shares her thoughts on how she believes you can play an important role in realizing our goal to be the leader in service excellence.
+						]]>
+					</text>
+				<video src="http://www.ghostmonk.com/gbc_demo/video/president.flv" />	
+			</content>
+			
 		</section>
 		
+		<!-- Uses Tool Kit View -->
 		<section id="Tool Kit">
-			<title><![CDATA[Tool Kit Title]]></title>
-			<text><![CDATA[Cras ante tortor, semper a consectetur non, auctor sit amet velit. Praesent sed massa dapibus massa ornare accumsan sed a ante. Phasellus ante lacus, tincidunt tristique molestie at, porttitor sit amet dui. In sodales vehicula massa vel congue.]]></text>
-			<video src="http://www.ghostmonk.com/gbc_demo/video/07.flv" />
+			<content type="toolKit">
+				<title><![CDATA[Message from the President]]></title>
+				<text>
+					<![CDATA[
+						George Brown College is committed to creating the "benchmark" in service excellence to which others will aspire.  We need to work at understanding the needs and unique challenges our students face.  We need to dig deep in our quest to create the right student experience outside the classroom or lab.  As a service provider you have ongoing opportunities to contribute to and nurture that excellent student experience at George Brown College.  
+						In this video, Anne Sado, President, shares her thoughts on how she believes you can play an important role in realizing our goal to be the leader in service excellence.
+						]]>
+					</text>
+				<video src="http://www.ghostmonk.com/gbc_demo/video/president.flv" />		
+			</content>
 		</section>
 		
+		<!-- Uses Action View -->
 		<section id="Action">
-			<title><![CDATA[Action Section Title]]></title>
-			<text><![CDATA[Cras ante tortor, semper a consectetur non, auctor sit amet velit. Praesent sed massa dapibus massa ornare accumsan sed a ante. Phasellus ante lacus, tincidunt tristique molestie at, porttitor sit amet dui. In sodales vehicula massa vel congue.]]></text>
-			<video src="http://www.ghostmonk.com/gbc_demo/video/07.flv" />
+			<content type="action">
+				<title><![CDATA[Message from the President]]></title>
+				<text>
+					<![CDATA[
+						George Brown College is committed to creating the "benchmark" in service excellence to which others will aspire.  We need to work at understanding the needs and unique challenges our students face.  We need to dig deep in our quest to create the right student experience outside the classroom or lab.  As a service provider you have ongoing opportunities to contribute to and nurture that excellent student experience at George Brown College.  
+						In this video, Anne Sado, President, shares her thoughts on how she believes you can play an important role in realizing our goal to be the leader in service excellence.
+						]]>
+					</text>
+				<video src="http://www.ghostmonk.com/gbc_demo/video/president.flv" />		
+			</content>
 		</section>
 		
 	</sections>
