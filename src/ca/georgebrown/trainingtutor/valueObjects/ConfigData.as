@@ -24,9 +24,7 @@ package ca.georgebrown.trainingtutor.valueObjects
 			var output:Dictionary = new Dictionary();
 			
 			for each( var imgData:XML in xml.landingPage.rotatingImages.img ) 
-			{
 				output[ imgData.@src.toString() ] = imgData.@textColor.toString();
-			}
 			
 			return output;	
 		}

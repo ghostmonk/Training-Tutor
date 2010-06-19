@@ -2,37 +2,60 @@ package ca.georgebrown.trainingtutor.components.video
 {	
 	import assets.videoPlayer.VideoPlayerAsset;
 	
-	import ca.georgebrown.trainingtutor.components.SimpleView;
+	import ca.georgebrown.trainingtutor.components.sectionView.MediaComponent;
 	
 	import caurina.transitions.Equations;
 	import caurina.transitions.Tweener;
 	
 	import com.ghostmonk.events.PercentageEvent;
 	import com.ghostmonk.media.video.CoreVideo;
+	import com.ghostmonk.media.video.CuePointManager;
+	import com.ghostmonk.media.video.events.CuePointEvent;
 	
 	import flash.media.Video;
+	
+	[Event(name="onCuePoint", type="com.ghostmonk.media.video.events.CuePointEvent")]
 
 	/**
 	 * 
 	 * @author ghostmonk 21/08/2009
 	 * 
 	 */
-	public class VideoPlayer extends SimpleView 
+	public class VideoPlayer extends MediaComponent 
 	{	
 		private var _controls:VideoControlBar;
 		private var _core:CoreVideo;
 		private var _video:Video;
 		private var _mainView:VideoPlayerAsset;
+		private var _cuePointManager:CuePointManager;
 		
 		public function VideoPlayer( core:CoreVideo, mainView:VideoPlayerAsset ) 
 		{	
 			_mainView = mainView;
 			addChild( _mainView );
 			alpha = 0;
+			
+			_cuePointManager = new CuePointManager();
+			_cuePointManager.addEventListener(CuePointEvent.ON_CUE_POINT, onCuePoint);
+			
 			_core = core;
+			_core.cuePointManager = _cuePointManager;
 			_core.addEventListener( PercentageEvent.LOAD_CHANGE, onLoadProgress );
+			
 			createVideo();
+			
 			_controls = new VideoControlBar( _core, _mainView.controlBar );
+		}
+		
+		public function get cuePointManager() : CuePointManager
+		{
+			return _cuePointManager;
+		}
+		
+		public function set cuePoints( value:Array ) : void
+		{
+			_cuePointManager.cuePointList = value;
+			_cuePointManager.start();
 		}
 		
 		override public function buildIn() : void 
@@ -44,6 +67,8 @@ package ca.georgebrown.trainingtutor.components.video
 		
 		override public function buildOut() : void 
 		{	
+			_cuePointManager.clearCuePoints();
+			_cuePointManager.stop();
 			_controls.disable();
 			_core.destroyCurrentStream();
 			Tweener.addTween( this, { alpha:0, time:0.3, transition:Equations.easeNone, onComplete:onBuildOutComplete } );
@@ -70,11 +95,13 @@ package ca.georgebrown.trainingtutor.components.video
 		public function play() : void 
 		{	
 			_core.play();	
+			_cuePointManager.start();
 		}
 		
 		public function pause() : void 
 		{	
-			_core.pause();	
+			_core.pause();
+			_cuePointManager.stop();	
 		}
 		
 		public function disableContols() : void 
@@ -107,6 +134,11 @@ package ca.georgebrown.trainingtutor.components.video
 		private function onBuildOutComplete() : void 
 		{	
 			if( parent ) parent.removeChild( this );
+		}
+		
+		private function onCuePoint( e:CuePointEvent ) : void
+		{
+			dispatchEvent( e );
 		}
 	}
 }

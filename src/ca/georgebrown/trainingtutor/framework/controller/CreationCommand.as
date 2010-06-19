@@ -6,11 +6,12 @@ package ca.georgebrown.trainingtutor.framework.controller
 	import ca.georgebrown.trainingtutor.components.Header;
 	import ca.georgebrown.trainingtutor.components.NavigationBar;
 	import ca.georgebrown.trainingtutor.components.SectionNavigation;
-	import ca.georgebrown.trainingtutor.components.SectionText;
-	import ca.georgebrown.trainingtutor.components.TextScroller;
 	import ca.georgebrown.trainingtutor.components.image.ImageViewer;
 	import ca.georgebrown.trainingtutor.components.landingPage.ImageCarousel;
 	import ca.georgebrown.trainingtutor.components.landingPage.LandingPage;
+	import ca.georgebrown.trainingtutor.components.sectionView.SectionText;
+	import ca.georgebrown.trainingtutor.components.sectionView.SectionViewManager;
+	import ca.georgebrown.trainingtutor.components.sectionView.TextScroller;
 	import ca.georgebrown.trainingtutor.components.video.VideoPlayer;
 	import ca.georgebrown.trainingtutor.events.NavigationEvent;
 	import ca.georgebrown.trainingtutor.framework.model.ConfigProxy;
@@ -70,11 +71,13 @@ package ca.georgebrown.trainingtutor.framework.controller
 			sectionText.scroller = scroller;
 			sectionText.init();
 			
-			var sectionMediator:SectionMediator = new SectionMediator( config );
-			sectionMediator.videoPlayer = new VideoPlayer( new CoreVideo(), new VideoPlayerAsset() );
-			sectionMediator.imageViewer = new ImageViewer( ImageProxy( facade.retrieveProxy( ImageProxy.NAME ) ).cueLoader );
-			sectionMediator.sectionText = sectionText;
-			sectionMediator.sectionNav = new SectionNavigation();
+			var viewManager:SectionViewManager = new SectionViewManager();
+			viewManager.videoPlayer = new VideoPlayer( new CoreVideo(), new VideoPlayerAsset() );
+			viewManager.imageViewer = new ImageViewer( ImageProxy( facade.retrieveProxy( ImageProxy.NAME ) ).cueLoader );
+			viewManager.sectionNav = new SectionNavigation();
+			viewManager.sectionText = sectionText;
+			
+			var sectionMediator:SectionMediator = new SectionMediator( config, viewManager );
 			
 			facade.registerMediator( sectionMediator );
 		}

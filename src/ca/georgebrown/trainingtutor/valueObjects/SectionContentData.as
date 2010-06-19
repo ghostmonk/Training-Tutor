@@ -1,5 +1,7 @@
 package ca.georgebrown.trainingtutor.valueObjects 
-{	
+{
+	import com.ghostmonk.media.video.data.CuePoint;
+		
 	/**
 	 * 
 	 * @author ghostmonk
@@ -8,6 +10,7 @@ package ca.georgebrown.trainingtutor.valueObjects
 	public class SectionContentData 
 	{	
 		private var _data:XML;
+		private var _cuePoints:Array;
 		
 		public function SectionContentData( data:XML ) 
 		{	
@@ -17,6 +20,11 @@ package ca.georgebrown.trainingtutor.valueObjects
 		public function get contentType() : String 
 		{
 			return _data.@type.toString();
+		}
+		
+		public function get isBasic() : Boolean
+		{
+			return _data.@type.toString() == "basic";
 		}
 		
 		public function get isSequential() : Boolean
@@ -29,9 +37,21 @@ package ca.georgebrown.trainingtutor.valueObjects
 			return _data.video[ 0 ];	
 		}
 		
-		public function get isBasic() : Boolean
+		public function get hasCuePoints() : Boolean
 		{
-			return _data.@type.toString() == "basic";
+			if( !hasVideo ) return false;
+			return ( _data.video[0].cuePoint as XMLList ).length() > 0;
+		}
+		
+		public function get cuePoints() : Array
+		{
+			if( _cuePoints == null )
+			{
+				_cuePoints = [];
+				for each( var node:XML in _data.video[0].cuePoint )
+					_cuePoints.push( new CuePoint( node.@name.toString(), Number( node.@time ), {} ) );
+			}
+			return _cuePoints;
 		}
 		
 		public function get useChangeOnTextScroll() : Boolean

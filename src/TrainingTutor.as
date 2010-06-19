@@ -1,7 +1,7 @@
 package 
 {	
 	import ca.georgebrown.trainingtutor.AppFacade;
-	import ca.georgebrown.trainingtutor.valueObjects.ClassLookup;
+	import ca.georgebrown.trainingtutor.valueObjects.ViewLookup;
 	import ca.georgebrown.trainingtutor.valueObjects.StartupData;
 	
 	import caurina.transitions.properties.ColorShortcuts;

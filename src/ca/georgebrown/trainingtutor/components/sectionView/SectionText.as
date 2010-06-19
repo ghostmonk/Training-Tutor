@@ -1,4 +1,4 @@
-package ca.georgebrown.trainingtutor.components 
+package ca.georgebrown.trainingtutor.components.sectionView 
 {	
 	import body.SectionTextAsset;
 	
@@ -10,6 +10,7 @@ package ca.georgebrown.trainingtutor.components
 	
 	import com.ghostmonk.events.PercentageEvent;
 	
+	import flash.display.DisplayObjectContainer;
 	import flash.events.Event;
 	import flash.filters.DropShadowFilter;
 	import flash.text.AntiAliasType;
@@ -18,22 +19,16 @@ package ca.georgebrown.trainingtutor.components
 	
 	[Event (name="change", type="com.ghostmonk.events.PercentageEvent")]
 	
-	/**
-	 * 
-	 * @author ghostmonk 21/08/2009
-	 * 
-	 */
 	public class SectionText extends SectionTextAsset 
 	{	
-		private const Y_OFFSET:Number = 20;
 		private const MAX_BODY_HEIGHT:Number = 225;
 		private const MAX_LINES:Number = 12;
 		
-		private var _titleY:int;
-		private var _bodyTextY:int;
 		private var _isInView:Boolean;
 		private var _combinedHeight:Number; 
 		private var _scroller:TextScroller;
+		
+		private var _parent:DisplayObjectContainer;
 		
 		public function init() : void
 		{
@@ -41,6 +36,11 @@ package ca.georgebrown.trainingtutor.components
 			_combinedHeight = 0;
 			TextShortcuts.init();
 			initializeAssets();
+		}
+		
+		public function set viewParent( value:DisplayObjectContainer ) : void
+		{
+			_parent = value;
 		}
 		
 		public function set scroller( asset:TextScroller ) : void
@@ -60,15 +60,14 @@ package ca.georgebrown.trainingtutor.components
 		{	
 			titleFld.alpha = 0;
 			titleFld.htmlText = "<b>" + value + "</b>";
-			_bodyTextY = titleFld.height - 2;
-			
+			bodyTextFld.y = titleFld.height - 2;
 			if( _isInView ) Tweener.addTween( titleFld, { alpha:1, time:0.3, transition:Equations.easeNone } );		
 		}
 		
 		public function set bodyText( value:String ) : void 
 		{	
 			var viewText:String = TextFormatting.removeWhiteSpace( value );	
-			bodyTextFld.y = _scroller.view.y = _bodyTextY;
+			_scroller.view.y = bodyTextFld.y;
 			bodyTextFld.autoSize = TextFieldAutoSize.LEFT;
 			bodyTextFld.htmlText = viewText;
 			
@@ -86,51 +85,45 @@ package ca.georgebrown.trainingtutor.components
 				_scroller.view.visible = false;
 			}
 			_combinedHeight = titleFld.height + bodyTextFld.height;
-			//bodyTextFld.htmlText = "";
-			//Tweener.addTween( bodyTextFld, { _text:viewText, time:0.3, transition:Equations.easeNone } ); 	
 		}
 		
 		public function get sectionHeight() : Number
 		{
-			return _bodyTextY + bodyTextFld.height;
+			return bodyTextFld.y + bodyTextFld.height;
 		}
 		
 		public function buildIn() : void 
 		{	
+			_parent.addChild( this );
 			_isInView = true;
-			animateAssets( 1, 0.3, 0, null );		
+			animateAssets( 1, 0.3, null );		
 		}
 		
 		public function buildOut() : void 
 		{
 			_isInView = false;	
-			animateAssets( 0, 0, Y_OFFSET, onBuildOutComplete );	
+			animateAssets( 0, 0, onBuildOutComplete );	
 		}
 		
 		private function initializeAssets() : void 
 		{
 			titleFld.filters = [ new DropShadowFilter( 0, 0, 90, 0.3, 30, 30, 1 ) ];
-			_titleY = titleFld.y;
 			titleFld.autoSize = TextFieldAutoSize.LEFT;
 			titleFld.antiAliasType = AntiAliasType.ADVANCED;
 			titleFld.gridFitType = GridFitType.PIXEL;
-			titleFld.y = _titleY - Y_OFFSET;	
 			
-			_bodyTextY = bodyTextFld.y;
 			bodyTextFld.autoSize = TextFieldAutoSize.LEFT;
 			bodyTextFld.antiAliasType = AntiAliasType.ADVANCED;
 			bodyTextFld.gridFitType = GridFitType.PIXEL;
 			bodyTextFld.alpha = titleFld.alpha = 0;
-			bodyTextFld.y = _bodyTextY + Y_OFFSET;
 			bodyTextFld.addEventListener( Event.SCROLL, onTextScroll );
 		}
 		
-		private function animateAssets( alpha:Number, delay:Number, offSet:Number, complete:Function ) : void 
+		private function animateAssets( alpha:Number, delay:Number, complete:Function ) : void 
 		{		
-			Tweener.addTween( bodyTextFld, { alpha:alpha, time:0.3, delay:delay, transition:Equations.easeNone } );
-			Tweener.addTween( bodyTextFld, { y:_bodyTextY + offSet, delay:delay, time:0.5 } );	
+			Tweener.addTween( bodyTextFld, { alpha:alpha, time:0.3, delay:delay, transition:Equations.easeNone } );	
 			Tweener.addTween( titleFld, { alpha:alpha, time:0.3, delay:delay, transition:Equations.easeNone  } );
-			Tweener.addTween( titleFld, { y:_titleY - offSet,  delay:delay, time:0.5, onComplete:complete } );	
+			Tweener.addTween( scrollerView, {alpha:alpha, time:0.3, delay:delay, transition:Equations.easeNone  } );
 		}
 		
 		private function onBuildOutComplete() : void 

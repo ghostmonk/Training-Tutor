@@ -1,14 +1,13 @@
 package ca.georgebrown.trainingtutor.components.image
 {
-	import ca.georgebrown.trainingtutor.components.SimpleView;
+	import ca.georgebrown.trainingtutor.components.sectionView.MediaComponent;
 	
 	import caurina.transitions.Equations;
 	import caurina.transitions.Tweener;
 	
 	import flash.display.Bitmap;
-	import flash.sampler.DeleteObjectSample;
 
-	public class ImageViewer extends SimpleView
+	public class ImageViewer extends MediaComponent
 	{
 		private var _loader:ImageCueLoader;
 		private var _currentImage:Bitmap;

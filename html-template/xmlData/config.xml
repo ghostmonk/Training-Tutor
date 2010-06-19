@@ -66,13 +66,13 @@
 		<section id="Our Students">
 			<content type="OS">
 				<video src="http://www.ghostmonk.com/gbc_demo/video/testimonials.flv">
-					<point time="2000" />
-					<point time="4000" />
-					<point time="6000" />
-					<point time="8000" />
-					<point time="10000" />
-					<point time="12000" />
-					<point time="14000" />
+					<cuePoint time="2" name="one" />
+					<cuePoint time="4" name="two" />
+					<cuePoint time="6" name="three" />
+					<cuePoint time="8" name="four" />
+					<cuePoint time="10" name="five" />
+					<cuePoint time="12" name="six" />
+					<cuePoint time="14" name="seven" />
 				</video>
 			</content>
 		</section>
@@ -82,7 +82,7 @@
 		
 			<content type="sequential">
 			
-				<sequence>
+				<sequence id="">
 				
 					<sub type="RS01"></sub>
 					
@@ -165,91 +165,63 @@
 					
 					<sub type="RS06">
 						<video src="http://www.ghostmonk.com/gbc_demo/video/testimonials.flv">
-							<point time="2000" />
-							<point time="4000" />
-							<point time="6000" />
-							<point time="8000" />
-							<point time="10000" />
-							<point time="12000" />
+							<cuePoint time="2" name="one" />
+							<cuePoint time="4" name="two" />
+							<cuePoint time="6" name="three" />
+							<cuePoint time="8" name="four" />
+							<cuePoint time="10" name="five" />
+							<cuePoint time="12" name="six" />
 						</video>
 					</sub>
 					
 					<sub type="RS07">
 						<video src="http://www.ghostmonk.com/gbc_demo/video/testimonials.flv">
-							<point time="" />
+							<cuePoint time="2" name="one" />
 						</video>
 					</sub>
 					
 					<sub type="RS08">
 						<video src="http://www.ghostmonk.com/gbc_demo/video/testimonials.flv">
-							<point time="2000" />
-							<point time="4000" />
-							<point time="6000" />
-							<point time="8000" />
+							<cuePoint time="2" name="one" />
+							<cuePoint time="4" name="two" />
+							<cuePoint time="6" name="three" />
+							<cuePoint time="8" name="four" />
 						</video>
 					</sub>
 					
 					<sub type="RS09">
 						<video src="http://www.ghostmonk.com/gbc_demo/video/testimonials.flv">
-							<point time="2000" />
-							<point time="4000" />
-							<point time="6000" />
-							<point time="8000" />
-							<point time="10000" />
-							<point time="12000" />
-							<point time="14000" />
+							<cuePoint time="2" name="one" />
+							<cuePoint time="4" name="two" />
+							<cuePoint time="6" name="three" />
+							<cuePoint time="8" name="four" />
+							<cuePoint time="10" name="five" />
+							<cuePoint time="12" name="six" />
+							<cuePoint time="14" name="seven" />
 						</video>
 					</sub>
 				</sequence>
 				
-				<sequence>
+				<sequence id="" />
 				
-				</sequence>
+				<sequence id="" />
 				
 			</content>
 		</section>
 		
 		<!-- Uses Many Different Views -->
 		<section id="Excellence">
-			<content type="sequential">
-				<title><![CDATA[Message from the President]]></title>
-				<text>
-					<![CDATA[
-						George Brown College is committed to creating the "benchmark" in service excellence to which others will aspire.  We need to work at understanding the needs and unique challenges our students face.  We need to dig deep in our quest to create the right student experience outside the classroom or lab.  As a service provider you have ongoing opportunities to contribute to and nurture that excellent student experience at George Brown College.  
-						In this video, Anne Sado, President, shares her thoughts on how she believes you can play an important role in realizing our goal to be the leader in service excellence.
-						]]>
-					</text>
-				<video src="http://www.ghostmonk.com/gbc_demo/video/president.flv" />	
-			</content>
-			
+			<content type="sequential" />
 		</section>
 		
 		<!-- Uses Tool Kit View -->
 		<section id="Tool Kit">
-			<content type="toolKit">
-				<title><![CDATA[Message from the President]]></title>
-				<text>
-					<![CDATA[
-						George Brown College is committed to creating the "benchmark" in service excellence to which others will aspire.  We need to work at understanding the needs and unique challenges our students face.  We need to dig deep in our quest to create the right student experience outside the classroom or lab.  As a service provider you have ongoing opportunities to contribute to and nurture that excellent student experience at George Brown College.  
-						In this video, Anne Sado, President, shares her thoughts on how she believes you can play an important role in realizing our goal to be the leader in service excellence.
-						]]>
-					</text>
-				<video src="http://www.ghostmonk.com/gbc_demo/video/president.flv" />		
-			</content>
+			<content type="toolkit" />
 		</section>
 		
 		<!-- Uses Action View -->
 		<section id="Action">
-			<content type="action">
-				<title><![CDATA[Message from the President]]></title>
-				<text>
-					<![CDATA[
-						George Brown College is committed to creating the "benchmark" in service excellence to which others will aspire.  We need to work at understanding the needs and unique challenges our students face.  We need to dig deep in our quest to create the right student experience outside the classroom or lab.  As a service provider you have ongoing opportunities to contribute to and nurture that excellent student experience at George Brown College.  
-						In this video, Anne Sado, President, shares her thoughts on how she believes you can play an important role in realizing our goal to be the leader in service excellence.
-						]]>
-					</text>
-				<video src="http://www.ghostmonk.com/gbc_demo/video/president.flv" />		
-			</content>
+			<content type="action" />
 		</section>
 		
 	</sections>
