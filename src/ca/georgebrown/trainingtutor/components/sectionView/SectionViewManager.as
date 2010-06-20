@@ -27,10 +27,12 @@ package ca.georgebrown.trainingtutor.components.sectionView
 		
 		private var _customView:MovieClip;
 		private var _stage:Stage;
+		private var _sequenceManager:SequenceManager;
 		
 		public function SectionViewManager()
 		{
 			_useImageSwap = false;
+			_sequenceManager = new SequenceManager( this );
 		}
 		
 		public function set mainStage( stage:Stage ) : void
@@ -125,7 +127,7 @@ package ca.georgebrown.trainingtutor.components.sectionView
 		
 		private function createSequentialView( content:SectionContentData ) : void
 		{
-			
+			_sequenceManager.startNewSequence( content.sequenceData );
 		}
 		
 		private function createBasicView( content:SectionContentData ) : void

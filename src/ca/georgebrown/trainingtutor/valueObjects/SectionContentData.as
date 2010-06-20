@@ -11,6 +11,7 @@ package ca.georgebrown.trainingtutor.valueObjects
 	{	
 		private var _data:XML;
 		private var _cuePoints:Array;
+		private var _sequenceList:Array = [];
 		
 		public function SectionContentData( data:XML ) 
 		{	
@@ -98,9 +99,14 @@ package ca.georgebrown.trainingtutor.valueObjects
 		{
 			var output:Array = [];
 			
-			for each( var xmlNode:XML in _data.content.sequence )
+			for each( var xmlNode:XML in _data.sequence )
 			{
-				output.push( new SectionContentData( xmlNode ) );
+				var sequence:Array = [];
+				for each( var subNode:XML in xmlNode.sub )
+				{
+					sequence.push( new SectionContentData( subNode ) );	
+				}
+				output.push( sequence );
 			}
 			
 			return output;

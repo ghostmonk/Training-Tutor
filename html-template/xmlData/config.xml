@@ -82,7 +82,7 @@
 		
 			<content type="sequential">
 			
-				<sequence id="">
+				<sequence id="The Applicant">
 				
 					<sub type="RS01"></sub>
 					
@@ -202,16 +202,19 @@
 					</sub>
 				</sequence>
 				
-				<sequence id="" />
-				
-				<sequence id="" />
+				<sequence id="The Employee" />
 				
 			</content>
 		</section>
 		
 		<!-- Uses Many Different Views -->
 		<section id="Excellence">
-			<content type="sequential" />
+			<content type="sequential">
+				<sequence id="Service Excellence">
+					<sub type="">
+					</sub>
+				</sequence>
+			</content>
 		</section>
 		
 		<!-- Uses Tool Kit View -->
