@@ -5,6 +5,8 @@ package ca.georgebrown.trainingtutor
 	import ca.georgebrown.trainingtutor.framework.controller.StartupCommand;
 	import ca.georgebrown.trainingtutor.valueObjects.StartupData;
 	
+	import com.ghostmonk.utils.MainStage;
+	
 	import org.puremvc.as3.multicore.patterns.facade.Facade;
 
 	/**
@@ -43,6 +45,7 @@ package ca.georgebrown.trainingtutor
 		
 		public function startup( startupData:StartupData ) : void 
 		{	
+			MainStage.instance = startupData.stage;
 			sendNotification( STARTUP_APP, startupData );
 		}
 	}

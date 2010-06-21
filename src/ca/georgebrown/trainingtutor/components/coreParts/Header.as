@@ -1,4 +1,4 @@
-package ca.georgebrown.trainingtutor.components 
+package ca.georgebrown.trainingtutor.components.coreParts 
 {	
 	import caurina.transitions.Equations;
 	import caurina.transitions.Tweener;

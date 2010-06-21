@@ -1,12 +1,13 @@
 package 
 {	
 	import ca.georgebrown.trainingtutor.AppFacade;
-	import ca.georgebrown.trainingtutor.valueObjects.ViewLookup;
 	import ca.georgebrown.trainingtutor.valueObjects.StartupData;
 	
 	import caurina.transitions.properties.ColorShortcuts;
 	import caurina.transitions.properties.DisplayShortcuts;
 	import caurina.transitions.properties.TextShortcuts;
+	
+	import com.ghostmonk.utils.MainStage;
 	
 	import flash.display.MovieClip;
 	import flash.events.Event;

@@ -1,4 +1,4 @@
-package ca.georgebrown.trainingtutor.components.sectionView
+package ca.georgebrown.trainingtutor.components.textDisplay
 {
 	import assets.ui.scrollbar.ScrollBarAsset;
 	

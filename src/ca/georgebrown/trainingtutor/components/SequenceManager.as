@@ -1,12 +1,12 @@
-package ca.georgebrown.trainingtutor.components.sectionView
+package ca.georgebrown.trainingtutor.components
 {
 	public class SequenceManager
 	{
 		private var _sequences:Array;
 		private var _currentSequence:Array;
-		private var _sectionViewManager:SectionViewManager;
+		private var _sectionViewManager:SectionComponent;
 		
-		public function SequenceManager( sectionManager:SectionViewManager )
+		public function SequenceManager( sectionManager:SectionComponent )
 		{
 			_sectionViewManager = sectionManager; 
 		}

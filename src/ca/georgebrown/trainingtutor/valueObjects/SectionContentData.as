@@ -46,9 +46,10 @@ package ca.georgebrown.trainingtutor.valueObjects
 		
 		public function get cuePoints() : Array
 		{
+			_cuePoints = [];
+			if( !hasCuePoints ) return _cuePoints;
 			if( _cuePoints == null )
 			{
-				_cuePoints = [];
 				for each( var node:XML in _data.video[0].cuePoint )
 					_cuePoints.push( new CuePoint( node.@name.toString(), Number( node.@time ), {} ) );
 			}

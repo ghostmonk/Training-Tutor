@@ -1,4 +1,4 @@
-package ca.georgebrown.trainingtutor.components.video 
+package ca.georgebrown.trainingtutor.components.media 
 {	
 	import assets.videoPlayer.controlBar.VideoControlBarAsset;
 	

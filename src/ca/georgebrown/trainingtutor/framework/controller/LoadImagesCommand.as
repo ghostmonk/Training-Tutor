@@ -1,6 +1,6 @@
 package ca.georgebrown.trainingtutor.framework.controller
 {
-	import ca.georgebrown.trainingtutor.components.image.ImageCueLoader;
+	import ca.georgebrown.trainingtutor.components.media.ImageCueLoader;
 	import ca.georgebrown.trainingtutor.events.ImageCueLoadEvent;
 	import ca.georgebrown.trainingtutor.framework.model.ImageProxy;
 	

@@ -2,17 +2,17 @@ package ca.georgebrown.trainingtutor.framework.controller
 {	
 	import assets.videoPlayer.VideoPlayerAsset;
 	
-	import ca.georgebrown.trainingtutor.components.Footer;
-	import ca.georgebrown.trainingtutor.components.Header;
-	import ca.georgebrown.trainingtutor.components.NavigationBar;
-	import ca.georgebrown.trainingtutor.components.SectionNavigation;
-	import ca.georgebrown.trainingtutor.components.image.ImageViewer;
+	import ca.georgebrown.trainingtutor.components.MediaManager;
+	import ca.georgebrown.trainingtutor.components.SectionComponent;
+	import ca.georgebrown.trainingtutor.components.coreParts.Footer;
+	import ca.georgebrown.trainingtutor.components.coreParts.Header;
+	import ca.georgebrown.trainingtutor.components.coreParts.NavigationBar;
 	import ca.georgebrown.trainingtutor.components.landingPage.ImageCarousel;
 	import ca.georgebrown.trainingtutor.components.landingPage.LandingPage;
-	import ca.georgebrown.trainingtutor.components.sectionView.SectionText;
-	import ca.georgebrown.trainingtutor.components.sectionView.SectionViewManager;
-	import ca.georgebrown.trainingtutor.components.sectionView.TextScroller;
-	import ca.georgebrown.trainingtutor.components.video.VideoPlayer;
+	import ca.georgebrown.trainingtutor.components.media.ImageViewer;
+	import ca.georgebrown.trainingtutor.components.media.VideoPlayer;
+	import ca.georgebrown.trainingtutor.components.textDisplay.SectionText;
+	import ca.georgebrown.trainingtutor.components.textDisplay.TextScroller;
 	import ca.georgebrown.trainingtutor.events.NavigationEvent;
 	import ca.georgebrown.trainingtutor.framework.model.ConfigProxy;
 	import ca.georgebrown.trainingtutor.framework.model.ImageProxy;
@@ -71,10 +71,12 @@ package ca.georgebrown.trainingtutor.framework.controller
 			sectionText.scroller = scroller;
 			sectionText.init();
 			
-			var viewManager:SectionViewManager = new SectionViewManager();
-			viewManager.videoPlayer = new VideoPlayer( new CoreVideo(), new VideoPlayerAsset() );
-			viewManager.imageViewer = new ImageViewer( ImageProxy( facade.retrieveProxy( ImageProxy.NAME ) ).cueLoader );
-			viewManager.sectionNav = new SectionNavigation();
+			var mediaManager:MediaManager = new MediaManager();
+			mediaManager.videoPlayer = new VideoPlayer( new CoreVideo(), new VideoPlayerAsset() );
+			mediaManager.imageViewer = new ImageViewer( ImageProxy( facade.retrieveProxy( ImageProxy.NAME ) ).cueLoader ); 
+			
+			var viewManager:SectionComponent = new SectionComponent();
+			viewManager.mediaManager = mediaManager;
 			viewManager.sectionText = sectionText;
 			
 			var sectionMediator:SectionMediator = new SectionMediator( config, viewManager );

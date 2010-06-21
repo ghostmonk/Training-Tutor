@@ -1,8 +1,6 @@
-package ca.georgebrown.trainingtutor.components.video 
+package ca.georgebrown.trainingtutor.components.media 
 {	
 	import assets.videoPlayer.VideoPlayerAsset;
-	
-	import ca.georgebrown.trainingtutor.components.sectionView.MediaComponent;
 	
 	import caurina.transitions.Equations;
 	import caurina.transitions.Tweener;
@@ -12,6 +10,7 @@ package ca.georgebrown.trainingtutor.components.video
 	import com.ghostmonk.media.video.CuePointManager;
 	import com.ghostmonk.media.video.events.CuePointEvent;
 	
+	import flash.display.Sprite;
 	import flash.media.Video;
 	
 	[Event(name="onCuePoint", type="com.ghostmonk.media.video.events.CuePointEvent")]
@@ -21,7 +20,7 @@ package ca.georgebrown.trainingtutor.components.video
 	 * @author ghostmonk 21/08/2009
 	 * 
 	 */
-	public class VideoPlayer extends MediaComponent 
+	public class VideoPlayer extends Sprite 
 	{	
 		private var _controls:VideoControlBar;
 		private var _core:CoreVideo;
@@ -58,14 +57,14 @@ package ca.georgebrown.trainingtutor.components.video
 			_cuePointManager.start();
 		}
 		
-		override public function buildIn() : void 
+		public function buildIn() : void 
 		{	
 			_video.alpha = 0;
 			Tweener.addTween( this, { alpha:1, time:0.3, delay:0.3, transition:Equations.easeNone } );
 			Tweener.addTween( _video, { alpha:1, time:0.3, delay:0.5, transition:Equations.easeNone } );	
 		}
 		
-		override public function buildOut() : void 
+		public function buildOut() : void 
 		{	
 			_cuePointManager.clearCuePoints();
 			_cuePointManager.stop();
@@ -75,7 +74,7 @@ package ca.georgebrown.trainingtutor.components.video
 			Tweener.addTween( _video, { alpha:0, time:0.1, transition:Equations.easeNone } );	
 		}
 		
-		override public function loadAsset( id:String ) : void
+		public function loadAsset( id:String ) : void
 		{
 			_controls.setPlayHead( 0 );
 			_core.load( id, createVideo(), true, true );

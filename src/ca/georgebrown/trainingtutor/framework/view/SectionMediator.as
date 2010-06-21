@@ -1,6 +1,6 @@
 package ca.georgebrown.trainingtutor.framework.view 
 {	
-	import ca.georgebrown.trainingtutor.components.sectionView.SectionViewManager;
+	import ca.georgebrown.trainingtutor.components.SectionComponent;
 	import ca.georgebrown.trainingtutor.events.LandingPageStateEvent;
 	import ca.georgebrown.trainingtutor.events.NavigationEvent;
 	import ca.georgebrown.trainingtutor.framework.model.ConfigProxy;
@@ -18,13 +18,13 @@ package ca.georgebrown.trainingtutor.framework.view
 	{	
 		public const NAME:String = "SectionTextMediator";
 		
-		private var _viewManager:SectionViewManager;
+		private var _viewManager:SectionComponent;
 		
 		private var _configProxy:ConfigProxy;
 		private var _currentSection:int;
 		private var _sectionsLength:int;
 		
-		public function SectionMediator( configProxy:ConfigProxy, viewManager:SectionViewManager ) 
+		public function SectionMediator( configProxy:ConfigProxy, viewManager:SectionComponent ) 
 		{
 			super( NAME, viewManager );
 			_configProxy = configProxy;
@@ -32,15 +32,10 @@ package ca.georgebrown.trainingtutor.framework.view
 			_sectionsLength = _configProxy.configData.sectionIDs.length();
 		}
 		
-		public function get viewManager() : SectionViewManager
+		public function get viewManager() : SectionComponent
 		{
-			return viewComponent as SectionViewManager;
+			return viewComponent as SectionComponent;
 		}
-		
-		override public function onRegister() : void 
-		{		
-			_viewManager.mainStage = ( facade.retrieveMediator( StageMediator.NAME ) as StageMediator ).stage;
-		} 
 
 		override public function listNotificationInterests() : Array 
 		{		

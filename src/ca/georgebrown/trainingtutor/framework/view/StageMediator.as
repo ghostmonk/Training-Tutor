@@ -1,7 +1,7 @@
 package ca.georgebrown.trainingtutor.framework.view 
 {	
-	import ca.georgebrown.trainingtutor.components.Footer;
-	import ca.georgebrown.trainingtutor.components.Header;
+	import ca.georgebrown.trainingtutor.components.coreParts.Footer;
+	import ca.georgebrown.trainingtutor.components.coreParts.Header;
 	import ca.georgebrown.trainingtutor.components.landingPage.LandingPage;
 	import ca.georgebrown.trainingtutor.events.LandingPageStateEvent;
 	

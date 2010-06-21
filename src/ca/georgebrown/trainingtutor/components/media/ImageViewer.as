@@ -1,13 +1,12 @@
-package ca.georgebrown.trainingtutor.components.image
+package ca.georgebrown.trainingtutor.components.media
 {
-	import ca.georgebrown.trainingtutor.components.sectionView.MediaComponent;
-	
 	import caurina.transitions.Equations;
 	import caurina.transitions.Tweener;
 	
 	import flash.display.Bitmap;
+	import flash.display.Sprite;
 
-	public class ImageViewer extends MediaComponent
+	public class ImageViewer extends Sprite
 	{
 		private var _loader:ImageCueLoader;
 		private var _currentImage:Bitmap;
@@ -38,13 +37,13 @@ package ca.georgebrown.trainingtutor.components.image
 			loadAsset( _currentImages[ index ] );
 		}
 		
-		override public function buildIn() : void
+		public function buildIn() : void
 		{
 			_isActive = true;
 			Tweener.addTween( this, { alpha:1, time:0.3, transition:Equations.easeNone } );
 		}
 		
-		override public function buildOut() : void
+		public function buildOut() : void
 		{
 			_isActive = false;
 			_currentImages = null;
@@ -52,7 +51,7 @@ package ca.georgebrown.trainingtutor.components.image
 			Tweener.addTween( this, { alpha:0, time:0.3, transition:Equations.easeNone, onComplete:cleanView } );
 		}
 		
-		override public function loadAsset( id:String ) : void
+		public function loadAsset( id:String ) : void
 		{
 			if( _currentImage )
 				Tweener.addTween( _currentImage, 

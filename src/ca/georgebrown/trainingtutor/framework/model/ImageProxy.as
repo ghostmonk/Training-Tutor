@@ -1,6 +1,6 @@
 package ca.georgebrown.trainingtutor.framework.model
 {
-	import ca.georgebrown.trainingtutor.components.image.ImageCueLoader;
+	import ca.georgebrown.trainingtutor.components.media.ImageCueLoader;
 	
 	import flash.display.Bitmap;
 	

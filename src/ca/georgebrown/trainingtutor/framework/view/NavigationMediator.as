@@ -1,6 +1,6 @@
 package ca.georgebrown.trainingtutor.framework.view
 {
-	import ca.georgebrown.trainingtutor.components.NavigationBar;
+	import ca.georgebrown.trainingtutor.components.coreParts.NavigationBar;
 	import ca.georgebrown.trainingtutor.events.NavigationEvent;
 	
 	import org.puremvc.as3.multicore.interfaces.INotification;
