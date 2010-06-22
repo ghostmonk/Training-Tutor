@@ -40,6 +40,11 @@ package ca.georgebrown.trainingtutor.components
 			if( _useImageSwap ) _imageView.updateView( value );
 		}
 		
+		public function enableImageView( assets:Array ) : void
+		{
+			
+		}
+		
 		public function enableVideo( srcUrl:String, cuePoints:Array ) : void
 		{
 			_videoPlayer.buildIn();

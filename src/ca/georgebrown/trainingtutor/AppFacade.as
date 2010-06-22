@@ -1,7 +1,6 @@
 package ca.georgebrown.trainingtutor 
 {	
 	import ca.georgebrown.trainingtutor.framework.controller.CreationCommand;
-	import ca.georgebrown.trainingtutor.framework.controller.LoadImagesCommand;
 	import ca.georgebrown.trainingtutor.framework.controller.StartupCommand;
 	import ca.georgebrown.trainingtutor.valueObjects.StartupData;
 	
@@ -18,7 +17,6 @@ package ca.georgebrown.trainingtutor
 	{	
 		public static const STARTUP_APP:String = "startupApp";
 		public static const CREATE_COMPONENTS:String = "createComponents";
-		public static const LOAD_IMAGES:String = "loadImages";
 		
 		public function AppFacade( key:String ) 
 		{	
@@ -40,7 +38,6 @@ package ca.georgebrown.trainingtutor
 			
 			registerCommand( STARTUP_APP, StartupCommand );
 			registerCommand( CREATE_COMPONENTS, CreationCommand );
-			registerCommand( LOAD_IMAGES, LoadImagesCommand );
 		}
 		
 		public function startup( startupData:StartupData ) : void 

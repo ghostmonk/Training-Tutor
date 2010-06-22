@@ -15,7 +15,6 @@ package ca.georgebrown.trainingtutor.framework.controller
 	import ca.georgebrown.trainingtutor.components.textDisplay.TextScroller;
 	import ca.georgebrown.trainingtutor.events.NavigationEvent;
 	import ca.georgebrown.trainingtutor.framework.model.ConfigProxy;
-	import ca.georgebrown.trainingtutor.framework.model.ImageProxy;
 	import ca.georgebrown.trainingtutor.framework.model.LocalDataProxy;
 	import ca.georgebrown.trainingtutor.framework.view.LandingPageMediator;
 	import ca.georgebrown.trainingtutor.framework.view.NavigationMediator;
@@ -73,7 +72,7 @@ package ca.georgebrown.trainingtutor.framework.controller
 			
 			var mediaManager:MediaManager = new MediaManager();
 			mediaManager.videoPlayer = new VideoPlayer( new CoreVideo(), new VideoPlayerAsset() );
-			mediaManager.imageViewer = new ImageViewer( ImageProxy( facade.retrieveProxy( ImageProxy.NAME ) ).cueLoader ); 
+			mediaManager.imageViewer = new ImageViewer(); 
 			
 			var viewManager:SectionComponent = new SectionComponent();
 			viewManager.mediaManager = mediaManager;

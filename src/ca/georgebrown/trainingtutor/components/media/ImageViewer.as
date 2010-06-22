@@ -1,22 +1,28 @@
 package ca.georgebrown.trainingtutor.components.media
 {
+	import assets.BrokenImage;
+	
 	import caurina.transitions.Equations;
 	import caurina.transitions.Tweener;
+	
+	import com.ghostmonk.ui.RotatingBufferIcon;
 	
 	import flash.display.Bitmap;
 	import flash.display.Sprite;
 
 	public class ImageViewer extends Sprite
 	{
-		private var _loader:ImageCueLoader;
+		private var _bulkLoader:BulkAssetIDLoader;
 		private var _currentImage:Bitmap;
 		private var _isActive:Boolean;
 		private var _currentImages:Array;
 		private var _currentIndex:int;
+		private var	_loadingBuffer:RotatingBufferIcon;
 		
-		public function ImageViewer( loader:ImageCueLoader )
+		public function ImageViewer()
 		{
-			_loader = loader;
+			_bulkLoader = new BulkAssetIDLoader( new Bitmap( new BrokenImage( 0, 0 ) ) );
+			_loadingBuffer = new RotatingBufferIcon();
 			_isActive = false;
 		}
 		
@@ -56,7 +62,6 @@ package ca.georgebrown.trainingtutor.components.media
 			if( _currentImage )
 				Tweener.addTween( _currentImage, 
 					{ alpha:0, time:0.3, transition:Equations.easeNone, onComplete:removeChild, onCompleteParams:[_currentImage] } );
-			_currentImage = _loader.getImageByID( id );
 			_currentImage.alpha = 0;
 			addChild( _currentImage );
 			Tweener.addTween( _currentImage, { alpha:1, time:0.3, transition:Equations.easeNone } );

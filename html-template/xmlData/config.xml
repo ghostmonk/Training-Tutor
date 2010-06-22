@@ -56,8 +56,8 @@
 						Wayne Poirier, Director – Student Service sand Campus Life.
 					]]></text>
 				<images changeOnTextScroll="true" base="images/sections/our-students/">
-					<img id="studentBody" src="student-body.jpg" />
-					<img id="firstGen" src="first-gen.jpg" />
+					<img id="AB01" src="student-body.jpg" />
+					<img id="AB02" src="first-gen.jpg" />
 				</images>
 			</content>
 		</section>
@@ -84,68 +84,68 @@
 			
 				<sequence id="The Applicant">
 				
-					<sub type="RS01"></sub>
+					<sub type="RS01" />
 					
 					<sub type="RS02">
 						<images changeOnTextScroll="false" base="images/sections/remarkable-services/applicant/provide/">
-							<img id="01" src="01.jpg" />
-							<img id="02" src="02.jpg" />
-							<img id="03" src="03.jpg" />
-							<img id="04" src="04.jpg" />
-							<img id="05" src="05.jpg" />
-							<img id="06" src="06.jpg" />
-							<img id="07" src="07.jpg" />
-							<img id="08" src="08.jpg" />
-							<img id="09" src="09.jpg" />
-							<img id="10" src="10.jpg" />						
+							<img id="RS0201" src="01.jpg" />
+							<img id="RS0202" src="02.jpg" />
+							<img id="RS0203" src="03.jpg" />
+							<img id="RS0204" src="04.jpg" />
+							<img id="RS0205" src="05.jpg" />
+							<img id="RS0206" src="06.jpg" />
+							<img id="RS0207" src="07.jpg" />
+							<img id="RS0208" src="08.jpg" />
+							<img id="RS0209" src="09.jpg" />
+							<img id="RS0210" src="10.jpg" />						
 						</images>
 					</sub>
 					
 					<sub type="RS03">
 						<images changeOnTextScroll="false" base="images/sections/remarkable-services/applicant/touchpoints">
-							<img id="01" src="01.jpg" />
-							<img id="02" src="02.jpg" />
-							<img id="03" src="03.jpg" />
-							<img id="04" src="04.jpg" />
-							<img id="05" src="05.jpg" />
-							<img id="06" src="06.jpg" />
-							<img id="07" src="07.jpg" />
-							<img id="08" src="08.jpg" />
-							<img id="09" src="09.jpg" />
-							<img id="10" src="10.jpg" />
-							<img id="11" src="11.jpg" />
-							<img id="12" src="12.jpg" />
-							<img id="13" src="13.jpg" />
-							<img id="14" src="14.jpg" />
-							<img id="15" src="15.jpg" />
-							<img id="16" src="16.jpg" />
-							<img id="17" src="17.jpg" />
-							<img id="18" src="18.jpg" />
-							<img id="19" src="19.jpg" />
-							<img id="20" src="20.jpg" />
-							<img id="21" src="21.jpg" />
+							<img id="RS0301" src="01.jpg" />
+							<img id="RS0302" src="02.jpg" />
+							<img id="RS0303" src="03.jpg" />
+							<img id="RS0304" src="04.jpg" />
+							<img id="RS0305" src="05.jpg" />
+							<img id="RS0306" src="06.jpg" />
+							<img id="RS0307" src="07.jpg" />
+							<img id="RS0308" src="08.jpg" />
+							<img id="RS0309" src="09.jpg" />
+							<img id="RS0310" src="10.jpg" />
+							<img id="RS0311" src="11.jpg" />
+							<img id="RS0312" src="12.jpg" />
+							<img id="RS0313" src="13.jpg" />
+							<img id="RS0314" src="14.jpg" />
+							<img id="RS0315" src="15.jpg" />
+							<img id="RS0316" src="16.jpg" />
+							<img id="RS0317" src="17.jpg" />
+							<img id="RS0318" src="18.jpg" />
+							<img id="RS0319" src="19.jpg" />
+							<img id="RS0320" src="20.jpg" />
+							<img id="RS0321" src="21.jpg" />
 						</images>
 					</sub>
 					
 					<sub type="RS04">
 						<images changeOnTextScroll="false" base="images/sections/remarkable-services/applicant/touchpoints2">
-							<img id="01" src="01.jpg" />
-							<img id="02" src="02.jpg" />
-							<img id="03" src="03.jpg" />
-							<img id="04" src="04.jpg" />
-							<img id="05" src="05.jpg" />
-							<img id="06" src="06.jpg" />
-							<img id="07" src="07.jpg" />
-							<img id="08" src="08.jpg" />
-							<img id="09" src="09.jpg" />
-							<img id="10" src="10.jpg" />
-							<img id="11" src="11.jpg" />
-							<img id="12" src="12.jpg" />
-							<img id="13" src="13.jpg" />
-							<img id="14" src="14.jpg" />
-							<img id="15" src="15.jpg" />
-							<img id="16" src="16.jpg" />
-							<img id="17" src="17.jpg" />
+							<img id="RS0401" src="01.jpg" />
+							<img id="RS0402" src="02.jpg" />
+							<img id="RS0403" src="03.jpg" />
+							<img id="RS0404" src="04.jpg" />
+							<img id="RS0405" src="05.jpg" />
+							<img id="RS0406" src="06.jpg" />
+							<img id="RS0407" src="07.jpg" />
+							<img id="RS0408" src="08.jpg" />
+							<img id="RS0409" src="09.jpg" />
+							<img id="RS0410" src="10.jpg" />
+							<img id="RS0411" src="11.jpg" />
+							<img id="RS0412" src="12.jpg" />
+							<img id="RS0413" src="13.jpg" />
+							<img id="RS0414" src="14.jpg" />
+							<img id="RS0415" src="15.jpg" />
+							<img id="RS0416" src="16.jpg" />
+							<img id="RS0417" src="17.jpg" />
 						</images>
 					</sub>
 				

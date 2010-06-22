@@ -74,10 +74,10 @@ package ca.georgebrown.trainingtutor.components.media
 			Tweener.addTween( _video, { alpha:0, time:0.1, transition:Equations.easeNone } );	
 		}
 		
-		public function loadAsset( id:String ) : void
+		public function loadAsset( url:String ) : void
 		{
 			_controls.setPlayHead( 0 );
-			_core.load( id, createVideo(), true, true );
+			_core.load( url, createVideo(), true, true );
 			_controls.enable();	
 			_controls.play();
 		}
