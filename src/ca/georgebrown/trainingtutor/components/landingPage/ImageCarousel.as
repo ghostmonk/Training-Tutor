@@ -78,7 +78,7 @@ package ca.georgebrown.trainingtutor.components.landingPage
 				_loaders.push( new IndexLoader( url, index, onImageLoaded, null, null, new LoaderContext( true ) ) );
 				_associativeData.push( imgs[ url ] );
 				index++;
-			}	
+			}
 		}
 		
 		private function onImageLoaded( bitmap:Bitmap, index:int ) : void 
@@ -99,14 +99,10 @@ package ca.georgebrown.trainingtutor.components.landingPage
 		{
 			Tweener.addTween( _images[ _currentNode ], { alpha:0, time:_transitionTime, transition:Equations.easeNone, onComplete:_view.removeChild, onCompleteParams:[ _images[ _currentNode ] ] } );	
 			
-			if( _currentNode == _images.length -1 ) 
-			{
+			if( _currentNode == _images.length -1 )
 				_currentNode = 0;
-			}
-			else 
-			{
+			else
 				_currentNode++;
-			}
 			
 			dispatchEvent( new ImageTransitionEvent( ImageTransitionEvent.IMAGE_CHANGE, _rearrangedData[ _currentNode ] ) );
 			_view.addChild( _images[ _currentNode ] );

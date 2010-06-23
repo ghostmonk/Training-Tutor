@@ -31,11 +31,15 @@ package ca.georgebrown.trainingtutor.valueObjects
 		
 		public function get sectionImages() : Array 
 		{
+			var list:XMLList = _config.sections.section.content.images.img;
+			list += _config.sections.section.content.sequence.sub.images.img;
+			
 			var output:Array = [];
-			for each( var item:XML in _config.sections.section.content.images.img )
+			
+			for each( var item:XML in list )
 			{
-				var url:String = item.parent().@base + item.@src;
-				output.push( { id:item.@id, url:url } );
+				var info:Object = {id:item.@id, src:item.parent().@base + item.@src };
+				output.push( info );
 			}
 			return output;
 		}

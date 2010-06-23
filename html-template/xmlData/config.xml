@@ -102,7 +102,7 @@
 					</sub>
 					
 					<sub type="RS03">
-						<images changeOnTextScroll="false" base="images/sections/remarkable-services/applicant/touchpoints">
+						<images changeOnTextScroll="false" base="images/sections/remarkable-services/applicant/touchpoints/">
 							<img id="RS0301" src="01.jpg" />
 							<img id="RS0302" src="02.jpg" />
 							<img id="RS0303" src="03.jpg" />
@@ -128,7 +128,7 @@
 					</sub>
 					
 					<sub type="RS04">
-						<images changeOnTextScroll="false" base="images/sections/remarkable-services/applicant/touchpoints2">
+						<images changeOnTextScroll="false" base="images/sections/remarkable-services/applicant/touchpoints2/">
 							<img id="RS0401" src="01.jpg" />
 							<img id="RS0402" src="02.jpg" />
 							<img id="RS0403" src="03.jpg" />

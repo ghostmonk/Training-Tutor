@@ -38,7 +38,7 @@ package ca.georgebrown.trainingtutor.components.media
 		
 		public function getURLByID( id:String ) : String
 		{
-			var info:Object = getInfoByID( id );
+			var info:Object = getInfoByID( id ); 
 			return info == null ? null : info.url;
 		}
 		

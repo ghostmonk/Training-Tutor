@@ -19,12 +19,13 @@ package ca.georgebrown.trainingtutor.components.media
 		private var _currentIndex:int;
 		private var	_loadingBuffer:RotatingBufferIcon;
 		
-		public function ImageViewer()
+		public function ImageViewer( imageData:Array )
 		{
 			_bulkLoader = new BulkAssetIDLoader( new Bitmap( new BrokenImage( 0, 0 ) ) );
 			_loadingBuffer = new RotatingBufferIcon();
 			_isActive = false;
-		}
+			fillBulkLoader( imageData );
+		}	
 		
 		public function set currentImages( value:Array ) : void
 		{
@@ -65,6 +66,13 @@ package ca.georgebrown.trainingtutor.components.media
 			_currentImage.alpha = 0;
 			addChild( _currentImage );
 			Tweener.addTween( _currentImage, { alpha:1, time:0.3, transition:Equations.easeNone } );
+		}
+		
+		private function fillBulkLoader( images:Array ) : void
+		{
+			for each( var info:Object in images )
+				_bulkLoader.addItem( info.src, info.id );
+			_bulkLoader.startLoad();
 		}
 		
 		private function cleanView() : void

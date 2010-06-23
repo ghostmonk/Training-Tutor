@@ -1,14 +1,18 @@
 package ca.georgebrown.trainingtutor.components.landingPage 
 {	
+	import assets.LargeLabel;
+	
 	import ca.georgebrown.trainingtutor.events.ImageTransitionEvent;
 	import ca.georgebrown.trainingtutor.events.LandingPageStateEvent;
 	
 	import caurina.transitions.Equations;
 	import caurina.transitions.Tweener;
 	
+	import com.ghostmonk.ui.RotatingBufferIcon;
 	import com.ghostmonk.ui.graveyard.buttons.SimpleMovieClipButton;
 	
 	import flash.display.DisplayObject;
+	import flash.events.Event;
 	import flash.events.MouseEvent;
 	import flash.geom.Point;
 	
@@ -28,6 +32,8 @@ package ca.georgebrown.trainingtutor.components.landingPage
 		private var _carousel:ImageCarousel;
 		private var _startButton:SimpleMovieClipButton;
 		private var _failedLoginMsg:String;
+		private var _rotatingBufferIcon:RotatingBufferIcon;
+		private var _label:LargeLabel;
 		
 		private var _logoHomePos:Point;
 		private var _logoHomeScale:Number;
@@ -38,6 +44,8 @@ package ca.georgebrown.trainingtutor.components.landingPage
 		
 		public function LandingPage( carousel:ImageCarousel ) 
 		{	
+			_label = new LargeLabel();
+			_rotatingBufferIcon = new RotatingBufferIcon( 0x0162a6 );
 			_startButton = new SimpleMovieClipButton( startBtn, onStart );
 			_startButton.disable();
 			_carousel = carousel;
@@ -45,6 +53,23 @@ package ca.georgebrown.trainingtutor.components.landingPage
 			_carousel.addEventListener( ImageTransitionEvent.FIRST_IMAGE, onFirstImage );
 			_carousel.display = holder;
 			positionDisplayAssets();	
+			
+			addEventListener(Event.ADDED_TO_STAGE, onAddedToStage );
+		}
+		
+		private function onAddedToStage( e:Event ) : void
+		{
+				
+			_rotatingBufferIcon.x = ( stage.stageWidth - _rotatingBufferIcon.width ) * 0.5;
+			_rotatingBufferIcon.y = ( stage.stageHeight - _rotatingBufferIcon.height ) * 0.5;
+			_label.x = ( stage.stageWidth - _label.width ) * 0.5;
+			_label.y = _rotatingBufferIcon.y - _label.height - 10;
+			
+			addChild( _rotatingBufferIcon );
+			addChild( _label );
+			_rotatingBufferIcon.buildIn();
+			_label.alpha = 0;
+			Tweener.addTween( _label, {alpha:1, time:0.3, transition:Equations.easeNone} );
 		}
 		
 		public function buildIn():void 
@@ -121,7 +146,9 @@ package ca.georgebrown.trainingtutor.components.landingPage
 		}
 		
 		private function onFirstImage( e:ImageTransitionEvent ) : void 
-		{		
+		{	
+			_rotatingBufferIcon.buildOut();	
+			Tweener.addTween( _label, {alpha:0, time:0.3, transition:Equations.easeNone, onComplete:removeChild, onCompleteParams:[_label]} );
 			buildIn();
 		}
 		

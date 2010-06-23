@@ -72,7 +72,7 @@ package ca.georgebrown.trainingtutor.framework.controller
 			
 			var mediaManager:MediaManager = new MediaManager();
 			mediaManager.videoPlayer = new VideoPlayer( new CoreVideo(), new VideoPlayerAsset() );
-			mediaManager.imageViewer = new ImageViewer(); 
+			mediaManager.imageViewer = new ImageViewer( config.sectionImages ); 
 			
 			var viewManager:SectionComponent = new SectionComponent();
 			viewManager.mediaManager = mediaManager;
