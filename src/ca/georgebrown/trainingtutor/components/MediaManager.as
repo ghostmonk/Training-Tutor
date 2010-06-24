@@ -37,12 +37,14 @@ package ca.georgebrown.trainingtutor.components
 		
 		public function set textScrollPercent( value:Number ) : void
 		{
-			if( _useImageSwap ) _imageView.updateView( value );
+			//if( _useImageSwap ) _imageView.updateView( value );
 		}
 		
-		public function enableImageView( assets:Array ) : void
+		public function enableImageView( imageIDs:Array ) : void
 		{
-			
+			_imageView.buildIn();
+			_imageView.showAsset( imageIDs[0] );
+			MainStage.instance.addChild( _imageView );
 		}
 		
 		public function enableVideo( srcUrl:String, cuePoints:Array ) : void

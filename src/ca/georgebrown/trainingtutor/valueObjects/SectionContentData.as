@@ -11,11 +11,15 @@ package ca.georgebrown.trainingtutor.valueObjects
 	{	
 		private var _data:XML;
 		private var _cuePoints:Array;
+		private var _imageIDs:Array;
 		private var _sequenceList:Array = [];
 		
 		public function SectionContentData( data:XML ) 
 		{	
-			_data = data;		
+			_data = data;	
+			createCuePoints();
+			createSequenceData();
+			createImageIDs();
 		}
 		
 		public function get contentType() : String 
@@ -33,26 +37,23 @@ package ca.georgebrown.trainingtutor.valueObjects
 			return _data.@type.toString() == "sequential";
 		}
 		
+		public function get hasImages() : Boolean
+		{
+			return _imageIDs.length > 0;
+		}
+		
 		public function get hasVideo() : Boolean 
 		{		
-			return _data.video[ 0 ];	
+			return _data.video[ 0 ] != null;	
 		}
 		
 		public function get hasCuePoints() : Boolean
 		{
-			if( !hasVideo ) return false;
-			return ( _data.video[0].cuePoint as XMLList ).length() > 0;
+			return _cuePoints.length > 0;
 		}
 		
 		public function get cuePoints() : Array
 		{
-			_cuePoints = [];
-			if( !hasCuePoints ) return _cuePoints;
-			if( _cuePoints == null )
-			{
-				for each( var node:XML in _data.video[0].cuePoint )
-					_cuePoints.push( new CuePoint( node.@name.toString(), Number( node.@time ), {} ) );
-			}
 			return _cuePoints;
 		}
 		
@@ -63,12 +64,7 @@ package ca.georgebrown.trainingtutor.valueObjects
 		
 		public function get imageIDs() : Array
 		{
-			var output:Array = [];
-			for each( var item:String in _data.images.img.@id )
-			{
-				output.push( item );
-			}
-			return output;
+			return _imageIDs;
 		}
 		
 		public function get title() : String 
@@ -83,34 +79,47 @@ package ca.georgebrown.trainingtutor.valueObjects
 		
 		public function get videoURL() : String 
 		{		 
-			return hasVideo ? _data.video[ 0 ].@src.toString() : "";	
+			return hasVideo ? _data.video[ 0 ].@src.toString() : null;	
 		}
 		
 		public function get videoCuePoints() : Array
 		{
-			var output:Array = [];
-			for each( var xmlNode:XML in _data.video[ 0 ].point )
-			{
-				output.push( { data:xmlNode.toString(), time:parseInt( xmlNode.@time ) } );	
-			}
-			return output;
+			return _cuePoints;
 		}
 		
 		public function get sequenceData() : Array
 		{
-			var output:Array = [];
+			return _sequenceList;
+		}
+		
+		private function createCuePoints() : void
+		{
+			_cuePoints = [];
+			if( !hasVideo ) return;
+			for each( var node:XML in _data.video[0].cuePoint )
+				_cuePoints.push( new CuePoint( node.@name.toString(), Number( node.@time ), {} ) );
+		}
+		
+		private function createImageIDs(): void
+		{
+			_imageIDs = [];
+			if( _data.images == null ) return;
+			if( _data.images.img == null ) return;
+			for each( var id:String in _data.images.img.@id )
+				_imageIDs.push( id );	
+		}
+		
+		private function createSequenceData() : void
+		{
+			_sequenceList = [];
 			
 			for each( var xmlNode:XML in _data.sequence )
 			{
 				var sequence:Array = [];
 				for each( var subNode:XML in xmlNode.sub )
-				{
 					sequence.push( new SectionContentData( subNode ) );	
-				}
-				output.push( sequence );
+				_sequenceList.push( sequence );
 			}
-			
-			return output;
 		}
 	}
 }

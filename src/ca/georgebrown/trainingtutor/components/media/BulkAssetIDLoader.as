@@ -33,7 +33,7 @@ package ca.georgebrown.trainingtutor.components.media
 		public function getAssetByID( id:String ) : Bitmap
 		{
 			var info:Object = getInfoByID( id );
-			return info == null ? null : info.image;
+			return info == null ? null : info.content;
 		}
 		
 		public function getURLByID( id:String ) : String

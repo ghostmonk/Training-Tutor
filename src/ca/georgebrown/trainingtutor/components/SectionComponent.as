@@ -48,6 +48,9 @@ package ca.georgebrown.trainingtutor.components
 				_mediaManager.enableVideo( content.videoURL, content.cuePoints );
 			else
 				_mediaManager.disableVideo();
+				
+			if( content.hasImages )
+				_mediaManager.enableImageView( content.imageIDs );
 			
 			if( content.isBasic ) 
 				createBasicView( content );

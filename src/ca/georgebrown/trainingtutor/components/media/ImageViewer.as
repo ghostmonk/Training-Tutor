@@ -15,7 +15,6 @@ package ca.georgebrown.trainingtutor.components.media
 		private var _bulkLoader:BulkAssetIDLoader;
 		private var _currentImage:Bitmap;
 		private var _isActive:Boolean;
-		private var _currentImages:Array;
 		private var _currentIndex:int;
 		private var	_loadingBuffer:RotatingBufferIcon;
 		
@@ -27,12 +26,7 @@ package ca.georgebrown.trainingtutor.components.media
 			fillBulkLoader( imageData );
 		}	
 		
-		public function set currentImages( value:Array ) : void
-		{
-			_currentImages = value;
-		}
-		
-		public function updateView( percent:Number ) : void
+		/* public function updateView( percent:Number ) : void
 		{
 			if( !_isActive || _currentImages == null ) return;
 			
@@ -41,8 +35,7 @@ package ca.georgebrown.trainingtutor.components.media
 			if( index == _currentIndex ) return;
 			
 			_currentIndex = index;
-			loadAsset( _currentImages[ index ] );
-		}
+		} */
 		
 		public function buildIn() : void
 		{
@@ -52,20 +45,28 @@ package ca.georgebrown.trainingtutor.components.media
 		
 		public function buildOut() : void
 		{
-			_isActive = false;
-			_currentImages = null;
+			_isActive = false;	
 			_currentIndex = 0;
 			Tweener.addTween( this, { alpha:0, time:0.3, transition:Equations.easeNone, onComplete:cleanView } );
 		}
 		
-		public function loadAsset( id:String ) : void
+		public function showAsset( id:String ) : void
 		{
-			if( _currentImage )
-				Tweener.addTween( _currentImage, 
-					{ alpha:0, time:0.3, transition:Equations.easeNone, onComplete:removeChild, onCompleteParams:[_currentImage] } );
+			var outImage:Bitmap = _currentImage;
+			if( outImage )
+				Tweener.addTween( outImage, 
+					{ alpha:0, time:0.3, transition:Equations.easeNone, onComplete:removeImage, onCompleteParams:[outImage] } );
+			
+			
+			_currentImage = _bulkLoader.getAssetByID( id ) as Bitmap;
 			_currentImage.alpha = 0;
 			addChild( _currentImage );
 			Tweener.addTween( _currentImage, { alpha:1, time:0.3, transition:Equations.easeNone } );
+		}
+		
+		private function removeImage( img:Bitmap ) : void
+		{
+			if( img.parent ) img.parent.removeChild( img );
 		}
 		
 		private function fillBulkLoader( images:Array ) : void
