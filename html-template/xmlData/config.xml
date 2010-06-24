@@ -149,7 +149,7 @@
 						</images>
 					</sub>
 				
-					<sub type="basic">
+					<!-- <sub type="basic">
 						<title><![CDATA[Customer Service]]></title>
 						<text>
 							<![CDATA[
@@ -160,11 +160,11 @@
 								In this video, Anne Sado, President, shares her thoughts on how she believes you can play an important role in realizing our goal to be the leader in service excellence.
 								]]>
 							</text>
-						<video src="http://www.ghostmonk.com/gbc_demo/video/president.flv" />
-					</sub>
+						<video src="http://www.ghostmonk.com/gbc_demo/video/cs1.flv" />
+					</sub> -->
 					
 					<sub type="RS06">
-						<video src="http://www.ghostmonk.com/gbc_demo/video/testimonials.flv">
+						<video src="http://www.ghostmonk.com/gbc_demo/video/cs2.flv">
 							<cuePoint time="2" name="one" />
 							<cuePoint time="4" name="two" />
 							<cuePoint time="6" name="three" />
@@ -175,13 +175,13 @@
 					</sub>
 					
 					<sub type="RS07">
-						<video src="http://www.ghostmonk.com/gbc_demo/video/testimonials.flv">
+						<video src="http://www.ghostmonk.com/gbc_demo/video/cs3.flv">
 							<cuePoint time="2" name="one" />
 						</video>
 					</sub>
 					
 					<sub type="RS08">
-						<video src="http://www.ghostmonk.com/gbc_demo/video/testimonials.flv">
+						<video src="http://www.ghostmonk.com/gbc_demo/video/cs4.flv">
 							<cuePoint time="2" name="one" />
 							<cuePoint time="4" name="two" />
 							<cuePoint time="6" name="three" />
@@ -190,7 +190,7 @@
 					</sub>
 					
 					<sub type="RS09">
-						<video src="http://www.ghostmonk.com/gbc_demo/video/testimonials.flv">
+						<video src="http://www.ghostmonk.com/gbc_demo/video/cs5.flv">
 							<cuePoint time="2" name="one" />
 							<cuePoint time="4" name="two" />
 							<cuePoint time="6" name="three" />
@@ -202,7 +202,21 @@
 					</sub>
 				</sequence>
 				
-				<sequence id="The Employee" />
+				<sequence id="The Employee">
+					<sub type="RSE01" />
+					<sub type="RSE02" />
+					<sub type="RSE03" />
+					<sub type="RSE04" />
+					<sub type="RSE05" />
+					<sub type="RSE06" />
+					<sub type="RSE07" />
+					<sub type="RSE08" />
+					<sub type="RSE09" />
+					<sub type="RSE10" />
+					<sub type="RSE11" />
+					<sub type="RSE12" />
+					<sub type="RSE13" />
+				</sequence>
 				
 			</content>
 		</section>
@@ -211,8 +225,28 @@
 		<section id="Excellence">
 			<content type="sequential">
 				<sequence id="Service Excellence">
-					<sub type="">
-					</sub>
+					<sub type="SE01" />
+					<sub type="SE02" />
+					<sub type="SE03" />
+					<sub type="SE04" />
+					<sub type="SE05" />
+					<sub type="SE06" />
+					<sub type="SE07" />
+					<sub type="SE08" />
+					<sub type="SE09" />
+					<sub type="SE10" />
+					<sub type="SE11" />
+					<sub type="SE12" />
+					<sub type="SE13" />
+					<sub type="SE14" />
+					<sub type="SE15" />
+					<sub type="SE16" />
+					<sub type="SE17" />
+					<sub type="SE18" />
+					<sub type="SE19" />
+					<sub type="SE20" />
+					<sub type="SE21" />
+					<sub type="SE22" />
 				</sequence>
 			</content>
 		</section>

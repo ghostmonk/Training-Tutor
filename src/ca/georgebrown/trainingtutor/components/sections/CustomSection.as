@@ -1,7 +1,6 @@
 package ca.georgebrown.trainingtutor.components.sections
 {
-	import ca.georgebrown.trainingtutor.events.NavigationEvent;
-	import ca.georgebrown.trainingtutor.events.VideoPlayerEvent;
+	import ca.georgebrown.trainingtutor.events.CustomSectionEvent;
 	
 	import caurina.transitions.Equations;
 	import caurina.transitions.Tweener;
@@ -12,8 +11,10 @@ package ca.georgebrown.trainingtutor.components.sections
 	import flash.events.EventDispatcher;
 	import flash.events.MouseEvent;
 	
-	[Event (name="nextSection", type="ca.georgebrown.trainingtutor.events.NavigationEvent")]
-	[Event (name="replayVideo", type="ca.georgebrown.trainingtutor.events.VideoPlayerEvent")]
+	
+	[Event (name="replay", type="ca.georgebrown.trainingtutor.events.CustomSectionEvent")]
+	[Event (name="nextSection", type="ca.georgebrown.trainingtutor.events.CustomSectionEvent")]
+	[Event (name="goHome", type="ca.georgebrown.trainingtutor.events.CustomSectionEvent")]
 	
 	public class CustomSection extends EventDispatcher
 	{
@@ -27,6 +28,7 @@ package ca.georgebrown.trainingtutor.components.sections
 			_view = view;
 			_actionBtn = createSimpleButton( view.actionBtn, onAction );
 			_replayBtn = createSimpleButton( view.videoReplayBtn, onVideoReplay );
+			contentBuildInComplete();
 		}
 		
 		public function get view() : MovieClip
@@ -52,12 +54,12 @@ package ca.georgebrown.trainingtutor.components.sections
 		
 		protected function onAction( e:MouseEvent ) : void
 		{
-			dispatchEvent( new NavigationEvent( NavigationEvent.NEXT_SECTION, -1 ) );
+			dispatchEvent( new CustomSectionEvent( CustomSectionEvent.NEXT_SECTION ) );
 		}
 		
 		private function onVideoReplay( e:MouseEvent ) : void
 		{
-			dispatchEvent( new VideoPlayerEvent( VideoPlayerEvent.REPLAY_VIDEO ) );
+			dispatchEvent( new CustomSectionEvent( CustomSectionEvent.REPLAY ) );
 		}
 		
 		private function buildInButton( btn:SimpleMovieClipButton ) : void

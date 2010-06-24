@@ -14,8 +14,9 @@ package ca.georgebrown.trainingtutor.components.media
 	{
 		private var _bulkLoader:BulkAssetIDLoader;
 		private var _currentImage:Bitmap;
+		private var _currentIDs:Array;
 		private var _isActive:Boolean;
-		private var _currentIndex:int;
+		private var _currentID:String;
 		private var	_loadingBuffer:RotatingBufferIcon;
 		
 		public function ImageViewer( imageData:Array )
@@ -26,16 +27,28 @@ package ca.georgebrown.trainingtutor.components.media
 			fillBulkLoader( imageData );
 		}	
 		
-		/* public function updateView( percent:Number ) : void
+		public function updateView( percent:Number ) : void
 		{
-			if( !_isActive || _currentImages == null ) return;
+			if( !_isActive || _currentIDs == null ) return;
 			
-			var index:int = Math.min( _currentImages.length - 1, ( _currentImages.length * percent ) );
+			var id:String = _currentIDs[ Math.min( _currentIDs.length - 1, Math.floor( _currentIDs.length * percent ) ) ];
 			
-			if( index == _currentIndex ) return;
+			if( id == _currentID ) return;
 			
-			_currentIndex = index;
-		} */
+			_currentID = id;
+			showAsset( _currentID );
+		}
+		
+		public function set imageIDs( value:Array ) : void
+		{
+			_currentIDs = value;
+			
+			if( _currentIDs.length > 0 ) 
+			{
+				_currentID = _currentIDs[0];
+				showAsset( _currentID );
+			}
+		}
 		
 		public function buildIn() : void
 		{
@@ -46,7 +59,7 @@ package ca.georgebrown.trainingtutor.components.media
 		public function buildOut() : void
 		{
 			_isActive = false;	
-			_currentIndex = 0;
+			_currentID = null;
 			Tweener.addTween( this, { alpha:0, time:0.3, transition:Equations.easeNone, onComplete:cleanView } );
 		}
 		

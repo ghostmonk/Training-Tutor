@@ -37,14 +37,19 @@ package ca.georgebrown.trainingtutor.components
 		
 		public function set textScrollPercent( value:Number ) : void
 		{
-			//if( _useImageSwap ) _imageView.updateView( value );
+			if( _useImageSwap ) _imageView.updateView( value );
 		}
 		
 		public function enableImageView( imageIDs:Array ) : void
 		{
 			_imageView.buildIn();
-			_imageView.showAsset( imageIDs[0] );
+			_imageView.imageIDs = imageIDs;	
 			MainStage.instance.addChild( _imageView );
+		}
+		
+		public function diableImageView() : void
+		{
+			_imageView.buildOut();
 		}
 		
 		public function enableVideo( srcUrl:String, cuePoints:Array ) : void
@@ -52,7 +57,7 @@ package ca.georgebrown.trainingtutor.components
 			_videoPlayer.buildIn();
 			_imageView.buildOut();
 			MainStage.instance.addChild( _videoPlayer );
-			cuePoints = cuePoints;
+			setCuePoints( cuePoints );
 			_videoPlayer.loadAsset( srcUrl );
 		}
 		
@@ -61,7 +66,7 @@ package ca.georgebrown.trainingtutor.components
 			_videoPlayer.buildOut();
 		}
 		
-		private function set cuePoints( value:Array ) : void
+		private function setCuePoints( value:Array ) : void
 		{
 			_videoPlayer.cuePointManager.clearCuePoints();
 			if( value.length > 0 )

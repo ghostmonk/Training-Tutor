@@ -15,14 +15,12 @@ package ca.georgebrown.trainingtutor.components
 		private var _sectionText:SectionText;
 		
 		private var _stage:Stage;
-		private var _sequenceManager:SequenceManager;
 		private var _mediaManager:MediaManager;
 		private var _customManager:CustomSectionManager;
 		
 		public function SectionComponent()
 		{
-			_customManager = new CustomSectionManager();
-			_sequenceManager = new SequenceManager( this );
+			_customManager = new CustomSectionManager( this );
 			_stage = MainStage.instance;
 			_stage.addChild( this );
 		}
@@ -43,34 +41,40 @@ package ca.georgebrown.trainingtutor.components
 		public function analyzeSectionContent( content:SectionContentData ) : void
 		{
 			_customManager.clean();
+			configureBaseView( content );
+			if( !content.isBasic ) 
+				_customManager.addSectionData( content );
+		}
+		
+		public function configureBaseView( content:SectionContentData ) : void
+		{
+			_mediaManager.imageSwap = content.useChangeOnTextScroll;
 			
-			if( content.hasVideo )
-				_mediaManager.enableVideo( content.videoURL, content.cuePoints );
-			else
-				_mediaManager.disableVideo();
-				
-			if( content.hasImages )
-				_mediaManager.enableImageView( content.imageIDs );
+			setVideo( content.hasVideo, content.videoURL, content.cuePoints );
+			setImageViewer( content.hasImages, content.imageIDs );
 			
 			if( content.isBasic ) 
 				createBasicView( content );
-			else if( content.isSequential ) 
-				createSequentialView( content );
 			else 
-				createCustomView( content );
+				_sectionText.buildOut();
 			
 			positionAssets();
 		}
 		
-		private function createCustomView( content:SectionContentData ) : void
+		private function setImageViewer( hasImages:Boolean, ids:Array ) : void
 		{
-			_sectionText.buildOut();
-			_customManager.createView( content.contentType );
+			if( hasImages )
+				_mediaManager.enableImageView( ids );
+			else
+				_mediaManager.diableImageView();
 		}
 		
-		private function createSequentialView( content:SectionContentData ) : void
+		private function setVideo( hasVideo:Boolean, url:String, cuePoints:Array ) : void
 		{
-			_sequenceManager.startNewSequence( content.sequenceData );
+			if( hasVideo )
+				_mediaManager.enableVideo( url, cuePoints );
+			else
+				_mediaManager.disableVideo();
 		}
 		
 		private function createBasicView( content:SectionContentData ) : void
