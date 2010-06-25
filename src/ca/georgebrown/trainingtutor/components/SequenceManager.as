@@ -42,6 +42,10 @@ package ca.georgebrown.trainingtutor.components
 			_subSequenceNode++;
 			if( _subSequenceNode == _subSequences.length )
 			{
+				_subSequences = null;
+				_subSequenceNode = -1;
+				_currentSequence = null;
+				_currentNode = -1;
 				dispatchEvent( new SequenceEvent( SequenceEvent.SEQUENCE_COMPLETE ) ) ;
 				return null;
 			}

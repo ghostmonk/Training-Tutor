@@ -2,6 +2,8 @@ package ca.georgebrown.trainingtutor.components.media
 {	
 	import assets.videoPlayer.VideoPlayerAsset;
 	
+	import ca.georgebrown.trainingtutor.events.VideoPlayerEvent;
+	
 	import caurina.transitions.Equations;
 	import caurina.transitions.Tweener;
 	
@@ -9,11 +11,13 @@ package ca.georgebrown.trainingtutor.components.media
 	import com.ghostmonk.media.video.CoreVideo;
 	import com.ghostmonk.media.video.CuePointManager;
 	import com.ghostmonk.media.video.events.CuePointEvent;
+	import com.ghostmonk.media.video.events.CustomNetStreamEvent;
 	
 	import flash.display.Sprite;
 	import flash.media.Video;
 	
 	[Event(name="onCuePoint", type="com.ghostmonk.media.video.events.CuePointEvent")]
+	[Event(name="videoComplete", type="ca.georgebrown.trainingtutor.events.VideoPlayerEvent")]
 
 	/**
 	 * 
@@ -40,6 +44,7 @@ package ca.georgebrown.trainingtutor.components.media
 			_core = core;
 			_core.cuePointManager = _cuePointManager;
 			_core.addEventListener( PercentageEvent.LOAD_CHANGE, onLoadProgress );
+			_core.addEventListener( CustomNetStreamEvent.STATUS, onStreamStatus );		
 			
 			createVideo();
 			
@@ -138,6 +143,12 @@ package ca.georgebrown.trainingtutor.components.media
 		private function onCuePoint( e:CuePointEvent ) : void
 		{
 			dispatchEvent( e );
+		}
+		
+		private function onStreamStatus( e:CustomNetStreamEvent ) : void
+		{
+			if( e.info.code == "NetStream.Play.Stop" )
+				dispatchEvent( new VideoPlayerEvent( VideoPlayerEvent.VIDEO_COMPLETE ) );
 		}
 	}
 }

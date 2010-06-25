@@ -18,7 +18,7 @@ package ca.georgebrown.trainingtutor.framework.view
 	{	
 		public const NAME:String = "SectionTextMediator";
 		
-		private var _viewManager:SectionComponent;
+		private var _sectionComponent:SectionComponent;
 		
 		private var _configProxy:ConfigProxy;
 		private var _currentSection:int;
@@ -28,11 +28,12 @@ package ca.georgebrown.trainingtutor.framework.view
 		{
 			super( NAME, viewManager );
 			_configProxy = configProxy;
-			_viewManager = viewManager;
+			_sectionComponent = viewManager;
+			_sectionComponent.addEventListener(NavigationEvent.NEXT_SECTION, onNextSection );
 			_sectionsLength = _configProxy.configData.sectionIDs.length();
 		}
 		
-		public function get viewManager() : SectionComponent
+		public function get sectionComponent() : SectionComponent
 		{
 			return viewComponent as SectionComponent;
 		}
@@ -73,7 +74,7 @@ package ca.georgebrown.trainingtutor.framework.view
 		{	
 			_currentSection = index;
 			var sectionData:SectionContentData = _configProxy.getSectionData( _currentSection );
-			viewManager.analyzeSectionContent( sectionData );
+			_sectionComponent.analyzeSectionContent( sectionData );
 		}
 		
 		private function onNextSection( e:NavigationEvent ) : void

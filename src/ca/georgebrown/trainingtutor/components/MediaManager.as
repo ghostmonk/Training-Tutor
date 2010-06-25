@@ -3,6 +3,7 @@ package ca.georgebrown.trainingtutor.components
 	import ca.georgebrown.trainingtutor.components.media.ImageViewer;
 	import ca.georgebrown.trainingtutor.components.media.VideoPlayer;
 	import ca.georgebrown.trainingtutor.events.NavigationEvent;
+	import ca.georgebrown.trainingtutor.events.VideoPlayerEvent;
 	
 	import com.ghostmonk.media.video.events.CuePointEvent;
 	import com.ghostmonk.utils.MainStage;
@@ -10,6 +11,7 @@ package ca.georgebrown.trainingtutor.components
 	import flash.events.EventDispatcher;
 	
 	[Event (name="onCuePoint", type="com.ghostmonk.media.video.events.CuePointEvent")]
+	[Event (name="videoComplete", type="ca.georgebrown.trainingtutor.components.media.VideoPlayer")]
 	
 	public class MediaManager extends EventDispatcher
 	{
@@ -21,6 +23,7 @@ package ca.georgebrown.trainingtutor.components
 		{
 			_videoPlayer = value;
 			_videoPlayer.addEventListener( CuePointEvent.ON_CUE_POINT, onCuePoint );
+			_videoPlayer.addEventListener( VideoPlayerEvent.VIDEO_COMPLETE, onVideoComplete );
 			MainStage.instance.addChild( _videoPlayer );
 		}
 		
@@ -80,9 +83,9 @@ package ca.georgebrown.trainingtutor.components
 			_imageView.y = ( MainStage.instance.stageHeight - _imageView.height ) * 0.5;
 		}
 		
-		private function onVideoReplay( e:NavigationEvent ) : void 
+		private function onVideoComplete( e:VideoPlayerEvent ) : void
 		{
-			_videoPlayer.replay();
+			dispatchEvent( e );
 		}
 		
 		private function onCuePoint( e:CuePointEvent ) : void

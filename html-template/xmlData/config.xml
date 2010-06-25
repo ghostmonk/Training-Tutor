@@ -203,16 +203,29 @@
 				</sequence>
 				
 				<sequence id="The Employee">
-					<sub type="RSE01" />
+					<sub type="RSE01">
+						<images base="images/sections/our-students/">
+							<img id="AB01" src="student-body.jpg" />
+							<img id="AB02" src="first-gen.jpg" />
+						</images>
+					</sub>
 					<sub type="RSE02" />
 					<sub type="RSE03" />
 					<sub type="RSE04" />
 					<sub type="RSE05" />
 					<sub type="RSE06" />
-					<sub type="RSE07" />
-					<sub type="RSE08" />
-					<sub type="RSE09" />
-					<sub type="RSE10" />
+					<sub type="RSE07">
+						<video src="http://www.ghostmonk.com/gbc_demo/video/cs4.flv" />
+					</sub>
+					<sub type="RSE08">
+						<video src="http://www.ghostmonk.com/gbc_demo/video/cs4.flv" />
+					</sub>
+					<sub type="RSE09">
+						<video src="http://www.ghostmonk.com/gbc_demo/video/cs4.flv" />
+					</sub>
+					<sub type="RSE10">
+						<video src="http://www.ghostmonk.com/gbc_demo/video/cs4.flv" />
+					</sub>
 					<sub type="RSE11" />
 					<sub type="RSE12" />
 					<sub type="RSE13" />
@@ -225,7 +238,12 @@
 		<section id="Excellence">
 			<content type="sequential">
 				<sequence id="Service Excellence">
-					<sub type="SE01" />
+					<sub type="SE01">
+						<images base="images/sections/our-students/">
+							<img id="AB01" src="student-body.jpg" />
+							<img id="AB02" src="first-gen.jpg" />
+						</images>
+					</sub>
 					<sub type="SE02" />
 					<sub type="SE03" />
 					<sub type="SE04" />
@@ -238,15 +256,78 @@
 					<sub type="SE11" />
 					<sub type="SE12" />
 					<sub type="SE13" />
-					<sub type="SE14" />
+					<sub type="SE14">
+						<video src="http://www.ghostmonk.com/gbc_demo/video/cs3.flv" />
+					</sub>
 					<sub type="SE15" />
 					<sub type="SE16" />
 					<sub type="SE17" />
 					<sub type="SE18" />
-					<sub type="SE19" />
+					<sub type="SE19">
+						<images base="images/sections/our-students/">
+							<img id="AB01" src="student-body.jpg" />
+							<img id="AB02" src="first-gen.jpg" />
+						</images>
+					</sub>
 					<sub type="SE20" />
 					<sub type="SE21" />
-					<sub type="SE22" />
+					<!-- <sub type="basic">
+						<title><![CDATA[Our Workplace]]></title>
+						<text>
+							<![CDATA[
+								Mission Statement
+								We commit ourselves to delivering a "GBC" standard of quality and superior performance
+								We aspire to be the "One-Stop-Shop" location for information and student services, equipped with the tools to manage visitor relationships and build the brand through the visitor experience.
+								We strive for quality in everything we do and we aim to ensure that the best service is delivered to each and every Student Service Centre visitor.
+							]]></text>
+						<images changeOnTextScroll="true" base="images/sections/our-students/">
+							<img id="AB01" src="student-body.jpg" />
+							<img id="AB02" src="first-gen.jpg" />
+						</images>
+					</sub>
+					<sub type="basic">
+						<title><![CDATA[Our Workplace]]></title>
+						<text>
+							<![CDATA[
+								Customer Service Vision
+ 								Information and Student Services is part of a cross functional Integrated Student Services Centre that:
+								Provides information and services in person and processes Drop Box, mailed or faxed requests.
+								Generates a positive productive experience for the Student Service Centre visitors (internal and external)
+								Stimulates student retention opportunities with each visitor contact, which supports the college’s academic strategy
+								Operates at optimum efficiency - "One-Stop-Shop"
+								Educates and shares knowledge about products, services and capabilities to serve customers and to help them help themselves
+								Resolves visitor issues and transfer/refers less than 20% of visitors to Subject Matter Experts of other academic and service areas
+								Meets, exceeds and subsequently anticipates visitor expectations
+								Engages in the coaching and mentoring of each other
+								Is viewed as knowledgeable, skilled an is motivated to own and resolve visitor issues
+							]]></text>
+						<images changeOnTextScroll="true" base="images/sections/our-students/">
+							<img id="AB01" src="student-body.jpg" />
+							<img id="AB02" src="first-gen.jpg" />
+						</images>
+					</sub>
+					<sub type="basic">
+						<title><![CDATA[Our Workplace]]></title>
+						<text>
+							<![CDATA[
+								Customer Service Vision
+								The Contact Centre is part of a cross-functional Integrated Student Services Centre that:
+								Provides services in media of choice - web, email and phone
+								Generates a positive productive experience for the customer (internal and external)
+								Stimulates revenue opportunities with each customer contact which supports the college's enrollment strategy
+								Operates at optimum efficiency - "One call does it all" 
+								High-value/complex transactions are handled by people, low value/simple transactions by technology 
+								Educates and shares knowledge about products, services and capabilities to serve customers and to help them to help themselves
+								Meets, exceeds and subsequently anticipates customer expectations
+								Continually improves processes for effectiveness and efficiency
+								Engages in the coaching and mentoring of each other
+								Is viewed as knowledgeable, skilled and is motivated to own and resolves customer issues
+							]]></text>
+						<images changeOnTextScroll="true" base="images/sections/our-students/">
+							<img id="AB01" src="student-body.jpg" />
+							<img id="AB02" src="first-gen.jpg" />
+						</images>
+					</sub> -->
 				</sequence>
 			</content>
 		</section>

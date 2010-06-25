@@ -1,6 +1,9 @@
 package ca.georgebrown.trainingtutor.components
 {
 	import ca.georgebrown.trainingtutor.components.textDisplay.SectionText;
+	import ca.georgebrown.trainingtutor.events.NavigationEvent;
+	import ca.georgebrown.trainingtutor.events.SequenceEvent;
+	import ca.georgebrown.trainingtutor.events.VideoPlayerEvent;
 	import ca.georgebrown.trainingtutor.valueObjects.SectionContentData;
 	
 	import com.ghostmonk.events.PercentageEvent;
@@ -9,6 +12,8 @@ package ca.georgebrown.trainingtutor.components
 	
 	import flash.display.Sprite;
 	import flash.display.Stage;
+	
+	[Event (name="nextSection", type="ca.georgebrown.trainingtutor.events.NavigationEvent")]
 	
 	public class SectionComponent extends Sprite
 	{
@@ -21,6 +26,7 @@ package ca.georgebrown.trainingtutor.components
 		public function SectionComponent()
 		{
 			_customManager = new CustomSectionManager( this );
+			_customManager.addEventListener( SequenceEvent.SEQUENCE_COMPLETE, onSequenceComplete );
 			_stage = MainStage.instance;
 			_stage.addChild( this );
 		}
@@ -29,6 +35,7 @@ package ca.georgebrown.trainingtutor.components
 		{
 			_mediaManager = value;
 			_mediaManager.addEventListener( CuePointEvent.ON_CUE_POINT, onCuePoint );
+			_mediaManager.addEventListener( VideoPlayerEvent.VIDEO_COMPLETE, onVideoComplete );
 		}
 		
 		public function set sectionText( value:SectionText ) : void
@@ -98,9 +105,19 @@ package ca.georgebrown.trainingtutor.components
 			_sectionText.y = ( _stage.stageHeight - _sectionText.height ) * 0.5;
 		}
 		
+		private function onVideoComplete( e:VideoPlayerEvent ) : void
+		{
+			
+		}
+		
 		private function onCuePoint( e:CuePointEvent ) : void
 		{
 			_customManager.advanceSection();
+		}
+		
+		private function onSequenceComplete( e:SequenceEvent ) : void
+		{
+			dispatchEvent( new NavigationEvent( NavigationEvent.NEXT_SECTION, -1 ) );
 		}
 	}
 }

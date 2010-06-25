@@ -16,6 +16,11 @@ package ca.georgebrown.trainingtutor.components.sections
 			_testButton = new SimpleMovieClipButton( view.testYourselfBtn, onTestYourselfClick );
 		}
 		
+		override protected function onAction( e:MouseEvent ) : void
+		{
+			trace( "go home" );
+		}
+		
 		private function onTestYourselfClick( e:MouseEvent ) : void
 		{
 			trace( "test yourself" );

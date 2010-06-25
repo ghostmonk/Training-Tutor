@@ -13,6 +13,7 @@ package ca.georgebrown.trainingtutor.components
 	[Event (name="replay", type="ca.georgebrown.trainingtutor.events.CustomSectionEvent")]
 	[Event (name="nextSection", type="ca.georgebrown.trainingtutor.events.CustomSectionEvent")]
 	[Event (name="goHome", type="ca.georgebrown.trainingtutor.events.CustomSectionEvent")]
+	[Event (name="sequenceComplete", type="ca.georgebrown.trainingtutor.events.SequenceEvent")]
 	
 	public class CustomSectionManager extends EventDispatcher
 	{
@@ -23,9 +24,7 @@ package ca.georgebrown.trainingtutor.components
 		public function CustomSectionManager( comp:SectionComponent ) : void
 		{
 			_sectionComponent = comp; 
-			_sequenceManager = new SequenceManager();
-			_sequenceManager.addEventListener(SequenceEvent.SEQUENCE_COMPLETE, onSequenceComplete);
-			_sequenceManager.addEventListener(SequenceEvent.NEW_SUB_SEQUENCE, onNewSubSequence);
+			createSequenceManager();
 		}
 		
 		public function addSectionData( data:SectionContentData ) : void
@@ -78,6 +77,20 @@ package ca.georgebrown.trainingtutor.components
 			clean();
 		}
 		
+		private function destroySequenceManager() : void
+		{
+			_sequenceManager.removeEventListener(SequenceEvent.SEQUENCE_COMPLETE, onSequenceComplete);
+			_sequenceManager.removeEventListener(SequenceEvent.NEW_SUB_SEQUENCE, onNewSubSequence);
+			_sequenceManager = null;
+		}
+		
+		private function createSequenceManager() : void
+		{
+			_sequenceManager = new SequenceManager();
+			_sequenceManager.addEventListener(SequenceEvent.SEQUENCE_COMPLETE, onSequenceComplete);
+			_sequenceManager.addEventListener(SequenceEvent.NEW_SUB_SEQUENCE, onNewSubSequence);
+		}
+		
 		private function onReDispatch( e:CustomSectionEvent ) : void
 		{
 			dispatchEvent( e );
@@ -85,7 +98,9 @@ package ca.georgebrown.trainingtutor.components
 		
 		private function onSequenceComplete( e:SequenceEvent ) : void
 		{
-			trace( "sequence complete" );
+			destroySequenceManager();
+			createSequenceManager();
+			dispatchEvent( e );
 		}
 		
 		private function onNewSubSequence( e:SequenceEvent ) : void

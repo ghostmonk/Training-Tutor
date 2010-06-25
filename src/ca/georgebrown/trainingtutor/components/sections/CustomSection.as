@@ -8,6 +8,7 @@ package ca.georgebrown.trainingtutor.components.sections
 	import com.ghostmonk.ui.graveyard.buttons.SimpleMovieClipButton;
 	
 	import flash.display.MovieClip;
+	import flash.events.Event;
 	import flash.events.EventDispatcher;
 	import flash.events.MouseEvent;
 	
@@ -26,9 +27,9 @@ package ca.georgebrown.trainingtutor.components.sections
 		public function CustomSection( view:MovieClip )
 		{
 			_view = view;
+			_view.addEventListener( ANIM_COMPLETE, onAnimComplete );
 			_actionBtn = createSimpleButton( view.actionBtn, onAction );
 			_replayBtn = createSimpleButton( view.videoReplayBtn, onVideoReplay );
-			contentBuildInComplete();
 		}
 		
 		public function get view() : MovieClip
@@ -50,6 +51,11 @@ package ca.georgebrown.trainingtutor.components.sections
 		{
 			buildInButton( _actionBtn );
 			buildInButton( _replayBtn );
+		}
+		
+		protected function onAnimComplete( e:Event ) : void
+		{
+			contentBuildInComplete();	
 		}
 		
 		protected function onAction( e:MouseEvent ) : void

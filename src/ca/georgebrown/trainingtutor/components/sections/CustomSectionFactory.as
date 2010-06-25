@@ -42,7 +42,6 @@ package ca.georgebrown.trainingtutor.components.sections
 	import ca.georgebrown.trainingtutor.components.sections.serviceExcellence.SE19Logic;
 	import ca.georgebrown.trainingtutor.components.sections.serviceExcellence.SE20Logic;
 	import ca.georgebrown.trainingtutor.components.sections.serviceExcellence.SE21Logic;
-	import ca.georgebrown.trainingtutor.components.sections.serviceExcellence.SE22Logic;
 	
 	public class CustomSectionFactory
 	{
@@ -59,7 +58,7 @@ package ca.georgebrown.trainingtutor.components.sections
 			"SE06":SE06Logic, "SE07":SE07Logic, "SE08":SE08Logic, "SE09":SE09Logic, "SE10":SE10Logic, 
 			"SE11":SE11Logic, "SE12":SE12Logic, "SE13":SE13Logic, "SE14":SE14Logic, "SE15":SE15Logic, 
 			"SE16":SE16Logic, "SE17":SE17Logic, "SE18":SE18Logic, "SE19":SE19Logic, "SE20":SE20Logic, 
-			"SE21":SE21Logic, "SE22":SE22Logic, 
+			"SE21":SE21Logic,
 			
 			"action":Action, "toolkit":ToolKit
 		}

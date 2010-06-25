@@ -12,5 +12,9 @@ package ca.georgebrown.trainingtutor.events
 			super(type, bubbles, cancelable);
 		}
 		
+		override public function clone():Event
+		{
+			return new SequenceEvent( type, bubbles, cancelable );
+		}
 	}
 }
