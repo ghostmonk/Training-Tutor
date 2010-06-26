@@ -14,6 +14,7 @@ package ca.georgebrown.trainingtutor.components.coreParts
 	import flash.display.MovieClip;
 	import flash.events.EventDispatcher;
 	import flash.events.MouseEvent;
+	import flash.geom.Point;
 	import flash.text.TextFieldAutoSize;
 	import flash.utils.getQualifiedClassName;
 	
@@ -27,8 +28,10 @@ package ca.georgebrown.trainingtutor.components.coreParts
 		private var _sectionsLabels:Array;
 		private var _sectionNodes:Array;
 		
-		private var _openSections:int;
 		private var _sectionLabelEffect:Array;
+		private var _subElements:SubNavBarElements;
+		
+		public static var instance:NavigationBar;
 		
 		public function NavigationBar( view:NavigationAsset ) 
 		{	
@@ -37,12 +40,26 @@ package ca.georgebrown.trainingtutor.components.coreParts
 			_sectionsLabels = new Array();
 			_sectionNodes = new Array();
 			
+			_subElements = new SubNavBarElements();
+			_subElements.addClips( [ view.applicantSM, view.employeeSM, view.communicationSM, view.jobTipsSM, view.workplaceSM ] ); 
+			
 			fillSectionArrays();	
+			instance = this;
 		}
 		
 		public function get view() : NavigationAsset 
 		{	
 			return _view;	
+		}
+		
+		public function set subNavLabels( list:Array ) : void
+		{
+			_subElements.addLabels( list );
+		}
+		
+		public function set sequenceCode( value:Point ) : void
+		{
+			_subElements.setSubsequence( value.x, value.y );
 		}
 		
 		public function set sectionLabels( list:Array ) : void 
@@ -70,15 +87,17 @@ package ca.georgebrown.trainingtutor.components.coreParts
 			Tweener.addTween( labelTarget, { alpha:1, time:0.3, transition:Equations.easeNone } );
 			labelTarget.label.filters = _sectionLabelEffect;
 			
+			if( index != 4 && index != 5 )
+				_subElements.setSubsequence( -1, -1 );
+			
 		}
 		
 		public function sectionAccess( index:int ) : void 
 		{	
-			_openSections = index;
-			
 			for( var i:int = index + 1; i < _sectionNodes.length; i++ ) 
 			{
-				( _sectionNodes[ i ] as SimpleMovieClipButton ).disable();	
+				var sectionBtn:SimpleMovieClipButton = _sectionNodes[ i ] as SimpleMovieClipButton;
+				sectionBtn.disable();
 			}
 		}
 		
@@ -139,8 +158,6 @@ package ca.georgebrown.trainingtutor.components.coreParts
 					dispatchEvent( new NavigationEvent( NavigationEvent.SECTION_NAVIGATION, index ) );
 				}
 			}
-			
-			sectionAccess( _openSections );
 		}
 	}
 }

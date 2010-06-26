@@ -1,5 +1,7 @@
 package ca.georgebrown.trainingtutor.framework.model
 {
+	import ca.georgebrown.trainingtutor.components.coreParts.NavigationBar;
+	
 	import flash.events.AsyncErrorEvent;
 	import flash.events.SyncEvent;
 	import flash.net.ObjectEncoding;
@@ -12,7 +14,8 @@ package ca.georgebrown.trainingtutor.framework.model
 		public static const NAME:String = "SOPProgressTracker";
 		private static const LOCAL_PATH:String = "/gbc_tutor/";
 		
-		private var _soData:SharedObject; 
+		private static var _soData:SharedObject;
+		private static var _topSection:int; 
 		
 		public function LocalDataProxy()
 		{
@@ -20,18 +23,23 @@ package ca.georgebrown.trainingtutor.framework.model
 			_soData.objectEncoding = ObjectEncoding.AMF0;
 			_soData.addEventListener( AsyncErrorEvent.ASYNC_ERROR, onAsyncError );
 			_soData.addEventListener( SyncEvent.SYNC, onSyncEvent );
+			//_soData.data.currentSection = 0;
+			//_soData.flush();
 			super( NAME, _soData );
 		}
 		
 		public function get currentSection() : int
 		{
-			return 7;//_soData.data.currentSection || 0;
+			_topSection = _soData.data.currentSection || 0; 
+			return _topSection;
 		}
 		
-		public function updateSection( value:int ) : void
+		public static function updateSection( value:int ) : void
 		{
-			_soData.data.currentSection = value;
+			_topSection = Math.max( _topSection, value );
+			_soData.data.currentSection = _topSection;
 			_soData.flush();
+			NavigationBar.instance.sectionAccess( _topSection );
 		}
 		
 		private function onAsyncError( e:AsyncErrorEvent )  : void

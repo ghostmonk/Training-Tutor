@@ -39,6 +39,7 @@ package ca.georgebrown.trainingtutor.components.media
 			_video.addEventListener( CustomNetStreamEvent.STATUS, onStatus );
 			
 			_scrubBar = new VideoScrubBar( _view.scrubber.handle, _view.scrubber.progressBar, _view.scrubber.scrubGroove );
+			if( !TrainingTutor.IS_DEBUG ) _scrubBar.disable();
 			
 			_playBtn = new SimpleMovieClipButton( _view.playBtn, play );
 			_pauseBtn = new SimpleMovieClipButton( _view.pauseBtn, pause );
@@ -54,7 +55,6 @@ package ca.georgebrown.trainingtutor.components.media
 			
 			togglePlayPause( _playBtn, _pauseBtn );
 			_rrwd.enable();
-			_scrubBar.enable();
 		}
 		
 		public function disable() : void 
@@ -66,7 +66,6 @@ package ca.georgebrown.trainingtutor.components.media
 			
 			_playBtn.disable();
 			_rrwd.disable();
-			_scrubBar.disable();
 		}
 		
 		public function setPlayHead( percent:Number ) : void 

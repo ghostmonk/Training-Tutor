@@ -26,9 +26,8 @@ package ca.georgebrown.trainingtutor
 		public static function getInstance( key:String ) : AppFacade 
 		{	
 			if( instanceMap[ key ] == null ) 
-			{
 				instanceMap[ key ] = new AppFacade( key );
-			}
+				
 			return instanceMap[ key ] as AppFacade;
 		}
 		

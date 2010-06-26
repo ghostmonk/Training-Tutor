@@ -1,31 +1,35 @@
 package ca.georgebrown.trainingtutor.components.sections
 {
+	import ca.georgebrown.trainingtutor.valueObjects.ConfigData;
+	
 	import com.ghostmonk.ui.graveyard.buttons.SimpleMovieClipButton;
 	
 	import flash.events.MouseEvent;
+	import flash.net.URLRequest;
+	import flash.net.navigateToURL;
 	
 	import sectionContent.ToolKit.TK;
 
 	public class ToolKit extends CustomSection
 	{
-		private var _select01:SimpleMovieClipButton;
-		private var _select02:SimpleMovieClipButton;
+		private var _collegeResourcesLink:SimpleMovieClipButton;
+		private var _contactCentreLink:SimpleMovieClipButton;
 		
 		public function ToolKit()
 		{
 			super( new TK() );
-			_select01 = new SimpleMovieClipButton( view.button1, onButtonClick01 );
-			_select02 = new SimpleMovieClipButton( view.button2, onButtonClick02 );
+			_collegeResourcesLink = new SimpleMovieClipButton( view.button1, goToCollegeResources );
+			_contactCentreLink = new SimpleMovieClipButton( view.button2, goToContactCentre );
 		}
 		
-		private function onButtonClick01( e:MouseEvent ) : void
+		private function goToCollegeResources( e:MouseEvent ) : void
 		{
-			trace( "one" );
+			visitSite( ConfigData.LINKS[ "collegeResourses" ] ); 
 		}
 		
-		private function onButtonClick02( e:MouseEvent ) : void
+		private function goToContactCentre( e:MouseEvent ) : void
 		{
-			trace( "two" );
+			visitSite( ConfigData.LINKS[ "contactCentre" ] );
 		}
 	}
 }

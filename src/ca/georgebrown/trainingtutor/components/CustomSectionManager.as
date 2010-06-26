@@ -14,15 +14,20 @@ package ca.georgebrown.trainingtutor.components
 	[Event (name="nextSection", type="ca.georgebrown.trainingtutor.events.CustomSectionEvent")]
 	[Event (name="goHome", type="ca.georgebrown.trainingtutor.events.CustomSectionEvent")]
 	[Event (name="sequenceComplete", type="ca.georgebrown.trainingtutor.events.SequenceEvent")]
+	[Event (name="newSubSequence", type="ca.georgebrown.trainingtutor.events.SequenceEvent")]
 	
 	public class CustomSectionManager extends EventDispatcher
 	{
 		private var _customView:CustomSection;
 		private var _sequenceManager:SequenceManager;
 		private var _sectionComponent:SectionComponent;
+		private var _isSequential:Boolean;
+		private var _currentSequenceCodes:Array;
+		private var _currentSequenceIndex:int;
 		
 		public function CustomSectionManager( comp:SectionComponent ) : void
 		{
+			_isSequential = false;
 			_sectionComponent = comp; 
 			createSequenceManager();
 		}
@@ -30,13 +35,19 @@ package ca.georgebrown.trainingtutor.components
 		public function addSectionData( data:SectionContentData ) : void
 		{
 			destroyView();
-			if( data.isSequential ) 
+			_isSequential = data.isSequential;
+			_currentSequenceCodes = [];
+			_currentSequenceIndex = 0;
+			if( _isSequential ) 
 			{
+				_currentSequenceCodes = data.sequenceCodes;
 				_sequenceManager.addSequenceData( data.sequenceData );
 				onNextSection();
 				return;
 			}
-			if( !data.isBasic ) createView( data.contentType );
+			if( data.isBasic ) throw new Error( "Basic Data is not allowing in CustomSectionManager" );
+			
+			createView( data.contentType );
 		}
 		
 		public function playSectionTimeline() : void
@@ -55,9 +66,15 @@ package ca.georgebrown.trainingtutor.components
 			_customView.showActionButtons();
 		}
 		
-		private function onNextSection( e:CustomSectionEvent = null ) : void
+		public function onNextSection( e:CustomSectionEvent = null ) : void
 		{
 			destroyView();
+			if( !_isSequential ) 
+			{
+				onSequenceComplete( new SequenceEvent( SequenceEvent.SEQUENCE_COMPLETE ) );
+				return;
+			}
+			
 			var data:SectionContentData = _sequenceManager.nextSection;
 			if( !data ) return;
 			_sectionComponent.configureBaseView( data );
@@ -66,7 +83,7 @@ package ca.georgebrown.trainingtutor.components
 		
 		private function createView( type:String ) : void
 		{
-			_customView = CustomSectionFactory.getView( type );	
+			_customView = CustomSectionFactory.getView( type );
 			_customView.addEventListener(CustomSectionEvent.REPLAY, onReDispatch);
 			_customView.addEventListener(CustomSectionEvent.NEXT_SECTION, onNextSection);
 			_customView.addEventListener(CustomSectionEvent.GO_HOME, onReDispatch);
@@ -110,7 +127,8 @@ package ca.georgebrown.trainingtutor.components
 		
 		private function onNewSubSequence( e:SequenceEvent ) : void
 		{
-			trace( "new Sub sequence" );
+			dispatchEvent( new SequenceEvent( SequenceEvent.NEW_SUB_SEQUENCE, _currentSequenceCodes[ _currentSequenceIndex ] ) );
+			_currentSequenceIndex++;
 		}
 	}
 }

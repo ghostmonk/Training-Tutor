@@ -1,6 +1,8 @@
 package ca.georgebrown.trainingtutor.valueObjects 
 {
 	import com.ghostmonk.media.video.data.CuePoint;
+	
+	import flash.geom.Point;
 		
 	/**
 	 * 
@@ -13,13 +15,39 @@ package ca.georgebrown.trainingtutor.valueObjects
 		private var _cuePoints:Array;
 		private var _imageIDs:Array;
 		private var _sequenceList:Array = [];
+		private var _sequenceCodes:Array = [];
 		
 		public function SectionContentData( data:XML ) 
 		{	
-			_data = data;	
+			_data = data;
+			
+			//This is a terrible weird method of getting a code to decifer which sequence is being accessed
+			//There are two main sequences, with 2 and 3 sub sequences respectfully. These numbers are used 
+			// to update the SubNavBarElements found in the NavigationBar under components coreParts.
+			// 0:0, 0:1, 1:0, 1:1, 1:2 
+			var sequenceNodes:XMLList = _data.sequence;
+			
+			for each( var node:XML in sequenceNodes ) 
+			{
+				var codeString:String  = node.@code.toString();
+				var stringArray:Array = codeString.split( ":" );
+				var xPos:int = parseInt( stringArray[ 0 ] );
+				var yPos:int = parseInt( stringArray[ 1 ] );
+				if( !isNaN( xPos ) && !isNaN( yPos ) )
+				{
+					var newSeqPoint:Point = new Point( xPos, yPos );
+					_sequenceCodes.push( newSeqPoint );	
+				}
+			}
+			
 			createCuePoints();
 			createSequenceData();
 			createImageIDs();
+		}
+		
+		public function get sequenceCodes() : Array
+		{
+			return _sequenceCodes;
 		}
 		
 		public function get contentType() : String 

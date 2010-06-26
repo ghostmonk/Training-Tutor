@@ -25,7 +25,7 @@
 			<content type="basic">
 				<title><![CDATA[We Care About Students]]></title>
 				<text><![CDATA[In a series of interviews students and staff offered their responses and comments to 2 questions. Here are their thoughts. As you watch the videos please consider the following. 	In 2007 only 59% of George Brown students felt we cared about their success. How do you think we can demonstrate we care about students in everything that we do?]]></text>
-				<video src="video/intro.flv" />
+				<video src="http://localhost/devVids/gbc/video/intro.flv" />
 			</content>
 		</section>
 		
@@ -39,7 +39,7 @@
 						In this video, Anne Sado, President, shares her thoughts on how she believes you can play an important role in realizing our goal to be the leader in service excellence.
 						]]>
 					</text>
-				<video src="video/president.flv" />
+				<video src="http://localhost/devVids/gbc/video/president.flv" />
 			</content>
 		</section>
 		
@@ -70,7 +70,7 @@
 		
 		<section id="Our Students">
 			<content type="OS">
-				<video src="video/testimonials.flv">
+				<video src="http://localhost/devVids/gbc/video/testimonials.flv">
 					<cuePoint time="2" name="one" />
 					<cuePoint time="4" name="two" />
 					<cuePoint time="6" name="three" />
@@ -165,11 +165,11 @@
 								In this video, Anne Sado, President, shares her thoughts on how she believes you can play an important role in realizing our goal to be the leader in service excellence.
 								]]>
 							</text>
-						<video src="video/cs1.flv" />
+						<video src="http://localhost/devVids/gbc/video/cs1.flv" />
 					</sub>
 					
 					<sub type="RS06">
-						<video src="video/cs2.flv">
+						<video src="http://localhost/devVids/gbc/video/cs2.flv">
 							<cuePoint time="2" name="one" />
 							<cuePoint time="4" name="two" />
 							<cuePoint time="6" name="three" />
@@ -180,13 +180,13 @@
 					</sub>
 					
 					<sub type="RS07">
-						<video src="video/cs3.flv">
+						<video src="http://localhost/devVids/gbc/video/cs3.flv">
 							<cuePoint time="2" name="one" />
 						</video>
 					</sub>
 					
 					<sub type="RS08">
-						<video src="video/cs4.flv">
+						<video src="http://localhost/devVids/gbc/video/cs4.flv">
 							<cuePoint time="2" name="one" />
 							<cuePoint time="4" name="two" />
 							<cuePoint time="6" name="three" />
@@ -195,7 +195,7 @@
 					</sub>
 					
 					<sub type="RS09">
-						<video src="video/cs5.flv">
+						<video src="http://localhost/devVids/gbc/video/cs5.flv">
 							<cuePoint time="2" name="one" />
 							<cuePoint time="4" name="two" />
 							<cuePoint time="6" name="three" />
@@ -220,16 +220,16 @@
 					<sub type="RSE05" />
 					<sub type="RSE06" />
 					<sub type="RSE07">
-						<video src="video/rse1.flv" />
+						<video src="http://localhost/devVids/gbc/video/rse1.flv" />
 					</sub>
 					<sub type="RSE08">
-						<video src="video/rse2.flv" />
+						<video src="http://localhost/devVids/gbc/video/rse2.flv" />
 					</sub>
 					<sub type="RSE09">
-						<video src="video/rse3.flv" />
+						<video src="http://localhost/devVids/gbc/video/rse3.flv" />
 					</sub>
 					<sub type="RSE10">
-						<video src="video/rse4.flv" />
+						<video src="http://localhost/devVids/gbc/video/rse4.flv" />
 					</sub>
 					<sub type="RSE11" />
 					<sub type="RSE12" />
@@ -265,7 +265,7 @@
 					<sub type="SE12" />
 					<sub type="SE13" />
 					<sub type="SE14">
-						<video src="video/se.flv" />
+						<video src="http://localhost/devVids/gbc/video/se.flv" />
 					</sub>
 					<sub type="SE15" />
 					<sub type="SE16" />

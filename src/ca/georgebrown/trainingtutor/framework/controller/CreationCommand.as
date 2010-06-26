@@ -40,14 +40,14 @@ package ca.georgebrown.trainingtutor.framework.controller
 			var config:ConfigProxy = note.getBody() as ConfigProxy;
 			var localData:LocalDataProxy = facade.retrieveProxy( LocalDataProxy.NAME ) as LocalDataProxy;
 						
-			createNavigationMediator( localData.currentSection, config.sectionNames );
+			createNavigationMediator( localData.currentSection, config.sectionNames, config.subSectionNames );
 			createSectionMediator( config );
 			createLandingPageMediator( config.configData.landingPageImages, config.configData.imgRotationDelay, config.configData.transitionTime );
 			
 			sendNotification( NavigationEvent.INIT_SECTION, localData.currentSection );
 		}
 		
-		private function createNavigationMediator( currentSection:int, sections:Array ) : void
+		private function createNavigationMediator( currentSection:int, sections:Array, subSections:Array ) : void
 		{
 			var stageMediator:StageMediator = facade.retrieveMediator( StageMediator.NAME ) as StageMediator;
 			var footer:Footer = new Footer();
@@ -58,6 +58,7 @@ package ca.georgebrown.trainingtutor.framework.controller
 			navigationMediator.navBar.sectionIndex = currentSection;
 			navigationMediator.navBar.sectionAccess( currentSection );
 			navigationMediator.navBar.sectionLabels = sections;
+			navigationMediator.navBar.subNavLabels = subSections;
 			
 			facade.registerMediator( navigationMediator );
 		}

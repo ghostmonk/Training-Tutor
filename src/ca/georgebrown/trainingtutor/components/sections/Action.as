@@ -1,5 +1,8 @@
 package ca.georgebrown.trainingtutor.components.sections
 {
+	import ca.georgebrown.trainingtutor.events.CustomSectionEvent;
+	import ca.georgebrown.trainingtutor.valueObjects.ConfigData;
+	
 	import com.ghostmonk.ui.graveyard.buttons.SimpleMovieClipButton;
 	
 	import flash.events.MouseEvent;
@@ -8,22 +11,15 @@ package ca.georgebrown.trainingtutor.components.sections
 
 	public class Action extends CustomSection
 	{
-		private var _testButton:SimpleMovieClipButton;
-		
 		public function Action()
 		{
 			super( new ActionView() );
-			_testButton = new SimpleMovieClipButton( view.testYourselfBtn, onTestYourselfClick );
+			createDownloadButton( view.testYourselfBtn, ConfigData.LINKS[ "personalStyle" ] );
 		}
 		
 		override protected function onAction( e:MouseEvent ) : void
 		{
-			trace( "go home" );
-		}
-		
-		private function onTestYourselfClick( e:MouseEvent ) : void
-		{
-			trace( "test yourself" );
+			dispatchEvent( new CustomSectionEvent( CustomSectionEvent.GO_HOME ) );
 		}
 	}
 }

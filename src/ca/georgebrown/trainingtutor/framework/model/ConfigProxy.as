@@ -4,6 +4,7 @@ package ca.georgebrown.trainingtutor.framework.model
 	import ca.georgebrown.trainingtutor.valueObjects.SectionContentData;
 	
 	import com.ghostmonk.net.XMLLoader;
+	import com.ghostmonk.utils.Iterator;
 	
 	import org.puremvc.as3.multicore.patterns.proxy.Proxy;
 
@@ -55,14 +56,24 @@ package ca.georgebrown.trainingtutor.framework.model
 			return configData.getSection( index );	
 		}
 		
+		public function get subSectionNames() : Array
+		{
+			var output:Array = [];
+			var list:XMLList = configData.xml.sections.section.content.sequence.@id;
+			
+			for each( var item:String in list )
+				output.push( item );
+			
+			return output;
+		}
+		
 		public function get sectionNames() : Array 
 		{	
 			var output:Array = new Array();
 			var list:XMLList = configData.sectionIDs;
 			
-			for each( var label:String in list ) {
+			for each( var label:String in list )
 				output.push( label );
-			} 
 			
 			return output;	
 		}

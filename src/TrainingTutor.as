@@ -7,8 +7,6 @@ package
 	import caurina.transitions.properties.DisplayShortcuts;
 	import caurina.transitions.properties.TextShortcuts;
 	
-	import com.ghostmonk.utils.MainStage;
-	
 	import flash.display.MovieClip;
 	import flash.events.Event;
 	
@@ -22,8 +20,8 @@ package
 	 */
 	public class TrainingTutor extends MovieClip 
 	{	
-		private var _confURL:String = "xmlData/config.xml";
 		private var _appName:String = "TrainingTutor";
+		public static const IS_DEBUG:Boolean = false;
 		
 		public function TrainingTutor() 
 		{	
@@ -36,7 +34,7 @@ package
 		private function onAddedToStage(e:Event):void 
 		{	
 			removeEventListener( Event.ADDED_TO_STAGE, onAddedToStage );
-			var data:StartupData = new StartupData( stage, _confURL );
+			var data:StartupData = new StartupData( stage, root.loaderInfo.parameters.configURL );
 			AppFacade.getInstance( _appName ).startup( data );
 		}
 	}

@@ -1,11 +1,15 @@
 package ca.georgebrown.trainingtutor.framework.view 
 {	
 	import ca.georgebrown.trainingtutor.components.SectionComponent;
+	import ca.georgebrown.trainingtutor.events.CustomSectionEvent;
 	import ca.georgebrown.trainingtutor.events.LandingPageStateEvent;
 	import ca.georgebrown.trainingtutor.events.NavigationEvent;
-	import ca.georgebrown.trainingtutor.events.VideoPlayerEvent;
+	import ca.georgebrown.trainingtutor.events.SequenceEvent;
 	import ca.georgebrown.trainingtutor.framework.model.ConfigProxy;
 	import ca.georgebrown.trainingtutor.valueObjects.SectionContentData;
+	
+	import flash.utils.clearInterval;
+	import flash.utils.setInterval;
 	
 	import org.puremvc.as3.multicore.interfaces.INotification;
 	import org.puremvc.as3.multicore.patterns.mediator.Mediator;
@@ -24,13 +28,17 @@ package ca.georgebrown.trainingtutor.framework.view
 		private var _configProxy:ConfigProxy;
 		private var _currentSection:int;
 		private var _sectionsLength:int;
+		private var _isFirstSection:Boolean;
 		
 		public function SectionMediator( configProxy:ConfigProxy, viewManager:SectionComponent ) 
 		{
+			_isFirstSection = true;
 			super( NAME, viewManager );
 			_configProxy = configProxy;
 			_sectionComponent = viewManager;
 			_sectionComponent.addEventListener(NavigationEvent.NEXT_SECTION, onNextSection );
+			_sectionComponent.addEventListener(SequenceEvent.NEW_SUB_SEQUENCE, onSubSequence );
+			_sectionComponent.addEventListener(CustomSectionEvent.GO_HOME, onGoHome);
 			_sectionsLength = _configProxy.configData.sectionIDs.length();
 		}
 		
@@ -66,15 +74,17 @@ package ca.georgebrown.trainingtutor.framework.view
 			}
 		}
 
+		private var _interval:uint;
 		private function onLandingComplete() : void 
 		{
-			setView( _currentSection );
+			_interval = setInterval( setView, 1000, _currentSection );
 		}
 		
 		private function setView( index:int ) : void 
 		{	
+			clearInterval( _interval );
 			_currentSection = index;
-			var sectionData:SectionContentData = _configProxy.getSectionData( _currentSection );
+			var sectionData:SectionContentData = _configProxy.getSectionData( _currentSection );	
 			_sectionComponent.analyzeSectionContent( sectionData );
 		}
 		
@@ -84,6 +94,16 @@ package ca.georgebrown.trainingtutor.framework.view
 			_currentSection++; 
 			sendNotification( e.type, _currentSection );
 			setView( _currentSection );
+		}
+		
+		private function onSubSequence( e:SequenceEvent ) : void
+		{
+			sendNotification( e.type, e.sequenceCode );
+		}
+		
+		private function onGoHome( e:CustomSectionEvent ) : void
+		{
+			sendNotification( NavigationEvent.SECTION_NAVIGATION, 0 );
 		}
 	}
 }

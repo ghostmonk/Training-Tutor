@@ -21,7 +21,6 @@ package ca.georgebrown.trainingtutor
 		
 		public function GBCLoader() 
 		{	
-			SoundMixer.soundTransform = new SoundTransform( 0 );
 			stage.align = StageAlign.TOP_LEFT;
 			stage.scaleMode = StageScaleMode.NO_SCALE;
 			

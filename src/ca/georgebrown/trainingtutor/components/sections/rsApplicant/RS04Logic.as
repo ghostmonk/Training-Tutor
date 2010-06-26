@@ -1,14 +1,12 @@
 package ca.georgebrown.trainingtutor.components.sections.rsApplicant
 {
-	import ca.georgebrown.trainingtutor.components.sections.CustomSection;
-	
 	import sectionContent.RSApplicant.RS04;
 
-	public class RS04Logic extends CustomSection
+	public class RS04Logic extends IntervalTimelineAdvancer
 	{
 		public function RS04Logic()
 		{
-			super( new RS04() );
+			super( new RS04(), TOUCHPOINT_PAUSE_LENGTH );
 		}
 	}
 }

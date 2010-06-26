@@ -8,15 +8,19 @@ package ca.georgebrown.trainingtutor.valueObjects
 	public class ConfigData 
 	{	
 		private var _config:XML;
+		public static var LINKS:Object = {};
 	
 		public function ConfigData( xml:XML ) 
 		{				
-			_config = xml;	
+			_config = xml;
+			
+			for each( var link:XML in xml.links.children() )
+				LINKS[ link.localName() ] = link.@src;
 		}
 		
 		public function get xml() : XML 
 		{	
-			return _config;	
+			return _config;
 		} 
 		
 		public function get landingPageImages() : Dictionary 

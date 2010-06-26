@@ -98,7 +98,7 @@ package ca.georgebrown.trainingtutor.components.media
 		
 		public function play() : void 
 		{	
-			_core.play();	
+			_core.play();
 			_cuePointManager.start();
 		}
 		

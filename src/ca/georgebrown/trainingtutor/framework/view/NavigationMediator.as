@@ -2,6 +2,10 @@ package ca.georgebrown.trainingtutor.framework.view
 {
 	import ca.georgebrown.trainingtutor.components.coreParts.NavigationBar;
 	import ca.georgebrown.trainingtutor.events.NavigationEvent;
+	import ca.georgebrown.trainingtutor.events.SequenceEvent;
+	import ca.georgebrown.trainingtutor.framework.model.LocalDataProxy;
+	
+	import flash.geom.Point;
 	
 	import org.puremvc.as3.multicore.interfaces.INotification;
 	import org.puremvc.as3.multicore.patterns.mediator.Mediator;
@@ -23,12 +27,30 @@ package ca.georgebrown.trainingtutor.framework.view
 		
 		override public function listNotificationInterests() : Array 
 		{
-			return [ NavigationEvent.NEXT_SECTION ]
+			return [ 
+				NavigationEvent.NEXT_SECTION,
+				SequenceEvent.NEW_SUB_SEQUENCE,
+				NavigationEvent.SECTION_NAVIGATION ]
 		}
 		
 		override public function handleNotification( note:INotification ) : void
 		{
-			view.sectionIndex = note.getBody() as int;
+			switch( note.getName() )
+			{
+				case NavigationEvent.SECTION_NAVIGATION:
+				case NavigationEvent.NEXT_SECTION:
+					nextSection( note.getBody() as int );
+					break;
+				case SequenceEvent.NEW_SUB_SEQUENCE:
+					view.sequenceCode = note.getBody() as Point;
+					break;
+			}
+		}
+		
+		private function nextSection( value:int ) : void
+		{
+			view.sectionIndex = value;
+			LocalDataProxy.updateSection( value );
 		}
 		
 		public function get navBar() : NavigationBar

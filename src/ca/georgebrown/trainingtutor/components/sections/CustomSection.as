@@ -11,7 +11,9 @@ package ca.georgebrown.trainingtutor.components.sections
 	import flash.events.Event;
 	import flash.events.EventDispatcher;
 	import flash.events.MouseEvent;
-	
+	import flash.net.FileReference;
+	import flash.net.URLRequest;
+	import flash.net.navigateToURL;
 	
 	[Event (name="replay", type="ca.georgebrown.trainingtutor.events.CustomSectionEvent")]
 	[Event (name="nextSection", type="ca.georgebrown.trainingtutor.events.CustomSectionEvent")]
@@ -20,8 +22,13 @@ package ca.georgebrown.trainingtutor.components.sections
 	public class CustomSection extends EventDispatcher
 	{
 		protected static const ANIM_COMPLETE:String = "animComplete";
+		protected static const TOUCHPOINT_PAUSE_LENGTH:Number = 1000;
 		private var _actionBtn:SimpleMovieClipButton;
 		private var _replayBtn:SimpleMovieClipButton;
+		
+		private var _downloadButton:SimpleMovieClipButton;
+		private var _downloadSource:String;
+		
 		private var _view:MovieClip;
 		
 		public function CustomSection( view:MovieClip )
@@ -30,6 +37,12 @@ package ca.georgebrown.trainingtutor.components.sections
 			_view.addEventListener( ANIM_COMPLETE, onAnimComplete );
 			_actionBtn = createSimpleButton( view.actionBtn, onAction );
 			_replayBtn = createSimpleButton( view.videoReplayBtn, onVideoReplay );
+			if( TrainingTutor.IS_DEBUG ) showActionButtons();
+		}
+		
+		protected function visitSite( url:String ) : void
+		{
+			navigateToURL( new URLRequest( url ), "_blank" );
 		}
 		
 		public function get view() : MovieClip
@@ -63,6 +76,17 @@ package ca.georgebrown.trainingtutor.components.sections
 			dispatchEvent( new CustomSectionEvent( CustomSectionEvent.NEXT_SECTION ) );
 		}
 		
+		protected function createDownloadButton( mcBtn:MovieClip, sourceFile:String ) : void
+		{
+			_downloadSource = sourceFile;
+			_downloadButton =  new SimpleMovieClipButton( mcBtn, downloadFile );
+		}
+		
+		private function downloadFile( e:MouseEvent ) : void
+		{
+			new FileReference().download( new URLRequest( _downloadSource ) );
+		}
+		
 		private function onVideoReplay( e:MouseEvent ) : void
 		{
 			dispatchEvent( new CustomSectionEvent( CustomSectionEvent.REPLAY ) );
@@ -78,7 +102,7 @@ package ca.georgebrown.trainingtutor.components.sections
 		private function createSimpleButton( view:MovieClip, callback:Function ) : SimpleMovieClipButton
 		{
 			if( !view ) return null;
-			var output:SimpleMovieClipButton = new SimpleMovieClipButton( view, onAction );
+			var output:SimpleMovieClipButton = new SimpleMovieClipButton( view, callback );
 			output.view.alpha = 0;
 			output.view.visible = false;
 			output.disable();

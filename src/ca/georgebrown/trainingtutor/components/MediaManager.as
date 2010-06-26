@@ -71,7 +71,7 @@ package ca.georgebrown.trainingtutor.components
 		
 		public function replayVideo() : void
 		{
-			_videoPlayer.play();
+			_videoPlayer.replay();
 		}
 		
 		private function setCuePoints( value:Array ) : void
@@ -84,7 +84,7 @@ package ca.georgebrown.trainingtutor.components
 		public function positionAssets() : void
 		{
 			_videoPlayer.x = _imageView.x = 34; 
-			_videoPlayer.y = ( MainStage.instance.stageHeight - _videoPlayer.height ) * 0.5;
+			_videoPlayer.y = 125;
 			_imageView.y = ( MainStage.instance.stageHeight - _imageView.height ) * 0.5;
 		}
 		

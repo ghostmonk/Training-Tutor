@@ -1,6 +1,7 @@
 package ca.georgebrown.trainingtutor.components
 {
 	import ca.georgebrown.trainingtutor.components.textDisplay.SectionText;
+	import ca.georgebrown.trainingtutor.events.CustomSectionEvent;
 	import ca.georgebrown.trainingtutor.events.NavigationEvent;
 	import ca.georgebrown.trainingtutor.events.SequenceEvent;
 	import ca.georgebrown.trainingtutor.events.VideoPlayerEvent;
@@ -12,9 +13,11 @@ package ca.georgebrown.trainingtutor.components
 	
 	import flash.display.Sprite;
 	import flash.display.Stage;
+	import flash.events.Event;
 	
 	[Event (name="nextSection", type="ca.georgebrown.trainingtutor.events.NavigationEvent")]
 	[Event (name="videoComplete", type="ca.georgebrown.trainingtutor.events.VideoPlayerEvent")]
+	[Event (name="newSubSequence", type="ca.georgebrown.trainingtutor.events.SequenceEvent")]
 	
 	public class SectionComponent extends Sprite
 	{
@@ -25,15 +28,23 @@ package ca.georgebrown.trainingtutor.components
 		private var _customManager:CustomSectionManager;
 		private var _basicSectionNav:BasicSectionNav;
 		private var _showNavigation:Boolean;
+		private var _videoIsActive:Boolean;
+		private var _isSequential:Boolean;
 		
 		public function SectionComponent()
 		{
+			_isSequential = false;
+			_videoIsActive = false;
+			
 			_basicSectionNav = new BasicSectionNav();
 			_basicSectionNav.addEventListener( NavigationEvent.NEXT_SECTION, onNextSection );
 			_basicSectionNav.addEventListener( VideoPlayerEvent.REPLAY_VIDEO, onReplayVideo );
 			
 			_customManager = new CustomSectionManager( this );
 			_customManager.addEventListener( SequenceEvent.SEQUENCE_COMPLETE, onSequenceComplete );
+			_customManager.addEventListener( CustomSectionEvent.REPLAY, onReplayVideo );
+			_customManager.addEventListener( SequenceEvent.NEW_SUB_SEQUENCE, dispatchEvent );
+			_customManager.addEventListener( CustomSectionEvent.GO_HOME, dispatchEvent );
 			_stage = MainStage.instance;
 			_stage.addChild( this );
 		}
@@ -56,12 +67,14 @@ package ca.georgebrown.trainingtutor.components
 		{
 			_customManager.clean();
 			configureBaseView( content );
+			_isSequential = content.isSequential;
 			if( !content.isBasic ) 
 				_customManager.addSectionData( content );
 		}
 		
 		public function configureBaseView( content:SectionContentData ) : void
 		{
+			_videoIsActive = content.hasVideo;
 			_mediaManager.imageSwap = content.useChangeOnTextScroll;
 			
 			setVideo( content.hasVideo, content.videoURL, content.cuePoints );
@@ -76,9 +89,12 @@ package ca.georgebrown.trainingtutor.components
 				_sectionText.buildOut();
 			
 			if( content.isBasic && !content.hasVideo )
-				_basicSectionNav.show();
+			{
+				MainStage.instance.addChild( _basicSectionNav );
+				_basicSectionNav.show( false );
+			}
 			
-			positionAssets() 
+			positionAssets();
 		}
 		
 		private function setImageViewer( hasImages:Boolean, ids:Array ) : void
@@ -125,7 +141,7 @@ package ca.georgebrown.trainingtutor.components
 			if( _showNavigation ) 
 			{
 				MainStage.instance.addChild( _basicSectionNav );
-				_basicSectionNav.show();
+				_basicSectionNav.show( _videoIsActive );
 			}
 			else
 			{
@@ -145,10 +161,13 @@ package ca.georgebrown.trainingtutor.components
 		
 		private function onNextSection( e:NavigationEvent ) : void
 		{
-			dispatchEvent( new NavigationEvent( NavigationEvent.NEXT_SECTION, -1 ) );
+			if( _isSequential )
+				_customManager.onNextSection();
+			else
+				dispatchEvent( new NavigationEvent( NavigationEvent.NEXT_SECTION, -1 ) );
 		}
 		
-		private function onReplayVideo( e:VideoPlayerEvent ) : void
+		private function onReplayVideo( e:Event ) : void
 		{
 			_mediaManager.replayVideo();
 		}

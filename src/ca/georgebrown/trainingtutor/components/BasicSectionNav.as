@@ -27,10 +27,11 @@ package ca.georgebrown.trainingtutor.components
 			_replay = new SimpleMovieClipButton( replayBtn, onReplay );
 		}
 		
-		public function show() : void
+		public function show( hasVideo:Boolean ) : void
 		{
 			_continue.enable();
-			_replay.enable();
+			_replay.view.visible = hasVideo;
+			if( hasVideo ) _replay.enable();
 			Tweener.addTween( this, {alpha:1, time:0.3, transition:Equations.easeNone} );
 		}
 		
@@ -38,7 +39,12 @@ package ca.georgebrown.trainingtutor.components
 		{
 			_continue.disable();
 			_replay.disable();
-			Tweener.addTween( this, {alpha:0, time:0.3, transition:Equations.easeNone} );
+			Tweener.addTween( this, {alpha:0, time:0.3, transition:Equations.easeNone, onComplete:removeMe } );
+		}
+		
+		private function removeMe() : void
+		{
+			if( parent ) parent.removeChild( this );
 		}
 		
 		private function onContinue( e:MouseEvent ) : void
