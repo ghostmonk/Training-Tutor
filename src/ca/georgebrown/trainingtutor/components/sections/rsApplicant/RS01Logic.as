@@ -32,7 +32,7 @@ package ca.georgebrown.trainingtutor.components.sections.rsApplicant
 		private function onBodyComplete( e:Event ) : void
 		{
 			view.bodyText.removeEventListener( ANIM_COMPLETE, onBodyComplete );
-			contentBuildInComplete();
+			showActionButtons();
 		}
 	}
 }

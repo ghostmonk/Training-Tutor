@@ -47,7 +47,7 @@ package ca.georgebrown.trainingtutor.components.sections
 			} );
 		}
 		
-		protected function contentBuildInComplete() : void
+		public function showActionButtons() : void
 		{
 			buildInButton( _actionBtn );
 			buildInButton( _replayBtn );
@@ -55,7 +55,7 @@ package ca.georgebrown.trainingtutor.components.sections
 		
 		protected function onAnimComplete( e:Event ) : void
 		{
-			contentBuildInComplete();	
+			showActionButtons();	
 		}
 		
 		protected function onAction( e:MouseEvent ) : void

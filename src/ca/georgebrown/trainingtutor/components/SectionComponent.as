@@ -14,6 +14,7 @@ package ca.georgebrown.trainingtutor.components
 	import flash.display.Stage;
 	
 	[Event (name="nextSection", type="ca.georgebrown.trainingtutor.events.NavigationEvent")]
+	[Event (name="videoComplete", type="ca.georgebrown.trainingtutor.events.VideoPlayerEvent")]
 	
 	public class SectionComponent extends Sprite
 	{
@@ -22,9 +23,15 @@ package ca.georgebrown.trainingtutor.components
 		private var _stage:Stage;
 		private var _mediaManager:MediaManager;
 		private var _customManager:CustomSectionManager;
+		private var _basicSectionNav:BasicSectionNav;
+		private var _showNavigation:Boolean;
 		
 		public function SectionComponent()
 		{
+			_basicSectionNav = new BasicSectionNav();
+			_basicSectionNav.addEventListener( NavigationEvent.NEXT_SECTION, onNextSection );
+			_basicSectionNav.addEventListener( VideoPlayerEvent.REPLAY_VIDEO, onReplayVideo );
+			
 			_customManager = new CustomSectionManager( this );
 			_customManager.addEventListener( SequenceEvent.SEQUENCE_COMPLETE, onSequenceComplete );
 			_stage = MainStage.instance;
@@ -60,12 +67,18 @@ package ca.georgebrown.trainingtutor.components
 			setVideo( content.hasVideo, content.videoURL, content.cuePoints );
 			setImageViewer( content.hasImages, content.imageIDs );
 			
-			if( content.isBasic ) 
+			_basicSectionNav.hide();
+			_showNavigation = content.isBasic;
+			
+			if( content.isBasic )
 				createBasicView( content );
-			else 
+			else
 				_sectionText.buildOut();
 			
-			positionAssets();
+			if( content.isBasic && !content.hasVideo )
+				_basicSectionNav.show();
+			
+			positionAssets() 
 		}
 		
 		private function setImageViewer( hasImages:Boolean, ids:Array ) : void
@@ -103,21 +116,41 @@ package ca.georgebrown.trainingtutor.components
 			_mediaManager.positionAssets();
 			_sectionText.x = _stage.stageWidth - _sectionText.width - 40;
 			_sectionText.y = ( _stage.stageHeight - _sectionText.height ) * 0.5;
+			_basicSectionNav.x = _sectionText.x;
+			_basicSectionNav.y = _sectionText.y + _sectionText.bodyTextFld.height + _sectionText.titleFld.height + 5;
 		}
 		
 		private function onVideoComplete( e:VideoPlayerEvent ) : void
 		{
-			
+			if( _showNavigation ) 
+			{
+				MainStage.instance.addChild( _basicSectionNav );
+				_basicSectionNav.show();
+			}
+			else
+			{
+				_customManager.showActionButtons();
+			}
 		}
 		
 		private function onCuePoint( e:CuePointEvent ) : void
 		{
-			_customManager.advanceSection();
+			_customManager.playSectionTimeline();
 		}
 		
 		private function onSequenceComplete( e:SequenceEvent ) : void
 		{
 			dispatchEvent( new NavigationEvent( NavigationEvent.NEXT_SECTION, -1 ) );
+		}
+		
+		private function onNextSection( e:NavigationEvent ) : void
+		{
+			dispatchEvent( new NavigationEvent( NavigationEvent.NEXT_SECTION, -1 ) );
+		}
+		
+		private function onReplayVideo( e:VideoPlayerEvent ) : void
+		{
+			_mediaManager.replayVideo();
 		}
 	}
 }

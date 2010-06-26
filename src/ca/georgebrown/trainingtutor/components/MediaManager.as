@@ -69,6 +69,11 @@ package ca.georgebrown.trainingtutor.components
 			_videoPlayer.buildOut();
 		}
 		
+		public function replayVideo() : void
+		{
+			_videoPlayer.play();
+		}
+		
 		private function setCuePoints( value:Array ) : void
 		{
 			_videoPlayer.cuePointManager.clearCuePoints();

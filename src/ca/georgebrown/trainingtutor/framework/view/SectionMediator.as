@@ -3,6 +3,7 @@ package ca.georgebrown.trainingtutor.framework.view
 	import ca.georgebrown.trainingtutor.components.SectionComponent;
 	import ca.georgebrown.trainingtutor.events.LandingPageStateEvent;
 	import ca.georgebrown.trainingtutor.events.NavigationEvent;
+	import ca.georgebrown.trainingtutor.events.VideoPlayerEvent;
 	import ca.georgebrown.trainingtutor.framework.model.ConfigProxy;
 	import ca.georgebrown.trainingtutor.valueObjects.SectionContentData;
 	

@@ -39,7 +39,7 @@ package ca.georgebrown.trainingtutor.components
 			if( !data.isBasic ) createView( data.contentType );
 		}
 		
-		public function advanceSection() : void
+		public function playSectionTimeline() : void
 		{
 			_customView.view.play();
 		}
@@ -48,6 +48,11 @@ package ca.georgebrown.trainingtutor.components
 		{
 			if( _customView ) _customView.buildOut();
 			_customView = null;
+		}
+		
+		public function showActionButtons() : void
+		{
+			_customView.showActionButtons();
 		}
 		
 		private function onNextSection( e:CustomSectionEvent = null ) : void
