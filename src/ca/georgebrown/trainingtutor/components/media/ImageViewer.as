@@ -9,6 +9,8 @@ package ca.georgebrown.trainingtutor.components.media
 	
 	import flash.display.Bitmap;
 	import flash.display.Sprite;
+	import flash.events.TimerEvent;
+	import flash.utils.Timer;
 
 	public class ImageViewer extends Sprite
 	{
@@ -19,6 +21,9 @@ package ca.georgebrown.trainingtutor.components.media
 		private var _currentID:String;
 		private var	_loadingBuffer:RotatingBufferIcon;
 		
+		private var _rotationTimer:Timer;
+		private var _rotationNode:int;
+		
 		public function ImageViewer( imageData:Array )
 		{
 			_bulkLoader = new BulkAssetIDLoader( new Bitmap( new BrokenImage( 0, 0 ) ) );
@@ -26,6 +31,22 @@ package ca.georgebrown.trainingtutor.components.media
 			_isActive = false;
 			fillBulkLoader( imageData );
 		}	
+		
+		private function startTimer( rate:int ) : void
+		{
+			_rotationTimer = new Timer( rate );
+			_rotationTimer.addEventListener( TimerEvent.TIMER, onTimer );
+			_rotationTimer.start();
+		}
+		
+		private function stopTimer() : void
+		{
+			if( _rotationTimer == null ) return;
+			_rotationNode = 0;
+			_rotationTimer.stop();
+			_rotationTimer.removeEventListener( TimerEvent.TIMER, onTimer );
+			_rotationTimer = null;			
+		}
 		
 		public function updateView( percent:Number ) : void
 		{
@@ -39,25 +60,31 @@ package ca.georgebrown.trainingtutor.components.media
 			showAsset( _currentID );
 		}
 		
-		public function set imageIDs( value:Array ) : void
+		public function setImageIDs( value:Array, useTimer:Boolean, rate:int ) : void
 		{
+			stopTimer();
 			_currentIDs = value;
+			_rotationNode = 0;
+			
+			if( useTimer ) startTimer( rate );
 			
 			if( _currentIDs.length > 0 ) 
 			{
-				_currentID = _currentIDs[0];
+				_currentID = _currentIDs[ _rotationNode ];
 				showAsset( _currentID );
 			}
 		}
 		
 		public function buildIn() : void
 		{
+			stopTimer();
 			_isActive = true;
 			Tweener.addTween( this, { alpha:1, time:0.3, transition:Equations.easeNone } );
 		}
 		
 		public function buildOut() : void
 		{
+			stopTimer();
 			_isActive = false;	
 			_currentID = null;
 			Tweener.addTween( this, { alpha:0, time:0.3, transition:Equations.easeNone, onComplete:cleanView } );
@@ -68,13 +95,13 @@ package ca.georgebrown.trainingtutor.components.media
 			var outImage:Bitmap = _currentImage;
 			if( outImage )
 				Tweener.addTween( outImage, 
-					{ alpha:0, time:0.3, transition:Equations.easeNone, onComplete:removeImage, onCompleteParams:[outImage] } );
+					{ alpha:0, time:0.5, transition:Equations.easeNone, onComplete:removeImage, onCompleteParams:[outImage] } );
 			
 			
 			_currentImage = _bulkLoader.getAssetByID( id ) as Bitmap;
 			_currentImage.alpha = 0;
 			addChild( _currentImage );
-			Tweener.addTween( _currentImage, { alpha:1, time:0.3, transition:Equations.easeNone } );
+			Tweener.addTween( _currentImage, { alpha:1, time:0.5, transition:Equations.easeNone } );
 		}
 		
 		private function removeImage( img:Bitmap ) : void
@@ -91,9 +118,18 @@ package ca.georgebrown.trainingtutor.components.media
 		
 		private function cleanView() : void
 		{
+			stopTimer();
 			if( _currentImage && _currentImage.parent == this ) removeChild( _currentImage );	
 			_currentImage = null;
 			if( parent ) parent.removeChild( this );
+		}
+		
+		private function onTimer( e:TimerEvent ) : void
+		{
+			_rotationNode++;
+			if( _rotationNode == _currentIDs.length ) _rotationNode = 0;
+			_currentID = _currentIDs[ _rotationNode ];
+			showAsset( _currentID );
 		}
 	}
 }

@@ -42,10 +42,10 @@ package ca.georgebrown.trainingtutor.components
 			if( _useImageSwap ) _imageView.updateView( value );
 		}
 		
-		public function enableImageView( imageIDs:Array ) : void
+		public function enableImageView( imageIDs:Array, useTimer:Boolean, rate:int ) : void
 		{
 			_imageView.buildIn();
-			_imageView.imageIDs = imageIDs;	
+			_imageView.setImageIDs( imageIDs, useTimer, rate );	
 			MainStage.instance.addChild( _imageView );
 		}
 		

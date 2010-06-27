@@ -14,6 +14,9 @@
 	<links>
 		<testYourself src="excelDocs/personalStyle.xlsx" />
 		<personalStyle src="excelDocs/testYourself.xlsx" />
+		<missionStatement src="excelDocs/testYourself.xlsx" />
+		<scoreCards src="excelDocs/testYourself.xlsx" />
+		<coachingCheckList src="excelDocs/testYourself.xlsx" />
 		<collegeResourses src="http://www.google.com" />
 		<contactCentre src="http://www.msn.ca" />
 	</links>
@@ -60,7 +63,7 @@
 						Please take the time to go through all of the modules in this tool.  I hope you will find it to be invaluable in serving our applicants and students.
 						Wayne Poirier, Director – Student Service sand Campus Life.
 					]]></text>
-				<images changeOnTextScroll="true" base="images/sections/our-students/">
+				<images changeOnTextScroll="true" base="images/sections/our-students/" useImageTimer="false">
 					<img id="AB01" src="student-body.jpg" />
 					<img id="AB02" src="first-gen.jpg" />
 				</images>
@@ -92,7 +95,7 @@
 					<sub type="RS01" />
 					
 					<sub type="RS02">
-						<images changeOnTextScroll="false" base="images/sections/remarkable-services/applicant/provide/">
+						<images changeOnTextScroll="false" base="images/sections/remarkable-services/applicant/provide/" useImageTimer="true" imageSwapRate="2000">
 							<img id="RS0201" src="01.jpg" />
 							<img id="RS0202" src="02.jpg" />
 							<img id="RS0203" src="03.jpg" />
@@ -103,7 +106,7 @@
 					</sub>
 					
 					<sub type="RS03">
-						<images changeOnTextScroll="false" base="images/sections/remarkable-services/applicant/touchpoints/">
+						<images changeOnTextScroll="false" base="images/sections/remarkable-services/applicant/touchpoints/" useImageTimer="true" imageSwapRate="2000">
 							<img id="RS0301" src="01.jpg" />
 							<img id="RS0302" src="02.jpg" />
 							<img id="RS0303" src="03.jpg" />
@@ -118,7 +121,7 @@
 					</sub>
 					
 					<sub type="RS04">
-						<images changeOnTextScroll="false" base="images/sections/remarkable-services/applicant/touchpoints2/">
+						<images changeOnTextScroll="false" base="images/sections/remarkable-services/applicant/touchpoints2/" useImageTimer="true" imageSwapRate="2000">
 							<img id="RS0401" src="01.jpg" />
 							<img id="RS0402" src="02.jpg" />
 							<img id="RS0403" src="03.jpg" />
@@ -182,7 +185,7 @@
 				
 				<sequence id="The Employee" code="0:1">
 					<sub type="RSE01">
-						<images base="images/sections/misc/">
+						<images base="images/sections/misc/" useImageTimer="false">
 							<img id="COM01" src="01.jpg" />
 						</images>
 					</sub>
@@ -219,7 +222,7 @@
 				
 				<sequence id="Communications" code="1:0">
 					<sub type="SE01">
-						<images base="images/sections/misc/">
+						<images base="images/sections/misc/" useImageTimer="true" imageSwapRate="2000">
 							<img id="COM01" src="01.jpg" />
 							<img id="COM02" src="02.jpg" />
 							<img id="COM03" src="03.jpg" />
@@ -244,11 +247,7 @@
 					<sub type="SE16" />
 					<sub type="SE17" />
 					<sub type="SE18" />
-					<sub type="SE19">
-						<images base="images/sections/misc/">
-							<img id="COM02" src="02.jpg" />
-						</images>
-					</sub>
+					<sub type="SE19" />
 				</sequence>
 				
 				<sequence id="Job Tips" code="1:1">
@@ -266,7 +265,7 @@
 								We aspire to be the "One-Stop-Shop" location for information and student services, equipped with the tools to manage visitor relationships and build the brand through the visitor experience.
 								We strive for quality in everything we do and we aim to ensure that the best service is delivered to each and every Student Service Centre visitor.
 							]]></text>
-						<images changeOnTextScroll="true" base="images/sections/workplace/">
+						<images changeOnTextScroll="true" base="images/sections/workplace/" useImageTimer="true" imageSwapRate="2000">
 							<img id="OW01" src="01.jpg" />
 							<img id="OW02" src="02.jpg" />
 							<img id="OW03" src="03.jpg" />
@@ -295,7 +294,7 @@
 								Engages in the coaching and mentoring of each other
 								Is viewed as knowledgeable, skilled an is motivated to own and resolve visitor issues
 							]]></text>
-						<images changeOnTextScroll="true" base="images/sections/workplace/">
+						<images changeOnTextScroll="true" base="images/sections/workplace/" useImageTimer="true" imageSwapRate="2000">
 							<img id="OW01" src="01.jpg" />
 							<img id="OW02" src="02.jpg" />
 							<img id="OW03" src="03.jpg" />
@@ -325,7 +324,7 @@
 								Engages in the coaching and mentoring of each other
 								Is viewed as knowledgeable, skilled and is motivated to own and resolves customer issues
 							]]></text>
-						<images changeOnTextScroll="true" base="images/sections/workplace/">
+						<images changeOnTextScroll="true" base="images/sections/workplace/" useImageTimer="true" imageSwapRate="2000">
 							<img id="OW01" src="01.jpg" />
 							<img id="OW02" src="02.jpg" />
 							<img id="OW03" src="03.jpg" />

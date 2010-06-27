@@ -46,6 +46,17 @@ package ca.georgebrown.trainingtutor.valueObjects
 			createImageIDs();
 		}
 		
+		public function get imageSwapRate() : int
+		{
+			var rate:int = _data.images ? parseInt( _data.images.@imageSwapRate ) : 2000;
+			return isNaN( rate ) ? 0 : rate;
+		}
+		
+		public function get useImageTimer() : Boolean
+		{
+			return _data.images ? _data.images.@useImageTimer == "true" : false;
+		}
+		
 		public function get sequenceCodes() : Array
 		{
 			return _sequenceCodes;
@@ -85,7 +96,7 @@ package ca.georgebrown.trainingtutor.valueObjects
 		{
 			return _cuePoints;
 		}
-		
+
 		public function get useChangeOnTextScroll() : Boolean
 		{
 			return _data.images ? _data.images.@changeOnTextScroll == "true" : false;

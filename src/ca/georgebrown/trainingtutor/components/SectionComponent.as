@@ -78,7 +78,7 @@ package ca.georgebrown.trainingtutor.components
 			_mediaManager.imageSwap = content.useChangeOnTextScroll;
 			
 			setVideo( content.hasVideo, content.videoURL, content.cuePoints );
-			setImageViewer( content.hasImages, content.imageIDs );
+			setImageViewer( content.hasImages, content.imageIDs, content.useImageTimer, content.imageSwapRate );
 			
 			_basicSectionNav.hide();
 			_showNavigation = content.isBasic;
@@ -97,10 +97,10 @@ package ca.georgebrown.trainingtutor.components
 			positionAssets();
 		}
 		
-		private function setImageViewer( hasImages:Boolean, ids:Array ) : void
+		private function setImageViewer( hasImages:Boolean, ids:Array, useImageTimer:Boolean, rate:int ) : void
 		{
 			if( hasImages )
-				_mediaManager.enableImageView( ids );
+				_mediaManager.enableImageView( ids, useImageTimer, rate );
 			else
 				_mediaManager.diableImageView();
 		}
