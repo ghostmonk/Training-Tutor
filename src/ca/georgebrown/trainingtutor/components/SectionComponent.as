@@ -1,15 +1,15 @@
 package ca.georgebrown.trainingtutor.components
 {
+	import G3D4Y6f4t0l2UycswkI.CuePointEvent;
+	import G3D4Y6f4t0l2UycswkI.MainStage;
+	import G3D4Y6f4t0l2UycswkI.PercentageEvent;
+	
 	import ca.georgebrown.trainingtutor.components.textDisplay.SectionText;
 	import ca.georgebrown.trainingtutor.events.CustomSectionEvent;
 	import ca.georgebrown.trainingtutor.events.NavigationEvent;
 	import ca.georgebrown.trainingtutor.events.SequenceEvent;
 	import ca.georgebrown.trainingtutor.events.VideoPlayerEvent;
 	import ca.georgebrown.trainingtutor.valueObjects.SectionContentData;
-	
-	import com.ghostmonk.events.PercentageEvent;
-	import com.ghostmonk.media.video.events.CuePointEvent;
-	import com.ghostmonk.utils.MainStage;
 	
 	import flash.display.Sprite;
 	import flash.display.Stage;

@@ -1,15 +1,15 @@
 package ca.georgebrown.trainingtutor.components.media 
 {	
+	import G3D4Y6f4t0l2UycswkI.CoreVideo;
+	import G3D4Y6f4t0l2UycswkI.CustomNetStreamEvent;
+	import G3D4Y6f4t0l2UycswkI.PercentageEvent;
+	import G3D4Y6f4t0l2UycswkI.SimpleMovieClipButton;
+	import G3D4Y6f4t0l2UycswkI.VideoControlEvent;
+	import G3D4Y6f4t0l2UycswkI.VideoScrubBar;
+	
 	import assets.videoPlayer.controlBar.VideoControlBarAsset;
 	
 	import ca.georgebrown.trainingtutor.events.VideoPlayerEvent;
-	
-	import com.ghostmonk.events.PercentageEvent;
-	import com.ghostmonk.media.video.CoreVideo;
-	import com.ghostmonk.media.video.events.CustomNetStreamEvent;
-	import com.ghostmonk.media.video.events.VideoControlEvent;
-	import com.ghostmonk.ui.graveyard.buttons.SimpleMovieClipButton;
-	import com.ghostmonk.ui.graveyard.idecomposed.VideoScrubBar;
 	
 	import flash.events.Event;
 	import flash.events.EventDispatcher;

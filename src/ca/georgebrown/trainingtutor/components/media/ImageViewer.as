@@ -1,11 +1,11 @@
 package ca.georgebrown.trainingtutor.components.media
 {
+	import G3D4Y6f4t0l2UycswkI.RotatingBufferIcon;
+	
 	import assets.BrokenImage;
 	
 	import caurina.transitions.Equations;
 	import caurina.transitions.Tweener;
-	
-	import com.ghostmonk.ui.RotatingBufferIcon;
 	
 	import flash.display.Bitmap;
 	import flash.display.Sprite;

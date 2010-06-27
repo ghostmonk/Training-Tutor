@@ -1,17 +1,17 @@
 package ca.georgebrown.trainingtutor.components.media 
 {	
+	import G3D4Y6f4t0l2UycswkI.CoreVideo;
+	import G3D4Y6f4t0l2UycswkI.CuePointEvent;
+	import G3D4Y6f4t0l2UycswkI.CuePointManager;
+	import G3D4Y6f4t0l2UycswkI.CustomNetStreamEvent;
+	import G3D4Y6f4t0l2UycswkI.PercentageEvent;
+	
 	import assets.videoPlayer.VideoPlayerAsset;
 	
 	import ca.georgebrown.trainingtutor.events.VideoPlayerEvent;
 	
 	import caurina.transitions.Equations;
 	import caurina.transitions.Tweener;
-	
-	import com.ghostmonk.events.PercentageEvent;
-	import com.ghostmonk.media.video.CoreVideo;
-	import com.ghostmonk.media.video.CuePointManager;
-	import com.ghostmonk.media.video.events.CuePointEvent;
-	import com.ghostmonk.media.video.events.CustomNetStreamEvent;
 	
 	import flash.display.Sprite;
 	import flash.media.Video;

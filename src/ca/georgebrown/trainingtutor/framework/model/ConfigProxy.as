@@ -1,10 +1,9 @@
 package ca.georgebrown.trainingtutor.framework.model 
 {	
+	import G3D4Y6f4t0l2UycswkI.XMLLoader;
+	
 	import ca.georgebrown.trainingtutor.valueObjects.ConfigData;
 	import ca.georgebrown.trainingtutor.valueObjects.SectionContentData;
-	
-	import com.ghostmonk.net.XMLLoader;
-	import com.ghostmonk.utils.Iterator;
 	
 	import org.puremvc.as3.multicore.patterns.proxy.Proxy;
 

@@ -3,7 +3,6 @@ package ca.georgebrown.trainingtutor.components.sections
 	import ca.georgebrown.trainingtutor.events.CustomSectionEvent;
 	import ca.georgebrown.trainingtutor.valueObjects.ConfigData;
 	
-	import com.ghostmonk.ui.graveyard.buttons.SimpleMovieClipButton;
 	
 	import flash.events.MouseEvent;
 	

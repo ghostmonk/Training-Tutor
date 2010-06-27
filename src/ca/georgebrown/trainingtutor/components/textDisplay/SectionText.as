@@ -1,5 +1,7 @@
 package ca.georgebrown.trainingtutor.components.textDisplay 
 {	
+	import G3D4Y6f4t0l2UycswkI.PercentageEvent;
+	
 	import body.SectionTextAsset;
 	
 	import ca.georgebrown.trainingtutor.utils.TextFormatting;
@@ -7,8 +9,6 @@ package ca.georgebrown.trainingtutor.components.textDisplay
 	import caurina.transitions.Equations;
 	import caurina.transitions.Tweener;
 	import caurina.transitions.properties.TextShortcuts;
-	
-	import com.ghostmonk.events.PercentageEvent;
 	
 	import flash.display.DisplayObjectContainer;
 	import flash.events.Event;

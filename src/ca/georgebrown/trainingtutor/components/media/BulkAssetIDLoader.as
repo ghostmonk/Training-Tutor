@@ -1,6 +1,6 @@
 package ca.georgebrown.trainingtutor.components.media
 {
-	import com.ghostmonk.net.IDLoader;
+	import G3D4Y6f4t0l2UycswkI.IDLoader;
 	
 	import flash.display.Bitmap;
 	import flash.display.Sprite;

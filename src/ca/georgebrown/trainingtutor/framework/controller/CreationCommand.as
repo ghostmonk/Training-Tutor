@@ -1,5 +1,7 @@
 package ca.georgebrown.trainingtutor.framework.controller 
 {	
+	import G3D4Y6f4t0l2UycswkI.CoreVideo;
+	
 	import assets.videoPlayer.VideoPlayerAsset;
 	
 	import ca.georgebrown.trainingtutor.components.MediaManager;
@@ -20,8 +22,6 @@ package ca.georgebrown.trainingtutor.framework.controller
 	import ca.georgebrown.trainingtutor.framework.view.NavigationMediator;
 	import ca.georgebrown.trainingtutor.framework.view.SectionMediator;
 	import ca.georgebrown.trainingtutor.framework.view.StageMediator;
-	
-	import com.ghostmonk.media.video.CoreVideo;
 	
 	import flash.utils.Dictionary;
 	

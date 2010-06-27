@@ -1,5 +1,7 @@
 package ca.georgebrown.trainingtutor.components.coreParts 
 {	
+	import G3D4Y6f4t0l2UycswkI.SimpleMovieClipButton;
+	
 	import assets.footer.timeline.SectionLabel;
 	
 	import bottomBar.timeline.NavigationAsset;
@@ -8,8 +10,6 @@ package ca.georgebrown.trainingtutor.components.coreParts
 	
 	import caurina.transitions.Equations;
 	import caurina.transitions.Tweener;
-	
-	import com.ghostmonk.ui.graveyard.buttons.SimpleMovieClipButton;
 	
 	import flash.display.MovieClip;
 	import flash.events.EventDispatcher;

@@ -1,5 +1,8 @@
 package ca.georgebrown.trainingtutor.components.landingPage 
 {	
+	import G3D4Y6f4t0l2UycswkI.RotatingBufferIcon;
+	import G3D4Y6f4t0l2UycswkI.SimpleMovieClipButton;
+	
 	import assets.LargeLabel;
 	
 	import ca.georgebrown.trainingtutor.events.ImageTransitionEvent;
@@ -7,9 +10,6 @@ package ca.georgebrown.trainingtutor.components.landingPage
 	
 	import caurina.transitions.Equations;
 	import caurina.transitions.Tweener;
-	
-	import com.ghostmonk.ui.RotatingBufferIcon;
-	import com.ghostmonk.ui.graveyard.buttons.SimpleMovieClipButton;
 	
 	import flash.display.DisplayObject;
 	import flash.events.Event;

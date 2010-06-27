@@ -1,12 +1,10 @@
 package ca.georgebrown.trainingtutor.components.sections
 {
+	import G3D4Y6f4t0l2UycswkI.SimpleMovieClipButton;
+	
 	import ca.georgebrown.trainingtutor.valueObjects.ConfigData;
 	
-	import com.ghostmonk.ui.graveyard.buttons.SimpleMovieClipButton;
-	
 	import flash.events.MouseEvent;
-	import flash.net.URLRequest;
-	import flash.net.navigateToURL;
 	
 	import sectionContent.ToolKit.TK;
 

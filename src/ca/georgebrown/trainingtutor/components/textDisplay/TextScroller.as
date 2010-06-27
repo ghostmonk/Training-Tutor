@@ -1,9 +1,9 @@
 package ca.georgebrown.trainingtutor.components.textDisplay
 {
-	import assets.ui.scrollbar.ScrollBarAsset;
+	import G3D4Y6f4t0l2UycswkI.IScrollerAsset;
+	import G3D4Y6f4t0l2UycswkI.Scroller;
 	
-	import com.ghostmonk.ui.graveyard.IScrollerAsset;
-	import com.ghostmonk.ui.graveyard.Scroller;
+	import assets.ui.scrollbar.ScrollBarAsset;
 	
 	import flash.display.MovieClip;
 	import flash.display.Sprite;

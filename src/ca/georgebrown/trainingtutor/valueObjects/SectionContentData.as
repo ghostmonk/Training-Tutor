@@ -1,6 +1,7 @@
 package ca.georgebrown.trainingtutor.valueObjects 
 {
-	import com.ghostmonk.media.video.data.CuePoint;
+	
+	import G3D4Y6f4t0l2UycswkI.CuePoint;
 	
 	import flash.geom.Point;
 		

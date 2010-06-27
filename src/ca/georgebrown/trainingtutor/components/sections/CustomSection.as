@@ -1,11 +1,11 @@
 package ca.georgebrown.trainingtutor.components.sections
 {
+	import G3D4Y6f4t0l2UycswkI.SimpleMovieClipButton;
+	
 	import ca.georgebrown.trainingtutor.events.CustomSectionEvent;
 	
 	import caurina.transitions.Equations;
 	import caurina.transitions.Tweener;
-	
-	import com.ghostmonk.ui.graveyard.buttons.SimpleMovieClipButton;
 	
 	import flash.display.MovieClip;
 	import flash.events.Event;

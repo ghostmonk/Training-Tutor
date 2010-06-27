@@ -1,12 +1,12 @@
 package ca.georgebrown.trainingtutor.components
 {
+	import G3D4Y6f4t0l2UycswkI.MainStage;
+	
 	import ca.georgebrown.trainingtutor.components.sections.CustomSection;
 	import ca.georgebrown.trainingtutor.components.sections.CustomSectionFactory;
 	import ca.georgebrown.trainingtutor.events.CustomSectionEvent;
 	import ca.georgebrown.trainingtutor.events.SequenceEvent;
 	import ca.georgebrown.trainingtutor.valueObjects.SectionContentData;
-	
-	import com.ghostmonk.utils.MainStage;
 	
 	import flash.events.EventDispatcher;
 	
