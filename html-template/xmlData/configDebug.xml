@@ -98,11 +98,7 @@
 							<img id="RS0203" src="03.jpg" />
 							<img id="RS0204" src="04.jpg" />
 							<img id="RS0205" src="05.jpg" />
-							<img id="RS0206" src="06.jpg" />
-							<img id="RS0207" src="07.jpg" />
-							<img id="RS0208" src="08.jpg" />
-							<img id="RS0209" src="09.jpg" />
-							<img id="RS0210" src="10.jpg" />						
+							<img id="RS0206" src="06.jpg" />						
 						</images>
 					</sub>
 					
@@ -118,17 +114,6 @@
 							<img id="RS0308" src="08.jpg" />
 							<img id="RS0309" src="09.jpg" />
 							<img id="RS0310" src="10.jpg" />
-							<img id="RS0311" src="11.jpg" />
-							<img id="RS0312" src="12.jpg" />
-							<img id="RS0313" src="13.jpg" />
-							<img id="RS0314" src="14.jpg" />
-							<img id="RS0315" src="15.jpg" />
-							<img id="RS0316" src="16.jpg" />
-							<img id="RS0317" src="17.jpg" />
-							<img id="RS0318" src="18.jpg" />
-							<img id="RS0319" src="19.jpg" />
-							<img id="RS0320" src="20.jpg" />
-							<img id="RS0321" src="21.jpg" />
 						</images>
 					</sub>
 					
@@ -139,18 +124,6 @@
 							<img id="RS0403" src="03.jpg" />
 							<img id="RS0404" src="04.jpg" />
 							<img id="RS0405" src="05.jpg" />
-							<img id="RS0406" src="06.jpg" />
-							<img id="RS0407" src="07.jpg" />
-							<img id="RS0408" src="08.jpg" />
-							<img id="RS0409" src="09.jpg" />
-							<img id="RS0410" src="10.jpg" />
-							<img id="RS0411" src="11.jpg" />
-							<img id="RS0412" src="12.jpg" />
-							<img id="RS0413" src="13.jpg" />
-							<img id="RS0414" src="14.jpg" />
-							<img id="RS0415" src="15.jpg" />
-							<img id="RS0416" src="16.jpg" />
-							<img id="RS0417" src="17.jpg" />
 						</images>
 					</sub>
 				
@@ -209,9 +182,8 @@
 				
 				<sequence id="The Employee" code="0:1">
 					<sub type="RSE01">
-						<images base="images/sections/our-students/">
-							<img id="AB01" src="student-body.jpg" />
-							<img id="AB02" src="first-gen.jpg" />
+						<images base="images/sections/misc/">
+							<img id="COM01" src="01.jpg" />
 						</images>
 					</sub>
 					<sub type="RSE02" />
@@ -247,9 +219,10 @@
 				
 				<sequence id="Communications" code="1:0">
 					<sub type="SE01">
-						<images base="images/sections/our-students/">
-							<img id="AB01" src="student-body.jpg" />
-							<img id="AB02" src="first-gen.jpg" />
+						<images base="images/sections/misc/">
+							<img id="COM01" src="01.jpg" />
+							<img id="COM02" src="02.jpg" />
+							<img id="COM03" src="03.jpg" />
 						</images>
 					</sub>
 					<sub type="SE02" />
@@ -271,12 +244,7 @@
 					<sub type="SE16" />
 					<sub type="SE17" />
 					<sub type="SE18" />
-					<sub type="SE19">
-						<images base="images/sections/our-students/">
-							<img id="AB01" src="student-body.jpg" />
-							<img id="AB02" src="first-gen.jpg" />
-						</images>
-					</sub>
+					<sub type="SE19" />
 				</sequence>
 				
 				<sequence id="Job Tips" code="1:1">
@@ -294,9 +262,17 @@
 								We aspire to be the "One-Stop-Shop" location for information and student services, equipped with the tools to manage visitor relationships and build the brand through the visitor experience.
 								We strive for quality in everything we do and we aim to ensure that the best service is delivered to each and every Student Service Centre visitor.
 							]]></text>
-						<images changeOnTextScroll="true" base="images/sections/our-students/">
-							<img id="AB01" src="student-body.jpg" />
-							<img id="AB02" src="first-gen.jpg" />
+						<images changeOnTextScroll="true" base="images/sections/workplace/">
+							<img id="OW01" src="01.jpg" />
+							<img id="OW02" src="02.jpg" />
+							<img id="OW03" src="03.jpg" />
+							<img id="OW04" src="04.jpg" />
+							<img id="OW05" src="05.jpg" />
+							<img id="OW06" src="06.jpg" />
+							<img id="OW07" src="07.jpg" />
+							<img id="OW08" src="08.jpg" />
+							<img id="OW09" src="09.jpg" />
+							<img id="OW10" src="10.jpg" />							
 						</images>
 					</sub>
 					<sub type="basic">
@@ -315,9 +291,17 @@
 								Engages in the coaching and mentoring of each other
 								Is viewed as knowledgeable, skilled an is motivated to own and resolve visitor issues
 							]]></text>
-						<images changeOnTextScroll="true" base="images/sections/our-students/">
-							<img id="AB01" src="student-body.jpg" />
-							<img id="AB02" src="first-gen.jpg" />
+						<images changeOnTextScroll="true" base="images/sections/workplace/">
+							<img id="OW01" src="01.jpg" />
+							<img id="OW02" src="02.jpg" />
+							<img id="OW03" src="03.jpg" />
+							<img id="OW04" src="04.jpg" />
+							<img id="OW05" src="05.jpg" />
+							<img id="OW06" src="06.jpg" />
+							<img id="OW07" src="07.jpg" />
+							<img id="OW08" src="08.jpg" />
+							<img id="OW09" src="09.jpg" />
+							<img id="OW10" src="10.jpg" />							
 						</images>
 					</sub>
 					<sub type="basic">
@@ -337,9 +321,17 @@
 								Engages in the coaching and mentoring of each other
 								Is viewed as knowledgeable, skilled and is motivated to own and resolves customer issues
 							]]></text>
-						<images changeOnTextScroll="true" base="images/sections/our-students/">
-							<img id="AB01" src="student-body.jpg" />
-							<img id="AB02" src="first-gen.jpg" />
+						<images changeOnTextScroll="true" base="images/sections/workplace/">
+							<img id="OW01" src="01.jpg" />
+							<img id="OW02" src="02.jpg" />
+							<img id="OW03" src="03.jpg" />
+							<img id="OW04" src="04.jpg" />
+							<img id="OW05" src="05.jpg" />
+							<img id="OW06" src="06.jpg" />
+							<img id="OW07" src="07.jpg" />
+							<img id="OW08" src="08.jpg" />
+							<img id="OW09" src="09.jpg" />
+							<img id="OW10" src="10.jpg" />							
 						</images>
 					</sub>
 				</sequence>
