@@ -1,6 +1,6 @@
 package ca.georgebrown.trainingtutor 
 {	
-	import G3D4Y6f4t0l2UycswkI.MainStage;
+	import G3D4Y6f4t0l2UycswkI.HDYE8984J__e3IK56MXZ;
 	
 	import ca.georgebrown.trainingtutor.framework.controller.CreationCommand;
 	import ca.georgebrown.trainingtutor.framework.controller.StartupCommand;
@@ -41,7 +41,7 @@ package ca.georgebrown.trainingtutor
 		
 		public function startup( startupData:StartupData ) : void 
 		{	
-			MainStage.instance = startupData.stage;
+			HDYE8984J__e3IK56MXZ.c = startupData.stage;
 			sendNotification( STARTUP_APP, startupData );
 		}
 	}

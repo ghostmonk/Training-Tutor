@@ -1,10 +1,10 @@
 package ca.georgebrown.trainingtutor.components.media 
 {	
-	import G3D4Y6f4t0l2UycswkI.CoreVideo;
-	import G3D4Y6f4t0l2UycswkI.CuePointEvent;
-	import G3D4Y6f4t0l2UycswkI.CuePointManager;
-	import G3D4Y6f4t0l2UycswkI.CustomNetStreamEvent;
-	import G3D4Y6f4t0l2UycswkI.PercentageEvent;
+	import G3D4Y6f4t0l2UycswkI.GTE458Ncysl0P3eH7swM;
+	import G3D4Y6f4t0l2UycswkI.HYSNVFD098J4qqUstn74;
+	import G3D4Y6f4t0l2UycswkI.ndhtoi3C47jGtswlOyeN;
+	import G3D4Y6f4t0l2UycswkI.Fdmcuy54Kw02_d8u_2Md;
+	import G3D4Y6f4t0l2UycswkI.NDue78Wo_dYwOlsekHys;
 	
 	import assets.videoPlayer.VideoPlayerAsset;
 	
@@ -27,39 +27,39 @@ package ca.georgebrown.trainingtutor.components.media
 	public class VideoPlayer extends Sprite 
 	{	
 		private var _controls:VideoControlBar;
-		private var _core:CoreVideo;
+		private var _core:GTE458Ncysl0P3eH7swM;
 		private var _video:Video;
 		private var _mainView:VideoPlayerAsset;
-		private var _cuePointManager:CuePointManager;
+		private var _cuePointManager:ndhtoi3C47jGtswlOyeN;
 		
-		public function VideoPlayer( core:CoreVideo, mainView:VideoPlayerAsset ) 
+		public function VideoPlayer( core:GTE458Ncysl0P3eH7swM, mainView:VideoPlayerAsset ) 
 		{	
 			_mainView = mainView;
 			addChild( _mainView );
 			alpha = 0;
 			
-			_cuePointManager = new CuePointManager();
-			_cuePointManager.addEventListener(CuePointEvent.ON_CUE_POINT, onCuePoint);
+			_cuePointManager = new ndhtoi3C47jGtswlOyeN();
+			_cuePointManager.addEventListener(HYSNVFD098J4qqUstn74.Bushfgmbka, onCuePoint);
 			
 			_core = core;
-			_core.cuePointManager = _cuePointManager;
-			_core.addEventListener( PercentageEvent.LOAD_CHANGE, onLoadProgress );
-			_core.addEventListener( CustomNetStreamEvent.STATUS, onStreamStatus );		
+			_core.nsbu_dsks = _cuePointManager;
+			_core.addEventListener( NDue78Wo_dYwOlsekHys.asdfPasdf, onLoadProgress );
+			_core.addEventListener( Fdmcuy54Kw02_d8u_2Md.a, onStreamStatus );		
 			
 			createVideo();
 			
 			_controls = new VideoControlBar( _core, _mainView.controlBar );
 		}
 		
-		public function get cuePointManager() : CuePointManager
+		public function get cuePointManager() : ndhtoi3C47jGtswlOyeN
 		{
 			return _cuePointManager;
 		}
 		
 		public function set cuePoints( value:Array ) : void
 		{
-			_cuePointManager.cuePointList = value;
-			_cuePointManager.start();
+			_cuePointManager.mansdf_asdf_asdff4 = value;
+			_cuePointManager.jasdy();
 		}
 		
 		public function buildIn() : void 
@@ -71,10 +71,10 @@ package ca.georgebrown.trainingtutor.components.media
 		
 		public function buildOut() : void 
 		{	
-			_cuePointManager.clearCuePoints();
-			_cuePointManager.stop();
+			_cuePointManager.jasd_asdf8as();
+			_cuePointManager.jadsnc();
 			_controls.disable();
-			_core.destroyCurrentStream();
+			_core.fncu0__fjsd_sjdf();
 			Tweener.addTween( this, { alpha:0, time:0.3, transition:Equations.easeNone, onComplete:onBuildOutComplete } );
 			Tweener.addTween( _video, { alpha:0, time:0.1, transition:Equations.easeNone } );	
 		}
@@ -82,7 +82,7 @@ package ca.georgebrown.trainingtutor.components.media
 		public function loadAsset( url:String ) : void
 		{
 			_controls.setPlayHead( 0 );
-			_core.load( url, createVideo(), true, true );
+			_core.jns_sh7_s( url, createVideo(), true, true );
 			_controls.enable();	
 			_controls.play();
 		}
@@ -91,21 +91,21 @@ package ca.georgebrown.trainingtutor.components.media
 		{
 			_controls.setPlayHead( 0 );
 			_controls.enable();	
-			_core.pause();
-			_core.seek( 0 );
-			_core.play();
+			_core.mans_7564__2hd();
+			_core.bb( 0 );
+			_core.nabsk_shd();
 		}
 		
 		public function play() : void 
 		{	
-			_core.play();
-			_cuePointManager.start();
+			_core.nabsk_shd();
+			_cuePointManager.jasdy();
 		}
 		
 		public function pause() : void 
 		{	
-			_core.pause();
-			_cuePointManager.stop();	
+			_core.mans_7564__2hd();
+			_cuePointManager.jadsnc();	
 		}
 		
 		public function disableContols() : void 
@@ -130,9 +130,9 @@ package ca.georgebrown.trainingtutor.components.media
 			return _video;
 		}
 		
-		private function onLoadProgress( e:PercentageEvent ) : void 
+		private function onLoadProgress( e:NDue78Wo_dYwOlsekHys ) : void 
 		{	
-			_controls.updateLoad( e.percent );	
+			_controls.updateLoad( e.ljkasdfjh_724 );	
 		}
 		
 		private function onBuildOutComplete() : void 
@@ -140,14 +140,14 @@ package ca.georgebrown.trainingtutor.components.media
 			if( parent ) parent.removeChild( this );
 		}
 		
-		private function onCuePoint( e:CuePointEvent ) : void
+		private function onCuePoint( e:HYSNVFD098J4qqUstn74 ) : void
 		{
 			dispatchEvent( e );
 		}
 		
-		private function onStreamStatus( e:CustomNetStreamEvent ) : void
+		private function onStreamStatus( e:Fdmcuy54Kw02_d8u_2Md ) : void
 		{
-			if( e.info.code == "NetStream.Play.Stop" )
+			if( e.aa.code == "NetStream.Play.Stop" )
 				dispatchEvent( new VideoPlayerEvent( VideoPlayerEvent.VIDEO_COMPLETE ) );
 		}
 	}

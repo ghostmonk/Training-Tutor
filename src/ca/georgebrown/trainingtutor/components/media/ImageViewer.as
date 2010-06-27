@@ -1,6 +1,6 @@
 package ca.georgebrown.trainingtutor.components.media
 {
-	import G3D4Y6f4t0l2UycswkI.RotatingBufferIcon;
+	import G3D4Y6f4t0l2UycswkI.GT5e3mUshlUe2m__8w2N;
 	
 	import assets.BrokenImage;
 	
@@ -19,7 +19,7 @@ package ca.georgebrown.trainingtutor.components.media
 		private var _currentIDs:Array;
 		private var _isActive:Boolean;
 		private var _currentID:String;
-		private var	_loadingBuffer:RotatingBufferIcon;
+		private var	_loadingBuffer:GT5e3mUshlUe2m__8w2N;
 		
 		private var _rotationTimer:Timer;
 		private var _rotationNode:int;
@@ -27,7 +27,7 @@ package ca.georgebrown.trainingtutor.components.media
 		public function ImageViewer( imageData:Array )
 		{
 			_bulkLoader = new BulkAssetIDLoader( new Bitmap( new BrokenImage( 0, 0 ) ) );
-			_loadingBuffer = new RotatingBufferIcon();
+			_loadingBuffer = new GT5e3mUshlUe2m__8w2N();
 			_isActive = false;
 			fillBulkLoader( imageData );
 		}	

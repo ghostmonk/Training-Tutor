@@ -1,6 +1,6 @@
 package ca.georgebrown.trainingtutor.framework.controller 
 {	
-	import G3D4Y6f4t0l2UycswkI.CoreVideo;
+	import G3D4Y6f4t0l2UycswkI.GTE458Ncysl0P3eH7swM;
 	
 	import assets.videoPlayer.VideoPlayerAsset;
 	
@@ -72,7 +72,7 @@ package ca.georgebrown.trainingtutor.framework.controller
 			sectionText.init();
 			
 			var mediaManager:MediaManager = new MediaManager();
-			mediaManager.videoPlayer = new VideoPlayer( new CoreVideo(), new VideoPlayerAsset() );
+			mediaManager.videoPlayer = new VideoPlayer( new GTE458Ncysl0P3eH7swM(), new VideoPlayerAsset() );
 			mediaManager.imageViewer = new ImageViewer( config.sectionImages ); 
 			
 			var viewManager:SectionComponent = new SectionComponent();

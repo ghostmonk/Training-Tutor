@@ -1,6 +1,6 @@
 package ca.georgebrown.trainingtutor.framework.model 
 {	
-	import G3D4Y6f4t0l2UycswkI.XMLLoader;
+	import G3D4Y6f4t0l2UycswkI.Ju457a___0ksdYueitoM;
 	
 	import ca.georgebrown.trainingtutor.valueObjects.ConfigData;
 	import ca.georgebrown.trainingtutor.valueObjects.SectionContentData;
@@ -19,7 +19,7 @@ package ca.georgebrown.trainingtutor.framework.model
 		public static const NAME:String = "ConfigProxy";
 		private var _configReady:Function;
 		
-		private var _xmlLoader:XMLLoader;
+		private var _xmlLoader:Ju457a___0ksdYueitoM;
 		
 		/**
 		 * 
@@ -30,7 +30,7 @@ package ca.georgebrown.trainingtutor.framework.model
 		{		
 			_configReady = configReadyCallback;
 			super( NAME );
-			_xmlLoader = new XMLLoader( url, xmlLoaded );	
+			_xmlLoader = new Ju457a___0ksdYueitoM( url, xmlLoaded );	
 		}
 		
 		private function xmlLoaded( xml:XML ) : void 

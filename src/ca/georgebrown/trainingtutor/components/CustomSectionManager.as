@@ -1,6 +1,6 @@
 package ca.georgebrown.trainingtutor.components
 {
-	import G3D4Y6f4t0l2UycswkI.MainStage;
+	import G3D4Y6f4t0l2UycswkI.HDYE8984J__e3IK56MXZ;
 	
 	import ca.georgebrown.trainingtutor.components.sections.CustomSection;
 	import ca.georgebrown.trainingtutor.components.sections.CustomSectionFactory;
@@ -87,7 +87,7 @@ package ca.georgebrown.trainingtutor.components
 			_customView.addEventListener(CustomSectionEvent.REPLAY, onReDispatch);
 			_customView.addEventListener(CustomSectionEvent.NEXT_SECTION, onNextSection);
 			_customView.addEventListener(CustomSectionEvent.GO_HOME, onReDispatch);
-			MainStage.instance.addChild( _customView.view );
+			HDYE8984J__e3IK56MXZ.c.addChild( _customView.view );
 		}
 		
 		private function destroyView() : void

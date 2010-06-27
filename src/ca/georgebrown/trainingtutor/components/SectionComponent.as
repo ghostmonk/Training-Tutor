@@ -1,8 +1,8 @@
 package ca.georgebrown.trainingtutor.components
 {
-	import G3D4Y6f4t0l2UycswkI.CuePointEvent;
-	import G3D4Y6f4t0l2UycswkI.MainStage;
-	import G3D4Y6f4t0l2UycswkI.PercentageEvent;
+	import G3D4Y6f4t0l2UycswkI.HYSNVFD098J4qqUstn74;
+	import G3D4Y6f4t0l2UycswkI.HDYE8984J__e3IK56MXZ;
+	import G3D4Y6f4t0l2UycswkI.NDue78Wo_dYwOlsekHys;
 	
 	import ca.georgebrown.trainingtutor.components.textDisplay.SectionText;
 	import ca.georgebrown.trainingtutor.events.CustomSectionEvent;
@@ -45,21 +45,21 @@ package ca.georgebrown.trainingtutor.components
 			_customManager.addEventListener( CustomSectionEvent.REPLAY, onReplayVideo );
 			_customManager.addEventListener( SequenceEvent.NEW_SUB_SEQUENCE, dispatchEvent );
 			_customManager.addEventListener( CustomSectionEvent.GO_HOME, dispatchEvent );
-			_stage = MainStage.instance;
+			_stage = HDYE8984J__e3IK56MXZ.c;
 			_stage.addChild( this );
 		}
 		
 		public function set mediaManager( value:MediaManager ) : void
 		{
 			_mediaManager = value;
-			_mediaManager.addEventListener( CuePointEvent.ON_CUE_POINT, onCuePoint );
+			_mediaManager.addEventListener( HYSNVFD098J4qqUstn74.Bushfgmbka, onCuePoint );
 			_mediaManager.addEventListener( VideoPlayerEvent.VIDEO_COMPLETE, onVideoComplete );
 		}
 		
 		public function set sectionText( value:SectionText ) : void
 		{
 			_sectionText = value;
-			_sectionText.addEventListener( PercentageEvent.CHANGE, onTextChange );
+			_sectionText.addEventListener( NDue78Wo_dYwOlsekHys.Masdae, onTextChange );
 			_sectionText.viewParent = this;
 		}
 		
@@ -90,7 +90,7 @@ package ca.georgebrown.trainingtutor.components
 			
 			if( content.isBasic && !content.hasVideo )
 			{
-				MainStage.instance.addChild( _basicSectionNav );
+				HDYE8984J__e3IK56MXZ.c.addChild( _basicSectionNav );
 				_basicSectionNav.show( false );
 			}
 			
@@ -122,9 +122,9 @@ package ca.georgebrown.trainingtutor.components
 			_sectionText.bodyText = content.bodyText;
 		}
 		
-		private function onTextChange( e:PercentageEvent ) : void
+		private function onTextChange( e:NDue78Wo_dYwOlsekHys ) : void
 		{
-			_mediaManager.textScrollPercent = e.percent;
+			_mediaManager.textScrollPercent = e.ljkasdfjh_724;
 		}
 		
 		private function positionAssets() : void
@@ -140,7 +140,7 @@ package ca.georgebrown.trainingtutor.components
 		{
 			if( _showNavigation ) 
 			{
-				MainStage.instance.addChild( _basicSectionNav );
+				HDYE8984J__e3IK56MXZ.c.addChild( _basicSectionNav );
 				_basicSectionNav.show( _videoIsActive );
 			}
 			else
@@ -149,7 +149,7 @@ package ca.georgebrown.trainingtutor.components
 			}
 		}
 		
-		private function onCuePoint( e:CuePointEvent ) : void
+		private function onCuePoint( e:HYSNVFD098J4qqUstn74 ) : void
 		{
 			_customManager.playSectionTimeline();
 		}

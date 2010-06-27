@@ -1,6 +1,6 @@
 package ca.georgebrown.trainingtutor.components.sections
 {
-	import G3D4Y6f4t0l2UycswkI.SimpleMovieClipButton;
+	import G3D4Y6f4t0l2UycswkI.HY6354Gskwo9876_4nBs;
 	
 	import ca.georgebrown.trainingtutor.valueObjects.ConfigData;
 	
@@ -10,14 +10,14 @@ package ca.georgebrown.trainingtutor.components.sections
 
 	public class ToolKit extends CustomSection
 	{
-		private var _collegeResourcesLink:SimpleMovieClipButton;
-		private var _contactCentreLink:SimpleMovieClipButton;
+		private var _collegeResourcesLink:HY6354Gskwo9876_4nBs;
+		private var _contactCentreLink:HY6354Gskwo9876_4nBs;
 		
 		public function ToolKit()
 		{
 			super( new TK() );
-			_collegeResourcesLink = new SimpleMovieClipButton( view.button1, goToCollegeResources );
-			_contactCentreLink = new SimpleMovieClipButton( view.button2, goToContactCentre );
+			_collegeResourcesLink = new HY6354Gskwo9876_4nBs( view.button1, goToCollegeResources );
+			_contactCentreLink = new HY6354Gskwo9876_4nBs( view.button2, goToContactCentre );
 		}
 		
 		private function goToCollegeResources( e:MouseEvent ) : void

@@ -1,6 +1,6 @@
 package ca.georgebrown.trainingtutor.components.media
 {
-	import G3D4Y6f4t0l2UycswkI.IDLoader;
+	import G3D4Y6f4t0l2UycswkI.gGwysd936745lHrswMsj;
 	
 	import flash.display.Bitmap;
 	import flash.display.Sprite;
@@ -22,7 +22,7 @@ package ca.georgebrown.trainingtutor.components.media
 		public function startLoad() : void
 		{
 			for each( var info:Object in _list )
-				_loaders.push( new IDLoader( info.src, info.id, onAssetLoaded, onLoadError ) );
+				_loaders.push( new gGwysd936745lHrswMsj( info.src, info.id, onAssetLoaded, onLoadError ) );
 		}
 		
 		public function addItem( src:String, id:String ) : void

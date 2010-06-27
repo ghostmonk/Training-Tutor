@@ -1,7 +1,7 @@
 package ca.georgebrown.trainingtutor.components
 {
-	import G3D4Y6f4t0l2UycswkI.CuePointEvent;
-	import G3D4Y6f4t0l2UycswkI.MainStage;
+	import G3D4Y6f4t0l2UycswkI.HYSNVFD098J4qqUstn74;
+	import G3D4Y6f4t0l2UycswkI.HDYE8984J__e3IK56MXZ;
 	
 	import ca.georgebrown.trainingtutor.components.media.ImageViewer;
 	import ca.georgebrown.trainingtutor.components.media.VideoPlayer;
@@ -21,9 +21,9 @@ package ca.georgebrown.trainingtutor.components
 		public function set videoPlayer( value:VideoPlayer ) : void
 		{
 			_videoPlayer = value;
-			_videoPlayer.addEventListener( CuePointEvent.ON_CUE_POINT, onCuePoint );
+			_videoPlayer.addEventListener( HYSNVFD098J4qqUstn74.Bushfgmbka, onCuePoint );
 			_videoPlayer.addEventListener( VideoPlayerEvent.VIDEO_COMPLETE, onVideoComplete );
-			MainStage.instance.addChild( _videoPlayer );
+			HDYE8984J__e3IK56MXZ.c.addChild( _videoPlayer );
 		}
 		
 		public function set imageViewer( value:ImageViewer ) : void
@@ -46,7 +46,7 @@ package ca.georgebrown.trainingtutor.components
 		{
 			_imageView.buildIn();
 			_imageView.setImageIDs( imageIDs, useTimer, rate );	
-			MainStage.instance.addChild( _imageView );
+			HDYE8984J__e3IK56MXZ.c.addChild( _imageView );
 		}
 		
 		public function diableImageView() : void
@@ -58,7 +58,7 @@ package ca.georgebrown.trainingtutor.components
 		{
 			_videoPlayer.buildIn();
 			_imageView.buildOut();
-			MainStage.instance.addChild( _videoPlayer );
+			HDYE8984J__e3IK56MXZ.c.addChild( _videoPlayer );
 			setCuePoints( cuePoints );
 			_videoPlayer.loadAsset( srcUrl );
 		}
@@ -75,7 +75,7 @@ package ca.georgebrown.trainingtutor.components
 		
 		private function setCuePoints( value:Array ) : void
 		{
-			_videoPlayer.cuePointManager.clearCuePoints();
+			_videoPlayer.cuePointManager.jasd_asdf8as();
 			if( value.length > 0 )
 				_videoPlayer.cuePoints = value;
 		}
@@ -84,7 +84,7 @@ package ca.georgebrown.trainingtutor.components
 		{
 			_videoPlayer.x = _imageView.x = 34; 
 			_videoPlayer.y = 125;
-			_imageView.y = ( MainStage.instance.stageHeight - _imageView.height ) * 0.5;
+			_imageView.y = ( HDYE8984J__e3IK56MXZ.c.stageHeight - _imageView.height ) * 0.5;
 		}
 		
 		private function onVideoComplete( e:VideoPlayerEvent ) : void
@@ -92,7 +92,7 @@ package ca.georgebrown.trainingtutor.components
 			dispatchEvent( e );
 		}
 		
-		private function onCuePoint( e:CuePointEvent ) : void
+		private function onCuePoint( e:HYSNVFD098J4qqUstn74 ) : void
 		{
 			dispatchEvent( e );
 		}

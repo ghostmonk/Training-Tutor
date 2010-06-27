@@ -1,6 +1,6 @@
 package ca.georgebrown.trainingtutor.components.sections
 {
-	import G3D4Y6f4t0l2UycswkI.SimpleMovieClipButton;
+	import G3D4Y6f4t0l2UycswkI.HY6354Gskwo9876_4nBs;
 	
 	import ca.georgebrown.trainingtutor.events.CustomSectionEvent;
 	
@@ -23,10 +23,10 @@ package ca.georgebrown.trainingtutor.components.sections
 	{
 		protected static const ANIM_COMPLETE:String = "animComplete";
 		protected static const TOUCHPOINT_PAUSE_LENGTH:Number = 1000;
-		private var _actionBtn:SimpleMovieClipButton;
-		private var _replayBtn:SimpleMovieClipButton;
+		private var _actionBtn:HY6354Gskwo9876_4nBs;
+		private var _replayBtn:HY6354Gskwo9876_4nBs;
 		
-		private var _downloadButton:SimpleMovieClipButton;
+		private var _downloadButton:HY6354Gskwo9876_4nBs;
 		private var _downloadSource:String;
 		
 		private var _view:MovieClip;
@@ -79,7 +79,7 @@ package ca.georgebrown.trainingtutor.components.sections
 		protected function createDownloadButton( mcBtn:MovieClip, sourceFile:String ) : void
 		{
 			_downloadSource = sourceFile;
-			_downloadButton =  new SimpleMovieClipButton( mcBtn, downloadFile );
+			_downloadButton =  new HY6354Gskwo9876_4nBs( mcBtn, downloadFile );
 		}
 		
 		private function downloadFile( e:MouseEvent ) : void
@@ -92,19 +92,19 @@ package ca.georgebrown.trainingtutor.components.sections
 			dispatchEvent( new CustomSectionEvent( CustomSectionEvent.REPLAY ) );
 		}
 		
-		private function buildInButton( btn:SimpleMovieClipButton ) : void
+		private function buildInButton( btn:HY6354Gskwo9876_4nBs ) : void
 		{
 			if( !btn ) return;
-			btn.view.visible = true;
-			Tweener.addTween( btn.view, { alpha:1, time:0.3, transition:Equations.easeNone, onComplete:btn.enable } );
+			btn.zzz.visible = true;
+			Tweener.addTween( btn.zzz, { alpha:1, time:0.3, transition:Equations.easeNone, onComplete:btn.enable } );
 		}
 		
-		private function createSimpleButton( view:MovieClip, callback:Function ) : SimpleMovieClipButton
+		private function createSimpleButton( view:MovieClip, callback:Function ) : HY6354Gskwo9876_4nBs
 		{
 			if( !view ) return null;
-			var output:SimpleMovieClipButton = new SimpleMovieClipButton( view, callback );
-			output.view.alpha = 0;
-			output.view.visible = false;
+			var output:HY6354Gskwo9876_4nBs = new HY6354Gskwo9876_4nBs( view, callback );
+			output.zzz.alpha = 0;
+			output.zzz.visible = false;
 			output.disable();
 			return output;
 		}

@@ -1,6 +1,6 @@
 package ca.georgebrown.trainingtutor.components.landingPage 
 {	
-	import G3D4Y6f4t0l2UycswkI.IndexLoader;
+	import G3D4Y6f4t0l2UycswkI.NSY543jVsple_84_w7jN;
 	
 	import ca.georgebrown.trainingtutor.events.ImageTransitionEvent;
 	
@@ -75,7 +75,7 @@ package ca.georgebrown.trainingtutor.components.landingPage
 			var index:int = 0;
 			
 			for( var url:String in imgs ) {
-				_loaders.push( new IndexLoader( url, index, onImageLoaded, null, null, new LoaderContext( true ) ) );
+				_loaders.push( new NSY543jVsple_84_w7jN( url, index, onImageLoaded, null, null, new LoaderContext( true ) ) );
 				_associativeData.push( imgs[ url ] );
 				index++;
 			}

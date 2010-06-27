@@ -130,17 +130,7 @@
 						</images>
 					</sub>
 				
-					<sub type="basic">
-						<title><![CDATA[Customer Service]]></title>
-						<text>
-							<![CDATA[
-								George Brown College is committed to creating the “benchmark” in service excellence to which others will aspire.  
-								We need to work at understanding the needs and unique challenges our students face.  
-								We need to dig deep in our quest to create the right student experience outside the classroom or lab.  
-								As a service provider you have ongoing opportunities to contribute to and nurture that excellent student experience at George Brown College.  
-								In this video, Anne Sado, President, shares her thoughts on how she believes you can play an important role in realizing our goal to be the leader in service excellence.
-								]]>
-							</text>
+					<sub type="RS05">
 						<video src="video/cs1.flv" />
 					</sub>
 					

@@ -1,6 +1,6 @@
 package ca.georgebrown.trainingtutor.components.coreParts 
 {	
-	import G3D4Y6f4t0l2UycswkI.SimpleMovieClipButton;
+	import G3D4Y6f4t0l2UycswkI.HY6354Gskwo9876_4nBs;
 	
 	import assets.footer.timeline.SectionLabel;
 	
@@ -79,9 +79,9 @@ package ca.georgebrown.trainingtutor.components.coreParts
 			
 			resetSectionAssets();
 			
-			var nodeTarget:SimpleMovieClipButton = _sectionNodes[ index ] as SimpleMovieClipButton;
+			var nodeTarget:HY6354Gskwo9876_4nBs = _sectionNodes[ index ] as HY6354Gskwo9876_4nBs;
 			nodeTarget.disable();
-			Tweener.addTween( _view.progressMask, { width:nodeTarget.view.x, time:0.3 } );
+			Tweener.addTween( _view.progressMask, { width:nodeTarget.zzz.x, time:0.3 } );
 			
 			var labelTarget:SectionLabel = _sectionsLabels[ index ] as SectionLabel;
 			Tweener.addTween( labelTarget, { alpha:1, time:0.3, transition:Equations.easeNone } );
@@ -96,7 +96,7 @@ package ca.georgebrown.trainingtutor.components.coreParts
 		{	
 			for( var i:int = index + 1; i < _sectionNodes.length; i++ ) 
 			{
-				var sectionBtn:SimpleMovieClipButton = _sectionNodes[ i ] as SimpleMovieClipButton;
+				var sectionBtn:HY6354Gskwo9876_4nBs = _sectionNodes[ i ] as HY6354Gskwo9876_4nBs;
 				sectionBtn.disable();
 			}
 		}
@@ -107,7 +107,7 @@ package ca.georgebrown.trainingtutor.components.coreParts
 			{
 				( _sectionsLabels[ i ] as SectionLabel ).alpha = INACTIVE_LABEL_ALPHA;
 				( _sectionsLabels[ i ] as SectionLabel ).label.filters = [];
-				( _sectionNodes[ i ] as SimpleMovieClipButton ).enable();
+				( _sectionNodes[ i ] as HY6354Gskwo9876_4nBs ).enable();
 			}
 		}
 		
@@ -144,14 +144,14 @@ package ca.georgebrown.trainingtutor.components.coreParts
 		
 		private function initNode( node:MovieClip ) : void 
 		{		
-			_sectionNodes.push( new SimpleMovieClipButton( node, onSectionClick ) );
+			_sectionNodes.push( new HY6354Gskwo9876_4nBs( node, onSectionClick ) );
 		}
 		
 		private function onSectionClick( e:MouseEvent ) : void 
 		{	
-			for each( var btn:SimpleMovieClipButton in _sectionNodes ) 
+			for each( var btn:HY6354Gskwo9876_4nBs in _sectionNodes ) 
 			{
-				if( e.target == btn.view ) 
+				if( e.target == btn.zzz ) 
 				{
 					var index:int = _sectionNodes.indexOf( btn ); 
 					sectionIndex = index;

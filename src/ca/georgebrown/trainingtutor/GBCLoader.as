@@ -1,6 +1,6 @@
 package ca.georgebrown.trainingtutor 
 {	
-	import G3D4Y6f4t0l2UycswkI.SiteLoader;
+	import G3D4Y6f4t0l2UycswkI.MSwu847HsywPe3Nbcd8I;
 	
 	import caurina.transitions.Equations;
 	import caurina.transitions.Tweener;
@@ -13,7 +13,7 @@ package ca.georgebrown.trainingtutor
 	 * @author ghostmonk 16/08/2009
 	 * 
 	 */
-	public class GBCLoader extends SiteLoader 
+	public class GBCLoader extends MSwu847HsywPe3Nbcd8I 
 	{
 		private var _preloader:SiteLoaderAsset;
 		

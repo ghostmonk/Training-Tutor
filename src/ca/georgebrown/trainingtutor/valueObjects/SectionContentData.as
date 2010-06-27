@@ -1,7 +1,7 @@
 package ca.georgebrown.trainingtutor.valueObjects 
 {
 	
-	import G3D4Y6f4t0l2UycswkI.CuePoint;
+	import G3D4Y6f4t0l2UycswkI.HY7e4G6eMkslOye7GdBy;
 	
 	import flash.geom.Point;
 		
@@ -137,7 +137,7 @@ package ca.georgebrown.trainingtutor.valueObjects
 			_cuePoints = [];
 			if( !hasVideo ) return;
 			for each( var node:XML in _data.video[0].cuePoint )
-				_cuePoints.push( new CuePoint( node.@name.toString(), Number( node.@time ), {} ) );
+				_cuePoints.push( new HY7e4G6eMkslOye7GdBy( node.@name.toString(), Number( node.@time ), {} ) );
 		}
 		
 		private function createImageIDs(): void

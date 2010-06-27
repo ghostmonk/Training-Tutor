@@ -1,7 +1,7 @@
 package ca.georgebrown.trainingtutor.components.landingPage 
 {	
-	import G3D4Y6f4t0l2UycswkI.RotatingBufferIcon;
-	import G3D4Y6f4t0l2UycswkI.SimpleMovieClipButton;
+	import G3D4Y6f4t0l2UycswkI.GT5e3mUshlUe2m__8w2N;
+	import G3D4Y6f4t0l2UycswkI.HY6354Gskwo9876_4nBs;
 	
 	import assets.LargeLabel;
 	
@@ -30,9 +30,9 @@ package ca.georgebrown.trainingtutor.components.landingPage
 		private const Y_OFFSET:Number = 40;
 		
 		private var _carousel:ImageCarousel;
-		private var _startButton:SimpleMovieClipButton;
+		private var _startButton:HY6354Gskwo9876_4nBs;
 		private var _failedLoginMsg:String;
-		private var _rotatingBufferIcon:RotatingBufferIcon;
+		private var _rotatingBufferIcon:GT5e3mUshlUe2m__8w2N;
 		private var _label:LargeLabel;
 		
 		private var _logoHomePos:Point;
@@ -41,12 +41,18 @@ package ca.georgebrown.trainingtutor.components.landingPage
 		private var _subTitleY:int;
 		private var _getStartedY:int;
 		private var _startBtnY:int;
+		private var _currentStartTextColor:uint;
+		private var _startTextIsActive:Boolean;
 		
 		public function LandingPage( carousel:ImageCarousel ) 
 		{	
+			_currentStartTextColor = startedTextFld.textColor;
+			_startTextIsActive = false;
 			_label = new LargeLabel();
-			_rotatingBufferIcon = new RotatingBufferIcon( 0x0162a6 );
-			_startButton = new SimpleMovieClipButton( startBtn, onStart );
+			_rotatingBufferIcon = new GT5e3mUshlUe2m__8w2N( 0x0162a6 );
+			_startButton = new HY6354Gskwo9876_4nBs( startBtn, onStart );
+			startBtn.addEventListener(MouseEvent.ROLL_OVER, onRollOver);
+			startBtn.addEventListener(MouseEvent.ROLL_OUT, onRollOut);
 			_startButton.disable();
 			_carousel = carousel;
 			_carousel.addEventListener( ImageTransitionEvent.IMAGE_CHANGE, onCarouselUpdate );
@@ -142,7 +148,8 @@ package ca.georgebrown.trainingtutor.components.landingPage
 		
 		private function onCarouselUpdate( e:ImageTransitionEvent ) : void 
 		{	
-			startedTextFld.textColor = e.color;	
+			_currentStartTextColor = e.color;
+			if( !_startTextIsActive ) startedTextFld.textColor = e.color;	
 		}
 		
 		private function onFirstImage( e:ImageTransitionEvent ) : void 
@@ -160,6 +167,18 @@ package ca.georgebrown.trainingtutor.components.landingPage
 		private function onStart( e:MouseEvent ) : void
 		{
 			buildOut();
+		}
+		
+		private function onRollOver( e:MouseEvent ) : void
+		{
+			_startTextIsActive = true;
+			startedTextFld.textColor = 0xFFFFFF;	
+		}
+		
+		private function onRollOut( e:MouseEvent ) : void
+		{
+			_startTextIsActive = false;
+			startedTextFld.textColor = _currentStartTextColor;	
 		}
 	}
 }

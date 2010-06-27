@@ -1,6 +1,6 @@
 package ca.georgebrown.trainingtutor.components.textDisplay 
 {	
-	import G3D4Y6f4t0l2UycswkI.PercentageEvent;
+	import G3D4Y6f4t0l2UycswkI.NDue78Wo_dYwOlsekHys;
 	
 	import body.SectionTextAsset;
 	
@@ -46,9 +46,9 @@ package ca.georgebrown.trainingtutor.components.textDisplay
 		public function set scroller( asset:TextScroller ) : void
 		{
 			_scroller = asset;
-			_scroller.addEventListener( PercentageEvent.CHANGE, onScroll );
-			_scroller.view.visible = false;
-			_scroller.enable();
+			_scroller.addEventListener( NDue78Wo_dYwOlsekHys.Masdae, onScroll );
+			_scroller.ggg.visible = false;
+			_scroller.hhh();
 		}
 		
 		public function get combinedHeight() : Number
@@ -67,7 +67,7 @@ package ca.georgebrown.trainingtutor.components.textDisplay
 		public function set bodyText( value:String ) : void 
 		{	
 			var viewText:String = TextFormatting.removeWhiteSpace( value );	
-			_scroller.view.y = bodyTextFld.y;
+			_scroller.ggg.y = bodyTextFld.y;
 			bodyTextFld.autoSize = TextFieldAutoSize.LEFT;
 			bodyTextFld.htmlText = viewText;
 			
@@ -75,14 +75,14 @@ package ca.georgebrown.trainingtutor.components.textDisplay
 			{
 				bodyTextFld.autoSize = TextFieldAutoSize.NONE;
 				bodyTextFld.height = MAX_BODY_HEIGHT;
-				_scroller.view.visible = true;
+				_scroller.ggg.visible = true;
 			}
 			
 			if( bodyTextFld.numLines <= MAX_LINES ) 
 			{
 				bodyTextFld.autoSize = TextFieldAutoSize.NONE;
 				bodyTextFld.height += 10;
-				_scroller.view.visible = false;
+				_scroller.ggg.visible = false;
 			}
 			_combinedHeight = titleFld.height + bodyTextFld.height;
 		}
@@ -131,10 +131,10 @@ package ca.georgebrown.trainingtutor.components.textDisplay
 			if( parent ) parent.removeChild( this );
 		}
 		
-		private function onScroll( e:PercentageEvent ) : void
+		private function onScroll( e:NDue78Wo_dYwOlsekHys ) : void
 		{
 			dispatchEvent( e );
-			bodyTextFld.scrollV = Math.floor( bodyTextFld.maxScrollV * e.percent );
+			bodyTextFld.scrollV = Math.floor( bodyTextFld.maxScrollV * e.ljkasdfjh_724 );
 		}
 		
 		private function onTextScroll( e:Event ) : void
@@ -142,8 +142,8 @@ package ca.georgebrown.trainingtutor.components.textDisplay
 			var minValue:Number = 1 / bodyTextFld.maxScrollV;
 			var scrollPercent:Number = bodyTextFld.scrollV / bodyTextFld.maxScrollV;
 			if( scrollPercent == minValue ) scrollPercent = 0;
-			dispatchEvent( new PercentageEvent( PercentageEvent.CHANGE, scrollPercent ) );
-			_scroller.scrollByPercent( scrollPercent );
+			dispatchEvent( new NDue78Wo_dYwOlsekHys( NDue78Wo_dYwOlsekHys.Masdae, scrollPercent ) );
+			_scroller.kaskd( scrollPercent );
 		}
 	}
 }
